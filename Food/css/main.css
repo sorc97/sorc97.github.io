@@ -1,0 +1,468 @@
+/*Спецификация*/
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+
+a:hover{
+	text-decoration: none;
+	transition:all 0.4s ease;
+}
+
+button:focus{
+	outline: none;
+}
+
+button:hover{
+	background: #f7d309;
+	transition:all 0.4s ease;
+}
+
+button{
+	background: #fca313;
+	color:white;
+	cursor:pointer;
+	border:0;
+	border-radius: 5px;
+}
+
+i{
+	cursor: pointer;
+}
+
+.row{
+	margin: 0;
+}
+
+/*Первый экран*/
+
+.header__wrapper{
+	justify-content: space-between;
+}
+.header{
+	background: #111111;
+	color: white;
+	font-size: 18px;
+}
+
+.header__logo{
+	float:left;
+	margin-top: 20px;
+}
+
+.header__user{
+	float: right;
+	margin-top: 25px;
+}
+
+.header__user_text{
+	margin-left: 25px;
+}
+
+.header__user_icon{
+	font-size: 20px;
+	margin-top: 2px;
+	cursor: pointer;
+}
+
+.header__user_icon:hover{
+	color:#949494;
+	transition:all 0.4s ease;
+}
+/*Второй экран*/
+.menu{
+	background: #fff;
+	font-size: 18px;
+	
+}
+
+.menu__bars{
+	display: none;
+}
+
+.menu__items{
+	float: left;
+	margin-top: 15px;
+}
+.menu__main{
+	list-style-type: none;
+	padding: 0;
+}
+
+.menu_item{
+	margin-right: 50px;
+}
+
+.menu_item a{
+	color: black;
+	font-weight: 400px;
+}
+
+.menu_item a:hover{
+	color:#949494;
+}
+
+.menu__wrapper{
+	justify-content: space-between;
+	padding: 5px 0;
+}
+
+.menu__search{
+	float: right;
+	margin-top: 10px;
+}
+
+.menu__form{
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	padding:10px;
+	height: 40px;
+}
+
+.menu__form i{
+	color: #cfcfcf;
+	font-size: 15px;
+	margin-right: 5px;
+	font-size: 13px;
+	margin-top: 3px;
+}
+
+.menu__search input{
+	border:0;
+	font-size: 13px;
+	outline:0;
+}
+
+.search_icons {
+	font-size: 30px;
+	color:#fdb813;
+	margin-left: 20px;
+	margin-top:5px
+}
+
+.search_icons:last-child{
+	padding: 0;
+	margin-top: 2px;
+	font-size: 32px;
+}
+
+.search_icons:hover{
+	color:#f7d309;
+	cursor: pointer;
+	transition:all 0.4s ease;
+}
+
+.search{
+	height: 335px;
+	background: url(../img/background1.png) no-repeat top/cover;
+	padding-top:80px;
+}
+
+.search__caption{
+	font-size: 50px;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+
+.location{
+	font-size: 25px;
+	margin: 13px 15px 0;
+	cursor: pointer;
+	color: #fdb813
+}
+
+.location:hover{
+	color: #f7d309;
+	transition:all 0.4s ease;
+}
+
+.location__text{
+	border:0;
+	outline: 0;
+	width:390px;
+}
+
+.compas{
+	margin: 8px 8px;
+	font-size: 25px;
+	background: #fdb813;
+	padding:5px 7px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.compas:hover{
+	background: #f7d309;
+	color:white;
+	transition:all 0.4s ease;
+}
+
+.search__location form{
+	margin-top: 50px;
+	max-width:480px;
+	width:auto;
+	height: 50px;
+	background: #fff;
+	border-radius: 5px;
+	margin: auto;
+}
+
+.search__location{
+	text-align: center;
+}
+
+.search__location_text{
+	color: #fff;
+	font-style:italic;
+	font-size: 16px;
+	margin-top: 15px;
+}
+
+.food{
+	background: #f5f5f5;
+	padding-top: 40px;
+	/*padding-bottom: 80px;*/
+}
+
+.food__wrapper{
+	max-width: 655px;
+	width:auto;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+	/*height:100px;*/
+	padding:10px 0 10px;
+	float: right;
+	margin-right: 15px;
+	margin-bottom: 75px
+}
+
+.food__item h3{
+	font-size: 13px;
+}
+
+.food__item input{
+	max-width:130px;
+	width:auto;
+	border:0px;
+	outline: 0;
+	font-size: 16px;
+}
+
+.food__item i{
+	color: #fdb813;
+}
+
+.food__item{
+	padding: 0px 30px 0px 25px;
+	border-right:1px solid #cccccc;
+	width:auto;
+}
+
+.food__item_icon{
+	margin-right: 10px
+}
+
+.food__wrapper2{
+	padding-left: 0px;
+}
+
+.food__item:last-child{
+	border:0;
+}
+
+.food__button{
+	padding: 10px 20px;
+	font-size: 18px;
+	margin-top: 10px
+}
+
+.food__button:focus{
+	outline: none;
+}
+
+.button__wrapper{
+	padding-left:0;
+}
+
+.food__line_caption{
+	text-transform: uppercase;
+	color: #111111;
+	font-size: 21px;
+/*	margin-right: 60px;*/
+	font-weight: bold;
+}
+
+.food__line{
+	padding: 0;
+	margin-bottom: 30px;
+	width:100%;
+}
+
+.food__line_view{
+	color: #fca313;
+	font-size: 18px;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+
+.food__line_line{
+	width:730px;
+	height: 2px;
+	background: #c7c7c7;
+	margin:12px auto;
+}
+
+.breakfast__item{
+	width: 260px;
+	height:350px;
+	background: #fff;
+	margin: 0 auto;
+	padding: 5px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.3)
+}
+/*
+.breakfast__item:nth-child(1){
+	float:left;
+}*/
+
+.breakfast__wrapper{
+	padding: 0;
+	margin-bottom: 75px;
+}
+
+#breakfast__item_left{
+	float: left;
+}
+
+#breakfast__item_right{
+	float: right;
+}
+
+.breakfast__item_description{
+	font-size: 17px;
+	margin:15px 0;
+	height: 50px;
+}
+
+.breakfast__item_profile{
+	font-size: 14px;
+	border-bottom: 1px solid #d7d7d7;
+	margin-bottom: 7px;
+	color: #fca313;
+	justify-content:space-between;
+}
+
+.breakfast__profile_image{
+	margin-right: 5px;
+}
+
+.breakfast__profile_status{
+	width:18px;
+	height:18px;
+	border:3px solid green;
+	border-radius: 50%;
+	display: flex;
+}
+
+.breakfast__price_button{
+	width: 55px;
+	height: 25px;
+	/*margin-left: 130px; */
+
+}
+
+.breakfast__item_price{
+	justify-content:space-between;
+}
+
+.breakfast__item_price p{
+	font-size: 18px;
+}
+
+#red{
+	border-color:red;
+}
+
+
+/*INFORMATION*/
+
+.information{
+	padding: 90px 0;
+}
+
+.information__image{
+	margin-right: 45px; 
+}
+
+.information__text_caption{
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.information__text_offer{
+	font-size: 16px;
+	margin-bottom: 30px
+}
+
+.information__text_learn{
+	color: #fca313;
+	font-size: 16px;
+}
+
+.information__text_learn:hover{
+	color: black;
+}
+
+.information__text_offer2{
+	margin-bottom: 15px;
+	color:#000;
+}
+
+.information__text_offer2:hover{
+	color: #fca313;
+}
+
+.information__wrapper{
+	flex-direction: column;
+}
+
+.information__wrapper2{
+	width:125px;
+	margin: 0 auto;
+	flex-direction: column;
+}
+
+/*FOOTER*/
+
+.footer{
+	background: #242424;
+	padding: 75px 0;
+}
+
+.footer__text{
+	color: #afafaf;
+	max-width: 575px;
+	width:auto;
+	font-size: 16px;
+}
+
+.footer__icons{
+	color: white;
+	font-size: 24px;
+	justify-content: space-between;
+}
+
+.footer__icons_wrapper{
+	width: 125px;
+	float: right;
+}
+
+.footer__copyright{
+	color:grey;
+	font-size: 12px;
+	margin-top: 25px;
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/media.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+	<title>Food</title>
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="row header__wrapper">
+				<div class="header__logo">
+					<img src="img/logo.png">
+				</div>
+
+				<div class="header__user d-flex">
+					<i class="fa fa-shopping-cart header__user_icon"></i>
+					<p class="header__user_text">Hello, Amit!</p>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section class="menu">
+		<div class="container">
+			<div class="row d-flex menu__wrapper">
+			<div class="menu__items">
+				<nav>
+					<ul class="menu__main d-flex">
+						<li class="menu_item"><a href="#">Breakfast</a></li>										
+						<li class="menu_item"><a href="#">Snacks</a></li>					
+						<li class="menu_item"><a href="#">Combos</a></li>										
+						<li class="menu_item"><a href="#">Meal</a></li>				
+						<li class="menu_item"><a href="#">Desserts</a></li>
+					</ul>
+					<div class="menu__bars">
+						<i class="fa fa-bars"></i>
+					</div>
+				</nav>
+			</div>
+
+			<div class="menu__search d-flex">
+				<form class="menu__form d-flex">
+					<i class="fa fa-search"></i>
+					<input type="text" name="dishes" placeholder="Search dishes">
+				</form>
+
+				<i class="fa fa-sort-amount-desc search_icons"></i>
+				<i class="fa fa-filter search_icons"></i>
+			</div>
+		</div>
+		</div>
+	</section>
+
+	<section class="search">
+		<div class="container">
+			<h1 class="search__caption">Homemade Food Just a Click Away</h1>
+			<div class="search__location">
+				<form class="d-flex">
+					<i class="fa fa-map-marker location"></i>
+					<input type="text" name="locations" class="location__text" placeholder="Enter Street, City, Pincode">
+					<i class="fa fa-compass compas" aria-hidden="true"></i>
+				</form>
+				<p class="search__location_text">Enter your location to view menu</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="food">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-sm-12 food__wrapper2">
+					<div class="food__wrapper d-flex">
+						<div class="food__item">
+							<h3>Meal Type</h3>
+							<div class="food__serch_wrapper">
+								<input type="text" name="food" placeholder="Lunch" class="food__item_search">
+								<i class="fa fa-arrow-down food__item_arrow"></i>
+							</div>
+						</div>
+						<div class="food__item">
+							<h3>Select Dish/Cuisine</h3>
+							<div class="food__serch_wrapper">
+								<i class="fa fa-search food__item_icon"></i>
+								<input type="text" name="food" placeholder="Chinese" class="food__item_search">
+								<i class="fa fa-arrow-down food__item_arrow"></i>
+							</div>
+						</div>
+						<div class="food__item">
+							<h3>Food Type</h3>
+							<div class="food__serch_wrapper">
+								<input type="text" name="food" placeholder="Non-veg" class="food__item_search">
+								<i class="fa fa-arrow-down food__item_arrow"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-12 button__wrapper">
+					<button class="food__button">
+							Find Food
+					</button>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="food__line d-flex">
+					<h1 class="food__line_caption">
+						all-day breakfast
+					</h1>
+					<div class="food__line_line"></div>
+					<p href="#" class="food__line_view">
+						View All
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item" id="breakfast__item_left">
+						<div class="breakfast__item_image">
+							<img src="img/breakfast1.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Gajar ka Halwa with Crackling Dry Fruits</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image.png">
+								</div>
+									<p>Ashish Soni</p>
+							</div>
+							<div class="breakfast__profile_status"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 60.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item">
+						<div class="breakfast__item_image">
+							<img src="img/breakfast2.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Punjabi Dhaba Style Chicken Curry with Rice</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image2.png">
+								</div>
+									<p>Ravisha Sharma</p>
+							</div>
+							<div class="breakfast__profile_status"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 80.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item">
+						<div class="breakfast__item_image">
+							<img src="img/breakfast3.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Veg. Laziz with 4 Parathas</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image3.png">
+								</div>
+									<p>Samina Qureshi</p>
+							</div>
+							<div class="breakfast__profile_status" id="red"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 50.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item" id="breakfast__item_right">
+						<div class="breakfast__item_image">
+							<img src="img/breakfast4.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Paneer Hariyali Tikka with Green Chutney</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image4.png">
+								</div>
+									<p>Aum </p>
+							</div>
+							<div class="breakfast__profile_status"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 175.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+			</div>
+											
+											<!-- SECOND -->
+			<div class="row">
+				<div class="food__line d-flex">
+					<h1 class="food__line_caption">
+						Healthy treats
+					</h1>
+					<div class="food__line_line"></div>
+					<p href="#"class="food__line_view">
+						View All
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item" id="breakfast__item_left">
+						<div class="breakfast__item_image">
+							<img src="img/healthy1.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Gajar ka Halwa with Crackling Dry Fruits</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image.png">
+								</div>
+									<p>Ashish Soni</p>
+							</div>
+							<div class="breakfast__profile_status" id="red"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 60.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item">
+						<div class="breakfast__item_image">
+							<img src="img/healthy2.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Chocolate Mousse</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image2.png">
+								</div>
+									<p>Ravisha Sharma</p>
+							</div>
+							<div class="breakfast__profile_status"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 80.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item">
+						<div class="breakfast__item_image">
+							<img src="img/healthy3.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Cottage Cheese Quiche with Garlic and Cheese</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image4.png">
+								</div>
+									<p>Samina Qureshi</p>
+							</div>
+							<div class="breakfast__profile_status"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 50.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 breakfast__wrapper">
+					<div class="breakfast__item" id="breakfast__item_right">
+						<div class="breakfast__item_image">
+							<img src="img/healthy4.png">
+						</div>
+						<div class="breakfast__item_description">
+							<p>Aloo Tikki (4) with Chole, Sweet Imli Chutney and...</p>
+						</div>
+						<div class="breakfast__item_profile d-flex">
+							<div class="breakfast__profile_wrapper d-flex">
+								<div class="breakfast__profile_image">
+									<img src="img/profile_image.png">
+								</div>
+									<p>Aum </p>
+							</div>
+							<div class="breakfast__profile_status" id="red"></div>
+						</div>
+						<div class="breakfast__item_price d-flex">
+							<p><strong>$ 175.00</strong></p>
+							<button class="breakfast__price_button">Add</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	
+	<section class="information">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-sm-12 d-flex information__food_wrapper">
+					<div class="information__image"><img src="img/spoons.png" alt="information"></div>
+					<div class="information__text">
+						<h1 class="information__text_caption">
+							free Food delivery
+						</h1>
+						<p class="information__text_offer">
+							Experience our superfast delivery for food delivered fresh & on time!
+						</p>
+						<a href="#" class="information__text_learn">Learn more</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6 d-flex information__wrapper">
+					<div class="information__wrapper2 d-flex">
+						<h1 class="information__text_caption">
+							company
+						</h1>
+						<a href="#" class="information__text_offer2">
+							About Us
+						</a>
+						<a href="#" class="information__text_offer2">
+							Partner with us
+						</a>
+						<a href="#" class="information__text_offer2">
+							Team
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6 d-flex information__wrapper ">
+					<div class="information__wrapper2 d-flex">
+						<h1 class="information__text_caption">
+							support
+						</h1>
+						<a href="#" class="information__text_offer2">
+							Contacts
+						</a>
+						<a href="#" class="information__text_offer2">
+							Forums
+						</a>
+						<a href="#" class="information__text_offer2">
+							Blog
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row footer__wrapper">
+				<div class="col-lg-3 col-sm-12">
+					<div class="footer__logo">
+						<img src="img/logo2.png">
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="footer__text">
+						We're a UI+UX design studio that creates all things digital like mobile apps, websites, enterprise applications, marketing campaigns, software (and much more) with people across the world.
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="footer__icons_wrapper">
+						<div class="footer__icons d-flex">
+							<i class="fa fa-instagram"></i>
+							<i class="fa fa-facebook-square"></i>
+							<i class="fa fa-twitter-square"></i>
+						</div>
+						<p class="footer__copyright">© 2018 Designcoz</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
