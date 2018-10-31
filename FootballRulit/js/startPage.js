@@ -100,6 +100,9 @@ function Match(options) {
 
 	if(options.active){
 		elem.classList.add("active");
+		elem.addEventListener("click", function() {
+			alert("Переход в раздел игры");
+		});
 	}
 
 	matches.appendChild(elem);
@@ -117,6 +120,9 @@ function Schedule(options) {
 
 	if(options.active) {
 		elem.classList.add("active");
+		elem.addEventListener("click", function() {
+			alert("Переход в раздел игры");
+		});
 	}
 	scheduleTable.appendChild(elem);
 }
@@ -225,12 +231,3 @@ new Match({
 });
 
 
-let item = $(".startPage__matches_item");
-item.on('click', function() {
-	alert("Переход в раздел игры");
-});
-
-let item2 = $(".schedule__table_string");
-item2.on('click', function() {
-	alert("Переход в раздел игры");
-})
