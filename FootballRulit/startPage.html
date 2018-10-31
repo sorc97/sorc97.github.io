@@ -16,11 +16,12 @@
 				<li><a href="#" class="startPage__header_menu_item">Правила</a></li>
 				<li><a href="#" class="startPage__header_menu_item">Расписание-матчи</a></li>
 				<li id="personalArea">
-					<a href="#" class="startPage__header_menu_item">Личный кабинет</a>
+					<span class="startPage__header_menu_item">Личный кабинет</span>
 					<div class="startPage__showingMenu_wrapper">
+						<div class="startPage__showingMenu_user">user1</div>
 						<p class="startPage__showingMenu_score">Ваш счет: 1233$</p>
 						<a href="#" class="startPage__showingMenu_item">История ставок</a>
-						<a href="#" class="startPage__showingMenu_item">Выход</a>
+						<a href="index.html" class="startPage__showingMenu_item">Выход</a>
 					</div>
 				</li>
 			</ul>
@@ -55,6 +56,21 @@
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
 			</div>
 		</div>
+	<div id="modal" class="modal schedule">
+		<div class="modal__content">
+			<span class="close">&times;</span>
+			<h1 class="modal__content_caption">Расписание</h1>
+			<table class="schedule__table">
+				<tr>
+					<th>Игра</th>
+					<th>Начало</th>
+					<th>Состояние</th>
+					<th>Счет</th>
+				</tr>
+
+			</table>
+		</div>
+	</div>
 
 
 	<script src="js/startPage.js"></script>

@@ -145,7 +145,7 @@ a{
 	position: relative;
 	left:0;
 	top: 0;
-	height: 1000px;
+	height: auto;
 	background: #93f2a3;
 }
 
@@ -155,9 +155,6 @@ a{
 	font-weight: 300;
 }
 
-/*nav{
-	width: 100%;
-}*/
 
 .startPage__header nav{
 	width: 100%;
@@ -177,6 +174,7 @@ a{
 .startPage__header_menu_item{
 	padding: 20px;
 	color: black;
+	cursor: pointer;
 	transition: background 0.4s ease;
 }
 .startPage__header_menu_item:hover{
@@ -192,13 +190,14 @@ a{
 							/*ВСПЛЫВАЮЩЕЕ МЕНЮ*/
 .startPage__showingMenu_wrapper{
 	display: none;
+	position: relative;
 	font-size: 18px;
 	margin-top: 35px;
 	margin-right: 10px;
 	border: 2px solid #e8ede9;
 	border-radius: 5px;
 	background: #e8ede9;
-	box-shadow: 2px 2px 1px 0px grey;
+	box-shadow: 2px 2px 4px 3px grey;
 }
 
 .startPage__showingMenu_item{
@@ -212,9 +211,9 @@ a{
 }
 
 .startPage__showingMenu_wrapper:before{
-	position: absolute;
-	top: 45px;
-	right: 80px;
+	position: fixed;
+	top: 62px;
+	right: 85px;
 	content: "";
 	border-bottom: 15px solid #e8ede9;
 	border-right: 15px solid transparent;
@@ -226,10 +225,101 @@ a{
 	text-align: center;
 }
 
+.startPage__showingMenu_user{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.startPage__matches_wrapper{
+	display: flex;
+	padding: 80px;
+	flex-wrap: wrap;
+	/*align-content: center;*/
+	/*align-items: center;*/
+	justify-content: center;
+}
+
+.startPage__matches_item{
+	width: 400px;
+	height: 300px;
+	background-color: #edeff2;
+	margin-right: 10px;
+	/*display: flex;
+	align-items: center;*/
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
 .show{
 	display: block;
+}
+
+.startPage__matches_item.active{
+	cursor: pointer;
+	background-color: #28ffb0;
+	/*color: white;*/
+}
+
+.startPage__matches_item_name{
+	font-weight: 700;
+	text-align: center;
+}
+
+.startPage__matches_item_start {
+	margin-right: 30px;
+}
+
+.startPage__matches_item_score{
+	font-size: 40px;
+	margin: 15px 0;
 }
 
 .fixed{
 	overflow: hidden;
 }
+
+
+.startPage__matches_item_coeffTable{
+	padding: 5px;
+	margin: 0 auto;
+	/*border: 0px 1px solid black;*/
+}
+.startPage__matches_item_coeffTable td{
+	padding: 10px;
+	/*border: 1px solid black;*/
+	text-align: center;
+}
+
+.startPage__matches_item_coeff{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.startPage__matches_item_coeffTable caption{
+	font-weight: bold;
+}
+
+.startPage__matches_item_coeff:nth-child(2){
+	border: 0;
+}
+
+.schedule__table{
+	margin: 0 auto;
+	padding: 10px;
+}
+.schedule__table td{
+	padding: 10px;
+	margin-right: 25px;
+}
+.schedule__table th{
+	padding: 10px;
+	margin-right: 25px;
+}
+
+.schedule__table_string.active{
+	background-color: rgb(107, 222, 26);
+	cursor: pointer;
+}
+
+
