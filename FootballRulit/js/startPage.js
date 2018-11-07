@@ -178,7 +178,8 @@ new Match({
 	state: "wait",
 	score: "0 : 0",
 	firstCoeff: 1.24,
-	secondCoeff: 3.23
+	secondCoeff: 3.23,
+	active: false
 });
 new Match({
 	name: "CSKA - SPARTAK",
@@ -186,7 +187,8 @@ new Match({
 	state: "wait",
 	score: "0 : 0",
 	firstCoeff: 1.24,
-	secondCoeff: 3.23
+	secondCoeff: 3.23,
+	active: false
 });
 new Match({
 	name: "CSKA - SPARTAK",
@@ -194,7 +196,8 @@ new Match({
 	state: "wait",
 	score: "0 : 0",
 	firstCoeff: 1.24,
-	secondCoeff: 3.23
+	secondCoeff: 3.23,
+	active: false
 });
 new Match({
 	name: "CSKA - SPARTAK",
@@ -202,7 +205,8 @@ new Match({
 	state: "wait",
 	score: "0 : 0",
 	firstCoeff: 1.24,
-	secondCoeff: 3.23
+	secondCoeff: 3.23,
+	active: false
 });
 new Match({
 	name: "CSKA - SPARTAK",
@@ -216,18 +220,20 @@ new Match({
 new Match({
 	name: "CSKA - SPARTAK",
 	start: "21:00",
-	state: "active",
+	state: "wait",
 	score: "0 : 0",
 	firstCoeff: 1.24,
-	secondCoeff: 3.23
+	secondCoeff: 3.23,
+	active: false
 });
 new Match({
 	name: "CSKA - SPARTAK",
 	start: "21:00",
-	state: "active",
+	state: "wait",
 	score: "0 : 0",
 	firstCoeff: 1.24,
-	secondCoeff: 3.23
+	secondCoeff: 3.23,
+	active: false
 });
 
 

@@ -5,6 +5,7 @@ body{
 
 a{
 	text-decoration: none;
+
 }
 
 p{
@@ -18,7 +19,7 @@ p{
 .authorization__container{
 	height: 100vh;
 	width: 100%;
-	background: #93f2a3;
+	background: #1a5224;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -31,7 +32,7 @@ p{
 	/*background-image: url(../images/setka.jpg);*/
 	border-radius: 10px;
 	text-align: center;
-	box-shadow: 10px 10px 20px 2px grey;
+	box-shadow: 10px 10px 20px 2px black;
 }
 
 .authorization__caption{
@@ -56,16 +57,19 @@ p{
 .authorization__form_button{
 	background: #fff;
 	text-transform: uppercase;
-	width: 165px;
+	/*width: 165px;*/
 	border-radius: 4px;
 	/*height: 40px;*/
-	padding: 15px;
+	padding: 18px 45px; 
+	font-size: 15px;
 	border: 2px solid rgb(54, 110, 98);
 	box-shadow: 1px 1px 2px grey;
 	margin-top: 20px;
 	cursor: pointer;
+	color: black;
 	transition: all 0.5s ease;
 }
+
 
 .authorization__form_button:hover{
 	background-color: rgb(27, 148, 106);
@@ -141,7 +145,7 @@ p{
 	height: 60px;
 	display: flex;
 	z-index: 1000;
-	box-shadow: 0px 5px 10px -5px grey;
+	box-shadow: 0px 5px 10px -5px black;
 }
 
 .startPage__matches {
@@ -151,13 +155,14 @@ p{
 	left:0;
 	top: 0;
 	height: auto;
-	background: #93f2a3;
+	background: #1a5224;
 }
 
 .startPage__matches_caption{
 	text-align: center;
 	font-size: 40px;
 	font-weight: 300;
+	color: white;
 }
 
 
@@ -201,7 +206,7 @@ p{
 	border: 2px solid #e8ede9;
 	border-radius: 5px;
 	background: #e8ede9;
-	box-shadow: 2px 2px 4px 3px grey;
+	box-shadow: 2px 2px 4px 3px black;
 }
 
 .startPage__showingMenu_item{
@@ -261,7 +266,7 @@ p{
 
 .startPage__matches_item.active{
 	cursor: pointer;
-	background-color: #28ffb0;
+	background-color: #1ada68;
 	/*color: white;*/
 }
 
@@ -339,7 +344,7 @@ p{
 .game__main{
 	position: absolute;	
 	height: 100vh;
-	width: 75%;
+	width: 70%;
 	outline: 2px solid black;
 	left: 0;
 	top: 0;
@@ -348,19 +353,25 @@ p{
 .game__side{
 	position: absolute;	
 	height: 100vh;
-	width: 25%;
+	width: 30%;
 	outline: 2px solid black;
 	right: 0;
 	top: 0;
 }
 
+
+
 .game__betField{
 	width: 100%;
 	height: 85%;
-	background: rgb(71, 149, 23);
+	/*background: rgb(54, 221, 49);*/
+	background: #1b8319;
 	outline: 2px solid black;
 	position: relative;
 	overflow: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	/*text-align: center;*/
 }
 
@@ -374,21 +385,22 @@ p{
 	position: relative;
 	width: 100%;
 	height: calc(30% - 2px);
-	background: rgb(54, 221, 49);
+	background: rgb(121, 205, 173);
 	/*overflow: auto;*/
 }
 
 .game__history{
+	position: relative;
 	width: 100%;
-	height: 50%;
-	background: rgb(192, 50, 82);
+	height: 55%;
+	background: #b1baf7;
 	border-bottom: 2px solid black;
 	border-top: 2px solid black;
 }
 
-.game__side_messages{
+.game__messages{
 	width: 100%;
-	height:  calc(20% - 2px);
+	height:  calc(15% - 2px);
 	background: rgb(210, 116, 120);
 	position: relative;
 }
@@ -404,13 +416,15 @@ p{
 }
 
 .game__side_caption{
+	position: relative;
 	margin: 0;
 	text-align: center;
 	font-weight: 400;
 	/*border-bottom: 1px solid black;*/
-	padding: 10px;
+	/*padding: 10px;*/
 	background: #dae1ed;
 	box-shadow: 0px 2px 10px 0px black;
+	z-index: 2;
 }
 
 .game__main_management{
@@ -432,29 +446,32 @@ p{
 	text-transform: uppercase;
 }
 
-.game__side_information_text{
-	
-}
-
-
 .game__betField_table th{
-	padding: 20px;
+	padding: 10px 50px;
 	border: 2px solid black;
 	border-radius: 3px;
-	text-align: center;
+	/*text-align: center;*/
+	background: #e8ede9;
+	transition: all 0.5s ease;
 }
-
 
 .game__betField_bet{
-	padding: 5px;
+	padding: 10px;
+	background: #e8ede9;
 	border: 2px solid black;
 	border-radius: 3px;
-	text-align: center;
+/*	text-align: center;
+*/}
+
+.game__betField_bet.active{
+	background: #c7d1e0;
 }
 
 .game__betField_table{
 	font-size: 20px;
-	margin: 0 auto;
+	/*margin: 20px auto;*/
+	text-align: center;
+	/*height: 100px;*/
 }
 
 .game__betField_table td{
@@ -465,11 +482,21 @@ p{
 #indent{
 	padding: 0;
 	border: 0;
+	opacity: 0;
 }
 
 #exept{
 	position: relative;
 }
+
+#exept2{
+	padding: 0;
+}
+
+.exept2{
+	padding: 0 !important; 
+}
+
 
 .active{
 	background: red;
@@ -486,7 +513,7 @@ p{
 .game__side_information_wrapper{
 	padding: 3%;
 	position: relative;
-	height: calc(100% - 50px - 6%);
+	height: calc(100% - 30px - 6%);
 	padding-bottom: 0px;
 	font-size: 16px;
 	overflow: auto;
@@ -499,7 +526,7 @@ p{
 
 .game__side_information_player{
 	border-top: 1px solid black;
-	padding-top: 10px;
+	padding: 10px 0px;
 	margin: 0;
 }
 
@@ -507,16 +534,17 @@ p{
 
 .game__side_messages_item{
 	position: absolute;
+	outline: 3px solid white;
 	width: 300px;
 	height: 150px;
-	background-color: #fff;
-	left: 0;
-	top: 0;
+	background-color: #376b2a;
 	font-size: 20px;
-	/*text-transform: uppercase;*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	box-shadow: 8px 8px 5px grey;
+	color: white;
+	z-index: 2000;
 }
 
 .game__betWindow{
@@ -527,13 +555,14 @@ p{
 	height: auto;
 	background: #e8ede9;
 	border-radius: 3px;
-	padding: 10px;
+	padding: 10px 5px 0px 5px;
 	text-align: center;
-	box-shadow: 10px 10px 20px -3px black;
+	box-shadow: 0px 5px 30px 2px #000000e6;
 	display: none;
+	z-index: 1000;
 }
 
-.game__betWindow:before{
+.game__betWindow.top:before{
 	position: absolute;
 	content: "";
 	top: -10px;
@@ -542,6 +571,21 @@ p{
 	border-right: 15px solid transparent;
 	border-left: 15px solid transparent;
 	border-radius: 5px;
+}
+
+.game__betWindow.bot:after{
+	position: absolute;
+	content: "";
+	bottom: -10px;
+	left: 43%;
+	border-top: 15px solid #e8ede9;
+	border-right: 15px solid transparent;
+	border-left: 15px solid transparent;
+	border-radius: 5px;
+}
+
+.game__betWindow.active{
+	display: block;
 }
 
 .game__betWindow_chipWrapper{
@@ -554,7 +598,7 @@ p{
 .game__betWindow_chip {
 	font-size: 20px;
 	padding: 10px;
-	background: rgb(231, 52, 71);
+	background: rgb(41, 94, 51);
 	border-radius: 20px;
 	cursor: pointer;
 	margin: 10px 3px;
@@ -567,10 +611,15 @@ p{
 	height: 20px;
 	width: 120px;
 	font-size: 15px;
-	outline: 2px solid rgb(71, 149, 23);
+	outline: 2px solid black;
 }
 
-.game__history_itemWrapper{
+.space__owerflow{
+	position: absolute;
+	/*margin-top: 4px;*/
+	height: calc(100% - 58px);
+	overflow: auto;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
@@ -580,5 +629,130 @@ p{
 	text-align: center;
 	padding: 10px;
 	cursor: pointer;
-	outline: 2px solid black;
+	outline: 1px solid black;
+}
+
+.game__messages_tableWrap{
+	font-size: 17px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	overflow: auto;
+	width: 100%;
+}
+
+.table__info {
+	text-align: center;
+	width: 250px;
+	margin: 10px auto;
+}
+
+.table__info td{
+	/*border-bottom: 1px solid black;*/
+	outline: 1px solid black;
+}
+
+#game__messages_caption{
+	position: relative;
+	top: -30px;
+	box-shadow: 0px 0px 10px 2px black;
+}
+
+.game__side_information_matchWrapper{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.game__side_information_coefTable{
+	display: inline-block;
+	/*position: absolute;
+	top: 10px;
+	right: 20px;*/
+	margin-right: 10px;
+	border-collapse: collapse; 
+}
+.game__side_information_coefTable td{
+	padding: 5px;
+	border: 1px solid black;
+}
+
+.game__history_headline{
+	margin: 0 0;
+	text-align: center;
+	padding: 10px;
+	background: #fff;
+	font-size: 17px;
+	font-weight: 400;
+	cursor: pointer;
+	outline: 1px solid black;
+	position: relative;
+}
+
+.accordion__item{
+	display: block;
+}
+
+.accordion__item td{
+	padding: 10px;
+}
+
+.show{
+	display: block;
+}
+
+.table__result{
+	text-align: center;
+	font-size: 14px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+.table__result td{
+	outline: 1px solid black;
+}
+
+.complex{
+	cursor: pointer;
+	background: #0dcd0d94;
+}
+
+.complex__item{
+	display: none;
+	background: green;
+}
+
+#widthCorrect{
+	width: auto;
+}
+
+.highlight{
+	/*background: #13e493ba !important;*/
+	background: #5cf208ba !important;
+}
+
+.rotate{
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	font-weight: 400;
+}
+
+.game__betField_tableTooltip{
+	/*position: absolute;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;*/
+	opacity: 0;
+	font-size: 15px;	
+	font-weight: 400;
+	height: 48px;
+	/*transition: opacity 1s ease !important;*/
+	/*width: 237px;*/
 }
