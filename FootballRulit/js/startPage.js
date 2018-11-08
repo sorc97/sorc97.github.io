@@ -1,28 +1,21 @@
-let matchesWrapper = $(".startPage__matches_wrapper");
-
 let showingMenu = document.querySelector(".startPage__showingMenu_wrapper");
 let personalArea = document.querySelector("#personalArea");
-let menuStatus = false;
-let elem = document.querySelector("#personalArea>span")
 let $menuItems = $(".startPage__header_menu_item");
 let $about = $(".about");
 let $rules = $(".rules");
 let $schedule = $(".schedule");
-let scheduleTable = document.querySelector(".schedule__table");
-let matches = document.querySelector(".startPage__matches_wrapper");
 let header = document.querySelector(".startPage__header");
-
 
 
 //Всплавающее меню
 personalArea.onmousedown = function(event){
 	event.preventDefault();
-}
+};
 
 
 personalArea.onclick = function(event) {
 	showingMenu.classList.toggle("show");
-}
+};
 
 //МОДАЛЬНЫЕ ОКНА
 $menuItems[0].onclick = function(e) {
@@ -35,7 +28,7 @@ $menuItems[0].onclick = function(e) {
 			$("body").removeClass("fixed");
 		}
 	}
-}
+};
 
 $menuItems[1].onclick = function(e) {
 	$rules.show();
@@ -47,7 +40,7 @@ $menuItems[1].onclick = function(e) {
 			$("body").removeClass("fixed");
 		}
 	}
-}
+};
 
 $menuItems[2].onclick = function(e) {
 	$schedule.show();
@@ -127,113 +120,6 @@ function Schedule(options) {
 	scheduleTable.appendChild(elem);
 }
 
-let data = {
-	name: "CSKA - SPARTAK",
-	start: "21 : 00",
-	state: "active",
-	score: "2 : 1",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: true
-};
-
-let data2 = {
-	name: "SHALKE04 - BAYERN MUNICH",
-	start: "22 : 45",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-};
-
-new Schedule(data);
-new Schedule(data2);
-new Schedule(data);
-new Schedule(data);
-new Schedule(data2);
-new Schedule(data2);
-
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "active",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: true
+$('.startPage__matches_item.active').on("click", function(e) {
+    document.location = this.dataset.url
 });
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "active",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: true
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-new Match({
-	name: "CSKA - SPARTAK",
-	start: "21:00",
-	state: "wait",
-	score: "0 : 0",
-	firstCoeff: 1.24,
-	secondCoeff: 3.23,
-	active: false
-});
-
-

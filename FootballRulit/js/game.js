@@ -134,15 +134,6 @@ function Event(options) {
 	messagesTable.appendChild(elem);
 }
 
-new Event({time: "22:12", event: "Аут"});
-new Event({time: "22:54", event: "Угловой"});
-new Event({time: "23:30", event: "Аут"});
-new Event({time: "32:43", event: "Гол"});
-new Event({time: "33:30", event: "Аут"});
-new Event({time: "35:32", event: "Аут"});
-new Event({time: "42:54", event: "Удар от ворот"});
-new Event({time: "45:04", event: "Аут"});
-
 let wrapHeight = fieldArea.clientHeight;
 
 function setBetWindowCoords(target) {
@@ -316,18 +307,5 @@ accept.onclick = function(e) {
 cancel.onclick = function(e) {
 	new Message({text: "Пари сброшено"});
 }
-
-setPlayerInfo({
-	score: 250,
-	betAmount: 200,
-	bet: 50
-})
-
-setMatchInfo({
-	name: "CSKA-SPARTAK",
-	time: "19:23",
-	half: "1",
-	score: "2 - 1"
-});
 
 

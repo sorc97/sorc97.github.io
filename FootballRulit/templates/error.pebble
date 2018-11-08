@@ -1,0 +1,54 @@
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ error.code }}</title>
+        <style>
+            body {
+                background-color: #000;
+                color: #ccc;
+                padding: 20px;
+                font-size: 12px;
+                position: relative;
+            }
+
+            .cnt {
+                background-color: #151515;
+                padding: 20px;
+                width: 800px;
+                margin: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 50%;
+            }
+
+            h1 {
+                font-size: 18px;
+                color: #ff927d;
+            }
+
+            .stack-trace {
+                padding: 20px;
+                margin: 20px 0;
+                background-color: #222;
+                font-size: 12px;
+                overflow: auto;
+                height: 75%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="cnt">
+            <h1>{{ error.code }}. {{ error.error }}</h1>
+            {% if error.stackTrace is not empty %}
+                <div class="stack-trace">
+                    {% for i in error.stackTrace %}
+                        {{ i }} <br/>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
