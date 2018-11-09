@@ -35,9 +35,17 @@
 					
 				<tr>
 					<!-- <th id="indent"></th> -->
-					<th id="exept2" colspan="2">{{ match.team1Name }}</th>
+					<th id="exept2" colspan="2">{% if match.teamsChanged %}
+					    {{ match.team2Name }}
+					    {%else%}
+					    {{ match.team1Name }}
+					{% endif %}</th>
 					<th id="exept2" colspan="2">{{ match.score }}</th>
-					<th id="exept2" colspan="2">{{ match.team2Name }}</th>
+					<th id="exept2" colspan="2">{% if match.teamsChanged %}
+					    {{ match.team1Name }}
+					    {%else%}
+					    {{ match.team2Name }}
+					{% endif %}</th>
 				</tr>
 
 				<tr>
