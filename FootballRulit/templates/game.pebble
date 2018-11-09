@@ -36,7 +36,7 @@
 				<tr>
 					<!-- <th id="indent"></th> -->
 					<th id="exept2" colspan="2">{{ match.team1Name }}</th>
-					<th id="exept2" colspan="2">0-0</th>
+					<th id="exept2" colspan="2">{{ match.score }}</th>
 					<th id="exept2" colspan="2">{{ match.team2Name }}</th>
 				</tr>
 
@@ -169,8 +169,10 @@
 				<div class="game__side_information_matchWrapper">
 				<p class="game__side_information_match">
 				    <strong>Матч</strong>: {{ match.name }} <br>
-				    <strong>Время</strong>: xxx <strong>Тайм</strong>: xxx <br>
-	                <strong>Счет</strong>: xxx
+				    <strong>Время</strong>:
+				    	<u class=stopwatch>00:00</u>
+				    <strong>Тайм</strong>: {{ match.half }} <br>
+	                <strong>Счет</strong>: {{ match.score }}
 				</p>
 					<table class="game__side_information_coefTable">
 						<tr>
@@ -258,5 +260,13 @@
 	
 
 	<script src="/js/game.js"></script>
+	<script src="/js/timer.js"></script>
+	<script>
+		{
+		var date = new Date({{ match.translationStartTime.toInstant().toEpochMilli() }});
+		console.log(date);
+		timerInit(date)
+		}
+	</script>
 </body>
 </html>

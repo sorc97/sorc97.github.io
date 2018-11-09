@@ -21,7 +21,7 @@
 				<button class="authorization__form_button" type="submit">Вход</button>
 				<a class="authorization__form_button" href="#">Регистрация</a>
 			</form>
-			<div class="authorization__about">Об игре</div>	
+			<div class="authorization__about">Об игре</div>
 		</div>
 	</div>
 
