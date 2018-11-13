@@ -11,6 +11,7 @@
 	
 	<main class="game__main">
 		<div class="game__betField">
+			<a href="startPage.html" class="game__betField_exit">ВЫХОД</a>
 			<div class="game__betWindow">
 				<input type="text" class="game__betWindow_userChip" placeholder="Введите ставку">
 				<div class="game__betWindow_chipWrapper">
@@ -165,14 +166,14 @@
 			</table>
 		</div>
 		<div class="game__main_management">
-			<button class="game__main_management_accept">Заключить пари</button>
-			<button class="game__main_management_cancel">Отменить</button>
-			<button class="game__main_management_repeat">Повторить</button>
+			<button class="game__main_management_accept game__main_button">Заключить пари</button>
+			<button class="game__main_management_cancel game__main_button">Отменить</button>
+			<button class="game__main_management_repeat game__main_button">Повторить</button>
 		</div>
 	</main>
 	<aside class="game__side">
 		<div class="game__side_information">
-			<h1 class="game__side_caption">Область информации</h1>
+			<!-- <h1 class="game__side_caption">Область информации</h1> -->
 			<div class="game__side_information_wrapper">
 				<div class="game__side_information_matchWrapper">
 				<p class="game__side_information_match">
@@ -207,7 +208,7 @@
 			</div>
 		</div>
 		<div class="game__history">
-			<h1 class="game__side_caption">История</h1>
+			<h1 class="game__side_caption">История пари</h1>
 			<div class="game__history_itemWrapper space__owerflow">
 				<h1 class="game__history_headline">Текущие неакцептованные ставки</h1>
 				<table class="table__info accordion__item" id="widthCorrect">
