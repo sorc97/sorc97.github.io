@@ -154,6 +154,7 @@ p{
 	position: relative;
 	left:0;
 	top: 0;
+	min-height: 100vh;
 	height: auto;
 	background: #1a5224;
 }
@@ -668,7 +669,6 @@ p{
 
 .table__info {
 	text-align: center;
-	width: 250px;
 	margin: 10px auto;
 }
 
