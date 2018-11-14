@@ -107,7 +107,7 @@
 						Аут
 					</th>
 					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out">
-					    {{ match.bets[""] }}
+					    {{ match.bets["OUT_LEFT"] }}
 					</td>
 					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top">
 					    {{ match.bets["OUT_LEFT_UP"] }}
@@ -116,7 +116,7 @@
 					    {{ match.bets["OUT"] }}
 					</td>
 					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out">
-					    {{ match.bets[""] }}
+					    {{ match.bets["OUT_RIGHT"] }}
 					</td>
 					<td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top">
 					    {{ match.bets["OUT_RIGHT_UP"] }}
@@ -138,7 +138,7 @@
 				<tr>
 					<th id="corner" rowspan="2">Угловой</th>
 					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner">
-					    {{ match.bets[""] }}
+					    {{ match.bets["CORNER_LEFT"] }}
 					</td>
 					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="topCorner">
 					    {{ match.bets["CORNER_LEFT_UP"] }}
@@ -147,7 +147,7 @@
 					    {{ match.bets["CORNER"] }}
 					</td>
 					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner">
-					    {{ match.bets[""] }}
+					    {{ match.bets["CORNER_RIGHT"] }}
 					</td>
 					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="topCorner">
 					    {{ match.bets["CORNER_RIGHT_UP"] }}
@@ -202,9 +202,9 @@
 					
 				<p class="game__side_information_player">
 				    <u>Баланс</u>: <strong>{{ user.balance }}</strong>  <br>
-							<u>Пари заключено на сумму</u>: xxx <br>
-							<u>Пари выплачено на сумму</u>: xxx <br>
-							<u>Баланс текущей игры</u>: xxx
+							<u>Пари заключено на сумму</u>: 0.0 <br>
+							<u>Пари выплачено на сумму</u>: 0.0 <br>
+							<u>Баланс текущей игры</u>: 0.0
 				</p>
 			</div>
 		</div>
@@ -212,16 +212,15 @@
 			<h1 class="game__side_caption">История пари</h1>
 			<div class="game__history_itemWrapper space__owerflow">
 				<h1 class="game__history_headline">Текущие неакцептованные ставки</h1>
-				<table class="table__info accordion__item" id="widthCorrect">
-					<th>Таймер</th>
-					<th>Пари на сумму</th>
-					<tr>
-						<td>30s</td>
-						<td>500</td>
-					</tr>
+				<table class="table__info accordion__item" id="nonaccepted_bets">
+					<thead>
+						<th>Таймер</th>
+						<th>Пари на сумму</th>
+					</thead>
+					<tbody></tbody>
 				</table>
 				<h1 class="game__history_headline">Текущие акцептованные нерасчитанные ставки</h1>
-				<table class="table__info accordion__item" id="widthCorrect">
+				<table class="table__info accordion__item" id="accepted_bets">
 					<th>Время</th>
 					<th>Исход</th>
 					<th>Принято</th>
@@ -256,100 +255,101 @@
 					</tr>
 
 				</table>
+
 				<div class="game__history_sectionWrap">
 					<h1 class="game__history_headline">Рассчитанные ставки</h1>
-				<div class="game__history_tableWrapp">
-					<table id="table__result" class="table__result accordion__item">
-					<tr>
-						<th>Время</th>
-						<th>Исход</th>
-						<th>Принято</th>
-						<th>Коэфф.</th>
-						<th>Выплачено</th>
-						<th>Баланс</th>
-					</tr>
-					
-					<tr>
-						<td>31:22</td>
-						<td>Гол</td>
-						<td>10000</td>
-						<td>1.5</td>
-						<td>15000</td>
-						<td>5000</td>
-					</tr>
+					<div class="game__history_tableWrapp">
+						<table id="table__result" class="table__result accordion__item">
+							<tr>
+								<th>Время</th>
+								<th>Исход</th>
+								<th>Принято</th>
+								<th>Коэфф.</th>
+								<th>Выплачено</th>
+								<th>Баланс</th>
+							</tr>
+							
+							<tr>
+								<td>31:22</td>
+								<td>Гол</td>
+								<td>10000</td>
+								<td>1.5</td>
+								<td>15000</td>
+								<td>5000</td>
+							</tr>
 
-					<tr class="complex">
-						<td>31:22</td>
-						<td></td>
-						<td>100</td>
-						<td></td>
-						<td>50</td>
-						<td>50</td>
-					</tr>
+							<tr class="complex">
+								<td>31:22</td>
+								<td></td>
+								<td>100</td>
+								<td></td>
+								<td>50</td>
+								<td>50</td>
+							</tr>
 
-					<tr class="complex__item">
-						<td>31:22</td>
-						<td>Aут</td>
-						<td>100</td>
-						<td>1.5</td>
-						<td>50</td>
-						<td>150</td>
-					</tr>
+							<tr class="complex__item">
+								<td>31:22</td>
+								<td>Aут</td>
+								<td>100</td>
+								<td>1.5</td>
+								<td>50</td>
+								<td>150</td>
+							</tr>
 
-					<tr class="complex__item">
-						<td>31:22</td>
-						<td>Угловой</td>
-						<td>1000</td>
-						<td>1.5</td>
-						<td>500</td>
-						<td>1500</td>
-					</tr>
+							<tr class="complex__item">
+								<td>31:22</td>
+								<td>Угловой</td>
+								<td>1000</td>
+								<td>1.5</td>
+								<td>500</td>
+								<td>1500</td>
+							</tr>
 
-					<tr>
-						<td>31:22</td>
-						<td>Гол</td>
-						<td>100</td>
-						<td>1.5</td>
-						<td>50</td>
-						<td>50</td>
-					</tr>
-					<tr>
-						<td>31:22</td>
-						<td>Гол</td>
-						<td>100</td>
-						<td>1.5</td>
-						<td>50</td>
-						<td>50</td>
-					</tr>
+							<tr>
+								<td>31:22</td>
+								<td>Гол</td>
+								<td>100</td>
+								<td>1.5</td>
+								<td>50</td>
+								<td>50</td>
+							</tr>
+							<tr>
+								<td>31:22</td>
+								<td>Гол</td>
+								<td>100</td>
+								<td>1.5</td>
+								<td>50</td>
+								<td>50</td>
+							</tr>
 
-					<tr class="complex">
-						<td>78:88</td>
-						<td></td>
-						<td>100</td>
-						<td></td>
-						<td>50</td>
-						<td>50</td>
-					</tr>
+							<tr class="complex">
+								<td>78:88</td>
+								<td></td>
+								<td>100</td>
+								<td></td>
+								<td>50</td>
+								<td>50</td>
+							</tr>
 
-					<tr class="complex__item">
-						<td>31:22</td>
-						<td>Aут</td>
-						<td>100</td>
-						<td>1.5</td>
-						<td>50</td>
-						<td>150</td>
-					</tr>
+							<tr class="complex__item">
+								<td>31:22</td>
+								<td>Aут</td>
+								<td>100</td>
+								<td>1.5</td>
+								<td>50</td>
+								<td>150</td>
+							</tr>
 
-					<tr class="complex__item">
-						<td>31:22</td>
-						<td>Угловой</td>
-						<td>1000</td>
-						<td>1.5</td>
-						<td>500</td>
-						<td>1500</td>
-					</tr>
-				</table>
-				</div>
+							<tr class="complex__item">
+								<td>31:22</td>
+								<td>Угловой</td>
+								<td>1000</td>
+								<td>1.5</td>
+								<td>500</td>
+								<td>1500</td>
+							</tr>
+						</table>
+					</div>
 				</div>
 				
 			</div>
