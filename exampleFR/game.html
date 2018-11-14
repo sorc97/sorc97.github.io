@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GameArea</title>
-	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/media.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700&amp;subset=cyrillic-ext" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -37,131 +38,71 @@
 					
 				<tr>
 					<!-- <th id="indent"></th> -->
-					<th id="exept2" colspan="2">{% if match.teamsChanged %}
-					    {{ match.team2Name }}
-					    {%else%}
-					    {{ match.team1Name }}
-					{% endif %}</th>
-					<th id="exept2" colspan="2">{{ match.score }}</th>
-					<th id="exept2" colspan="2">{% if match.teamsChanged %}
-					    {{ match.team1Name }}
-					    {%else%}
-					    {{ match.team2Name }}
-					{% endif %}</th>
+					<th id="exept2" colspan="2">CSKA</th>
+					<th id="exept2" colspan="2">2-0</th>
+					<th id="exept2" colspan="2">SPARTAK</th>
 				</tr>
 
 				<tr>
 					<th id="goal">Гол</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="goal">
-					    {{ match.bets["GOAL_LEFT"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="goal">
-					    {{ match.bets["GOAL"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="goal">
-					    {{ match.bets["GOAL_RIGHT"] }}
-					</td>
+					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="goal">1</td>
+					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="goal">2</td>
+					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="goal">3</td>
 				</tr>
 
 				<tr>
 					<th id="fine">Штрафной</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="fine">
-					    {{ match.bets["FORFEIT_LEFT"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="fine">
-					    {{ match.bets["FORFEIT"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="fine">
-					    {{ match.bets["FORFEIT_RIGHT"] }}
-					</td>
+					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="fine">1</td>
+					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="fine">2</td>
+					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="fine">3</td>
 				</tr>
 
 				<tr>
 					<th id="offside">Офсайд</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="offside">
-					    {{ match.bets["OFFSIDE_LEFT"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="offside">
-					    {{ match.bets["OFFSIDE"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="offside">
-					    {{ match.bets["OFFSIDE_RIGHT"] }}
-					</td>
+					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="offside">1</td>
+					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="offside">2</td>
+					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="offside">3</td>
 				</tr>
 
 				<tr>
 					<th id="goalKick">Удар от ворот</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="goalKick">
-					    {{ match.bets["FROMGATE_LEFT"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="goalKick">
-					    {{ match.bets["FROMGATE"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="goalKick">
-					    {{ match.bets["FROMGATE_RIGHT"] }}
-					</td>
+					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="goalKick">1</td>
+					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="goalKick">2</td>
+					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="goalKick">3</td>
 				</tr>
 
 				<tr id="exept">
 					<th id="out" rowspan="2">
 						Аут
 					</th>
-					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out">
-					    {{ match.bets[""] }}
-					</td>
-					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top">
-					    {{ match.bets["OUT_LEFT_UP"] }}
-					</td>
-					<td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out">
-					    {{ match.bets["OUT"] }}
-					</td>
-					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out">
-					    {{ match.bets[""] }}
-					</td>
-					<td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top">
-					    {{ match.bets["OUT_RIGHT_UP"] }}
-					</td>
+					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out">1</td>
+					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top">1</td>
+					<td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out">2</td>
+					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out">3</td>
+					<td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top">3</td>
 					<th id="top" class="rotate direction exept2" colspan="1" rowspan="1">Верх</th>
 				</tr>
 
 				<tr>
-					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="down">
-					    {{ match.bets["OUT_LEFT_DOWN"] }}
-					</td>
-					<td class="game__betField_bet"  data-direction="right" data-event="out" data-secondDirection="down">
-					    {{ match.bets["OUT_RIGHT_DOWN"] }}
-					</td>
+					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="down">1</td>
+					<td class="game__betField_bet"  data-direction="right" data-event="out" data-secondDirection="down">3</td>
 					<th id="down" class="rotate direction exept2" colspan="1">Низ</th>
 				</tr>
 				
 
 				<tr>
 					<th id="corner" rowspan="2">Угловой</th>
-					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner">
-					    {{ match.bets[""] }}
-					</td>
-					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="topCorner">
-					    {{ match.bets["CORNER_LEFT_UP"] }}
-					</td>
-					<td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner">
-					    {{ match.bets["CORNER"] }}
-					</td>
-					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner">
-					    {{ match.bets[""] }}
-					</td>
-					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="topCorner">
-					    {{ match.bets["CORNER_RIGHT_UP"] }}
-					</td>
+					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner">1</td>
+					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="topCorner">1</td>
+					<td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner">2</td>
+					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner">3</td>
+					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="topCorner">3</td>
 					<th id="topCorner" class="rotate direction exept2" colspan="1" rowspan="1">Верх</th>
 				</tr>
 
 				<tr>
-					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="downCorner">
-					    {{ match.bets["CORNER_LEFT_DOWN"] }}
-					</td>
-					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="downCorner">
-					    {{ match.bets["CORNER_RIGHT_DOWN"] }}
-					</td>
+					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="downCorner">1</td>
+					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="downCorner">3</td>
 					<th id="downCorner" class="rotate direction exept2" colspan="1">Низ</th>
 				</tr>
 			</table>
@@ -174,16 +115,10 @@
 	</main>
 	<aside class="game__side">
 		<div class="game__side_information">
-			<!-- <h1 class="game__side_caption">Область информации</h1> -->
 			<div class="game__side_information_wrapper">
+				<!-- <p class="game__side_information_match">
+				</p> -->
 				<div class="game__side_information_matchWrapper">
-				<p class="game__side_information_match">
-				    <strong>Матч</strong>: {{ match.name }} <br>
-				    <strong>Время</strong>:
-				    	<u class=stopwatch>00:00</u>
-				    <strong>Тайм</strong>: {{ match.half }} <br>
-	                <strong>Счет</strong>: {{ match.score }}
-				</p>
 					<table class="game__side_information_coefTable">
 						<tr>
 							<th>1</th>
@@ -192,20 +127,15 @@
 						</tr>
 
 						<tr>
-							<td>{{ match.startKefs.w1 }}</td>
-							<td>{{ match.startKefs.x }}</td>
-							<td>{{ match.startKefs.w2 }}</td>
+							<td>1.2</td>
+							<td>2.4</td>
+							<td>3.5</td>
 						</tr>
 						
 					</table>
 				</div>
 					
-				<p class="game__side_information_player">
-				    <u>Баланс</u>: <strong>{{ user.balance }}</strong>  <br>
-							<u>Пари заключено на сумму</u>: xxx <br>
-							<u>Пари выплачено на сумму</u>: xxx <br>
-							<u>Баланс текущей игры</u>: xxx
-				</p>
+				<p class="game__side_information_player"></p>
 			</div>
 		</div>
 		<div class="game__history">
@@ -215,6 +145,22 @@
 				<table class="table__info accordion__item" id="widthCorrect">
 					<th>Таймер</th>
 					<th>Пари на сумму</th>
+
+					<tr>
+						<td>30s</td>
+						<td>500</td>
+					</tr>
+
+					<tr>
+						<td>30s</td>
+						<td>500</td>
+					</tr>
+
+					<tr>
+						<td>30s</td>
+						<td>500</td>
+					</tr>
+
 					<tr>
 						<td>30s</td>
 						<td>500</td>
@@ -255,8 +201,61 @@
 						<td>1.39</td>
 					</tr>
 
+					<tr class="complex">
+						<td>73:24</td>
+						<td></td>
+						<td>500</td>
+						<td></td>
+					</tr>
+					
+					<tr class="complex__item">
+						<td>73:24</td>
+						<td>Угловой</td>
+						<td>500</td>
+						<td>1.39</td>
+					</tr>
+
+					<tr class="complex__item">
+						<td>73:24</td>
+						<td>Аут</td>
+						<td>500</td>
+						<td>1.39</td>
+					</tr>
+
+
+					<tr>
+						<td>73:24</td>
+						<td>Аут</td>
+						<td>500</td>
+						<td>1.39</td>
+					</tr>
+
+					<tr>
+						<td>73:24</td>
+						<td>Удар от ворот</td>
+						<td>500</td>
+						<td>1.39</td>
+					</tr>
+					
+					<!-- <tr class="complex">
+						<td colspan="4">Комплекс</td>
+					</tr>
+
+					<tr class="complex__item">
+						<td>73:24</td>
+						<td>Угловой</td>
+						<td>500</td>
+						<td>1.39</td>
+					</tr>
+
+					<tr class="complex__item">
+						<td>73:24</td>
+						<td>Аут</td>
+						<td>500</td>
+						<td>1.39</td>
+					</tr> -->
 				</table>
-				<div class="game__history_sectionWrap">
+				<div class="Rasch_wrap">
 					<h1 class="game__history_headline">Рассчитанные ставки</h1>
 				<div class="game__history_tableWrapp">
 					<table id="table__result" class="table__result accordion__item">
@@ -348,9 +347,29 @@
 						<td>500</td>
 						<td>1500</td>
 					</tr>
+
+					<tr>
+						<td>31:22</td>
+						<td>Гол</td>
+						<td>100</td>
+						<td>1.5</td>
+						<td>50</td>
+						<td>50</td>
+					</tr>
+
+					<tr>
+						<td>31:22</td>
+						<td>Удар от ворот</td>
+						<td>200</td>
+						<td>1.5</td>
+						<td>100</td>
+						<td>100</td>
+					</tr>
 				</table>
 				</div>
 				</div>
+				
+				
 				
 			</div>
 		</div>
@@ -362,25 +381,14 @@
 						<th>Время</th>
 						<th>Событие</th>
 					</tr>
-					<tr>
-					    <td>${options.time}</td>
-					    <td>${options.event}</td>
-					</tr>
 				</table>
 			</div>
+			
 		</div>
 	</aside>
 
 	
 
-	<script src="/js/game.js"></script>
-	<script src="/js/timer.js"></script>
-	<script>
-		{
-		var date = new Date({{ match.translationStartTime.toInstant().toEpochMilli() }});
-		console.log(date);
-		timerInit(date)
-		}
-	</script>
+	<script src="js/game.js"></script>
 </body>
 </html>

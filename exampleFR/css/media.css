@@ -1,0 +1,6 @@
+@media screen and (max-height: 690px) {
+	.game__betField_exit{
+		top: 0;
+		right: 0;
+	}
+}
