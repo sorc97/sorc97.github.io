@@ -99,13 +99,18 @@ p{
 }
 
 .modal__content{
+	position: relative;
 	background-color: #fefefe;
+
+	width: 40%;
+	min-width: 615px;
+	height: auto;
+
 	margin: 2% auto;
 	padding: 20px;
+
 	border: 3px solid black;
 	border-radius: 5px;
-	width: 40%;
-	height: auto;
 }
 
 .close{
@@ -154,9 +159,9 @@ p{
 	position: relative;
 	left:0;
 	top: 0;
-	min-height: 100vh;
 	height: auto;
 	background: #1a5224;
+	min-height: 100vh;
 }
 
 .startPage__matches_caption{
@@ -669,6 +674,7 @@ p{
 
 .table__info {
 	text-align: center;
+	width: 250px;
 	margin: 10px auto;
 }
 
@@ -789,3 +795,237 @@ p{
 	width: 100%;
 	/*overflow: auto;*/
 }
+
+/*
+											
+											СТАРТОВАЯ СТРАНИЦА АДМИНИСТРАТОР
+
+*/		
+
+.startPage__menuDrop {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	display: none;
+	margin-top: 20px;
+	background-color: #e8ede9;
+}
+
+.startPage__menuDrop_item {
+	display: block;
+	color: black;
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
+.menu__list{
+	position: relative;
+}
+
+.menu__list:hover .startPage__menuDrop{
+	display: block;
+}
+
+.startPage__menuDrop_item:hover{
+	background-color: #bfc5cc;
+}
+
+
+.users__list{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.users__list caption{
+	margin-bottom: 30px;
+	font-size: 20px;
+	/*font-weight: bold;*/
+}
+
+.users__list_remove{
+	cursor: pointer;
+	font-size: 25px;
+	color: red;
+}
+
+.users__list td{
+	padding: 5px;
+/*	border: 1px solid black;
+*/}
+
+.users__list th{
+	padding: 20px;
+	/*border: 1px solid black;*/
+}
+
+.users__list tr{
+	cursor: pointer;
+}
+
+.users__list tr:hover{
+	background: #42f47d;
+}
+
+.users__list_remove:hover{
+	background: #ed928b;
+}
+
+#users__list_exept{
+	cursor: auto;
+	background: white;
+}
+
+.users__registrBut{
+	margin-bottom: 30px;
+	padding: 10px;
+	background: white;
+	border: 2px solid black;
+	cursor: pointer;
+	font-size: 20px;
+	transition: all 0.4s ease;
+}
+
+
+.users__registrBut:hover{
+	background: green;
+	color: white;
+}
+
+.registration__back{
+	/*border: 2px solid black;*/
+	border-radius: 3px;
+	/*display: block;*/
+	cursor: pointer;
+	font-weight: 700;
+	font-size: 20px;
+	float: left;
+
+}
+
+.registration__data_wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.registration__data_item{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	width: 60%;
+	margin-bottom: 10px;
+}
+
+.registration__data_item_text{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 18px;
+}
+
+.registration__data_item_data{
+	font-size: 16px;
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.registration__data_item_data:focus{
+	outline: 2px solid green;
+}
+
+.registration__data_endBut{
+	width: 70%;
+	height: 40px;
+	border: 2px solid #1d3f4c;
+	border-radius: 3px;
+	margin-top: 20px;
+	cursor: pointer;
+	font-size: 15px;
+	background: green;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.registration__data_endBut:hover{
+	background: #1ec91e;
+}
+/*	
+										СТРАНИЦА МОНИТОРИНГА
+*/
+.monitor{
+	min-height: 100vh;
+	/*background: #55e455;*/
+	background: #edeee0;
+}
+
+.table__caption{
+	margin-bottom: 15px;
+	font-size: 25px;
+	font-weight: 300;
+	text-decoration: underline;
+}
+
+/*.monitor__matchInfo caption{
+	margin-bottom: 15px;
+	font-size: 20px;
+	font-weight: 300;
+}*/
+
+.monitor__matchInfo td{
+	padding: 10px 40px;
+	text-align: center;
+	outline: 2px solid black;
+}
+
+.monitor__matchInfo_wrapper{
+	display: flex;
+    height: 30vh;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.monitor__events_wrapper{
+	display: flex;
+	justify-content: center;
+	min-height: 70vh;
+}
+
+.monitor__events{
+	padding-bottom: 20px;
+}
+
+.monitor__events tr:hover{
+	background: #accf9aab;
+}
+
+.monitor__events th{
+	padding: 10px;
+	outline: 1px solid black;
+	background: #5aa45a;
+}
+
+.monitor__events td{
+	text-align: center;
+	outline: 1px solid black;
+	padding: 15px 5px;
+	width: 150px;
+}
+
+.monitor__events_userBet{
+	background: #ffff0061;	
+}
+
+.monitor__manager{
+	position: absolute;
+	right: 10px;
+	/*top: 10px;*/
+	text-align: center;
+	font-size: 18px;
+}
+/*.monitor__matchInfo_caption{
+	text-align: center;
+}*/
