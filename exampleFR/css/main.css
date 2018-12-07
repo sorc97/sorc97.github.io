@@ -482,16 +482,20 @@ p{
 	border-radius: 3px;
 	/*text-align: center;*/
 	background: #e8ede9;
-	transition: all 0.5s ease;
+	transition: all 0.7s ease;
 }
 
 .game__betField_bet{
+	position: relative;
 	padding: 10px;
 	background: #e8ede9;
 	border: 2px solid black;
 	border-radius: 3px;
-/*	text-align: center;
-*/}
+	text-align: center;
+	/*transition: all 0.4s ease;*/
+	table-layout: fixed;
+}
+
 
 .game__betField_bet.active{
 	background: #c7d1e0;
@@ -501,7 +505,8 @@ p{
 	font-size: 20px;
 	/*margin: 20px auto;*/
 	text-align: center;
-	/*height: 100px;*/
+	/*width: 90ch;*/
+	/*height: 80%;*/
 }
 
 .game__betField_table td{
@@ -533,10 +538,12 @@ p{
 }
 
 .chip{
+	position: absolute;
+	right: 0;
+	bottom: 0;
 	background: red; 
-	width: 20px; 
-	height: 20px; 
 	margin: 0 auto;
+	padding: 5px;
 	border-radius: 50%; 
 }
 
@@ -639,7 +646,7 @@ p{
 	margin: 0 auto;
 	text-align: center;
 	height: 20px;
-	width: 120px;
+	width: 130px;
 	font-size: 15px;
 	outline: 2px solid black;
 }
@@ -772,6 +779,8 @@ p{
 	-ms-transform: rotate(90deg);
 	transform: rotate(90deg);
 	font-weight: 400;
+	width: 47px;
+    height: 45px;
 }
 
 .game__betField_tableTooltip{
@@ -1029,3 +1038,118 @@ p{
 /*.monitor__matchInfo_caption{
 	text-align: center;
 }*/
+
+#manager {
+	width: 100%;
+}
+
+#manager__history{
+	height: calc(70% - 2px);
+}
+
+.manager__history{
+	position: absolute;
+	height: calc(100% - 30px);
+	width: 100%;
+	overflow: auto;
+	display: flex;
+	/*justify-content: center;*/
+}
+
+.manager__history_table{
+	text-align: center;
+	padding-top: 10px;
+}
+
+.manager__history_table th{
+	outline: 1px solid black;
+}
+.manager__history_table td{
+	outline: 1px solid black;
+}
+
+.manager__history_table_event{
+	height: 50px;
+	background: #6eff00;
+}
+
+
+.management__button{
+	padding: 15px;
+	margin-right: 15px;
+	font-size: 15px;
+	border: 1.5px solid black;
+	border-radius: 3px;
+	background: white;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	box-shadow: 2px 2px 5px -1px black;
+}
+
+.management__button:hover{
+	background: #43e85e;
+}
+
+
+.management__confirm_caption{
+	text-align: center;
+}
+
+.management__confirm_button{
+	padding: 12px;
+	margin-top: 40px;
+	background: white;
+	border: 1.5px solid black;
+	transition: all 0.5s ease;
+	cursor: pointer;
+	font-size: 15px;
+}
+
+.management__confirm_button:hover{
+	background: #62f442;
+}
+
+.management__confirm_wrapper{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	z-index: 1999;
+	background: #30332f7a;
+	text-align: center;
+}
+
+.management__confirm{
+	position: absolute;
+	top: 10%;
+	z-index: 2000;
+	background: #fff;
+	width: auto;
+	height: 200px;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px black;
+
+}
+.management__confirm_wrapper{
+	display: none;
+}
+.management__confirm_wrapper.showConf{
+	display: flex;
+}
+
+.activeCell{
+	background: #ff0303;
+}
+
+.approveElem{
+	background: #4286f4;
+}
+
+.manager__changeInfo{
+	cursor: pointer;
+}
+.manager__changeInfo:hover{
+	background: white;
+}
