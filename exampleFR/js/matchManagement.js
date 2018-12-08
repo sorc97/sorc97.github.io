@@ -14,6 +14,9 @@ let changeInfo = $(".manager__changeInfo");
 let $elemsEvent;
 let direction, secondDirection, event;
 let insertingElem;
+let notification = new Audio;
+notification.src = "audio/Notification.wav";
+
 function log(message) {
 	console.log(message);
 }
@@ -164,6 +167,7 @@ function removeTableTooltip() {
 
 
 function generateEvent(eventData) {
+	notification.play();
 	clearField();
 	event = eventData;
 	event = eventData.split(" ");
