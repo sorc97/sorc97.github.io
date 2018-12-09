@@ -14,12 +14,18 @@ let changeInfo = $(".manager__changeInfo");
 let $elemsEvent;
 let direction, secondDirection, event;
 let insertingElem;
-let notification = new Audio;
-notification.src = "audio/Notification.wav";
 
 function log(message) {
 	console.log(message);
 }
+
+
+function notify() {
+	let notification = new Audio;
+	notification.src = "audio/Notification.wav";
+	// notification.muted = "muted";
+	notification.play();
+};
 
 
 function setMatchInfo(options) {
@@ -167,7 +173,7 @@ function removeTableTooltip() {
 
 
 function generateEvent(eventData) {
-	notification.play();
+	notify();
 	clearField();
 	event = eventData;
 	event = eventData.split(" ");
