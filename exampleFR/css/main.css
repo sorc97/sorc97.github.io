@@ -1059,6 +1059,7 @@ p{
 .manager__history_table{
 	text-align: center;
 	padding-top: 10px;
+	margin: 0 auto;
 }
 
 .manager__history_table th{
@@ -1070,7 +1071,7 @@ p{
 
 .manager__history_table_event{
 	height: 50px;
-	background: #6eff00;
+	background: #88f635;
 }
 
 

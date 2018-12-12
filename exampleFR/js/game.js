@@ -287,10 +287,6 @@ function removeTableTooltip() {
 	tableTooltip.style.opacity = 0;
 }
 
-// function TableTooltip(options) {
-// 	let elem = ""
-// }
-
 
 function setCellWidth() {
 	square.style.width = ex.offsetWidth / 2 + "px";
@@ -317,7 +313,12 @@ function setChip(event) {
 }
 
 function setChipValue(value) {
-	activeBet.innerHTML = value;
+	activeBet.innerHTML = verifyInput(value, 0, 10000);
+}
+
+function verifyInput(number, min, max) {
+	if(number > min && number < max) return number;
+	else return 0;  
 }
 
 function styleChip(){
@@ -334,11 +335,14 @@ userChip.onkeydown = function(e) {
 		styleChip();
 		closeBetWindow();
 	}
+
+	if(e.keyCode == 189) e.preventDefault();
 };
 
 function clearUserChip() {
 	userChip.value = "";
 }
+
 
 
 accept.onclick = function(e) {
