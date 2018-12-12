@@ -3,6 +3,10 @@ let $menuItem = $(".startPage__header_menu_item");
 let id;
 let showingMenu = document.querySelector(".startPage__showingMenu_wrapper");
 let matches = document.querySelector(".startPage__matches_wrapper");
+let bcButt = document.querySelector(".create__badConstruct_show");
+let bcTable = document.querySelector("#create__schedule");
+let bcItem = $("#create__schedule .schedule__table_string");
+let createForm = document.querySelector(".create__form_wrapper");
 
 // МОДАЛЬНОЕ ОКНО
 
@@ -24,6 +28,7 @@ function toggleModal(id) {
 function checkEvent(event) {
 	if(event.target.classList.contains("modal")  || event.target.className == "close") {
 		$(id).hide();
+		clearFormData();
 		$("body").removeClass("fixed");
 		document.removeEventListener("click", checkEvent);
 
@@ -39,6 +44,66 @@ personalArea.onclick = function(event) {
 
 personalArea.onmousedown = function(event) {return false};
 
+//АККОРДИОН В СОЗДАНИИ МАТЧА
+
+bcButt.onclick = function(event) {
+	bcTable.classList.toggle("show");
+}
+
+//КЛИК НА МАТЧ BC
+
+bcItem.on('click', function(event) {
+	let target = event.target;
+
+	while(!(target.tagName == "TR")){
+		target = target.parentNode;
+	}
+	// console.log(target);
+	setDataFromBC(target);
+	console.log(getDataFromBC(target));
+});
+
+function getDataFromBC(target) {
+	let date = target.querySelector("#bc__date");
+	let time = target.querySelector("#bc__time");
+	let name = target.querySelector("#bc__name");
+	let id = target.querySelector("#bc__id");
+
+	return {
+		date: date.innerHTML,
+		time: time.innerHTML,
+		name: name.innerHTML,
+		id: id.innerHTML
+	}
+}
+
+function setDataFromBC(target) {
+	let date = createForm.querySelector("#date");
+	let time = createForm.querySelector("#time");
+	let name = createForm.querySelector("#name");
+	let id = createForm.querySelector("#id"); 
+
+	let bcData = getDataFromBC(target);
+
+	date.value = dataFormat(bcData.date);
+	time.value = bcData.time;
+	name.value = bcData.name;
+	id.value = +bcData.id;
+	// console.log(dataFormat(bcData.date));
+}
+
+function dataFormat(date) {
+	return date.split(".").reverse().join("-");
+}
+
+function clearFormData() {
+	createForm.querySelector("#date").value = "";
+	createForm.querySelector("#time").value = "";
+	createForm.querySelector("#name").value = "";
+	createForm.querySelector("#id").value = ""; 
+}
+
+//СОЗДАНИЕ КАРТОЧКИ МАТЧА
 
 function Match(options) {
 	let elem = document.createElement("div");

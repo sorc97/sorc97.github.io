@@ -738,7 +738,7 @@ p{
 
 
 .show{
-	display: block;
+	display: block !important;
 }
 
 .table__result{
@@ -1153,4 +1153,93 @@ p{
 }
 .manager__changeInfo:hover{
 	background: white;
+}
+
+.hide{
+	display: none !important;
+}
+
+#create__schedule{
+	display: none;
+    border-collapse: collapse;
+}
+
+#create__schedule .schedule__table_string{
+	cursor: pointer;
+}
+
+#create__schedule .schedule__table_string:hover{
+	background: #21da2f;
+}
+
+.create__badConstruct_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.create__badConstruct_show{
+	padding: 10px;
+	border: 2px solid #1d3f4c;
+	border-radius: 3px;	font-size: 17px;
+	cursor: pointer;
+	background: green;
+	transition: all 0.4s ease;
+	color: white;
+}
+
+.create__badConstruct_show:hover{
+	background: #1ec91e;
+}
+
+.create__badConstruct_show:focus{
+	outline: 1px solid #1ada68;
+}
+
+.create__form_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create__data_item{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	width: 60%;
+	margin-bottom: 10px;
+}
+
+.create__data_item_text{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 18px;
+}
+
+.create__data_item_data{
+	font-size: 16px;
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.create__data_item_data:focus{
+	outline: 2px solid green;
+}
+
+.create__data_endBut{
+	width: 70%;
+	height: 40px;
+	border: 2px solid #1d3f4c;
+	border-radius: 3px;
+	margin-top: 20px;
+	cursor: pointer;
+	font-size: 15px;
+	background: green;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.create__data_endBut:hover{
+	background: #1ec91e;
 }

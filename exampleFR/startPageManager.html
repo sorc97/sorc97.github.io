@@ -19,7 +19,7 @@
 <!-- 						<li><a href="#" class="startPage__menuDrop_item" data-modal="instructionM">Инструкция Скаут</a></li>
  -->					</ul>
 				</li>
-				<li><a href="#" class="startPage__header_menu_item" data-modal="users">Создать матч</a></li>
+				<li><a href="#" class="startPage__header_menu_item" data-modal="create">Создать матч</a></li>
 				<li><a href="#" class="startPage__header_menu_item" data-modal="schedule">Расписание-матчи</a></li>
 				<li id="personalArea">
 					<span class="startPage__header_menu_item">Личный кабинет</span>
@@ -113,49 +113,63 @@
 		</div>
 	</div>
 
-											<!--МОДАЛЬНОЕ ОКНО ПОЛЬЗОВАТЕЛИ -->
-	<div id="modal" class="modal users">
-				<div class="modal__content">
-					<span class="close">&times;</span>
-					<h1 class="modal__content_caption">Матчи</h1>
+											<!--МОДАЛЬНОЕ ОКНО ВЫБОРА МАТЧЕЙ -->
+	<div id="modal" class="modal create">
+		<div class="modal__content">
+			<span class="close">&times;</span>
+			<h1 class="modal__content_caption">Создание матча</h1>
+			<div class="create__badConstruct_wrapper">
+				<button class="create__badConstruct_show">Матчи BadCounstruct</button>
+				<table id="create__schedule" class="schedule__table">
+					<tr>
+						<th>Дата</th>
+						<th>Время</th>
+						<th>Название матча</th>
+						<th>Id матча</th>
+					</tr>
 
-					<button class="users__registrBut" data-modal="registration">Создать матч</button>
+					<tr class="schedule__table_string">
+						<td id="bc__date">13.09.2018</td>
+						<td id="bc__time">19:00</td>
+						<td id="bc__name">Liverpool - Everton</td>
+						<td id="bc__id">123013</td>
+					</tr>
 
-					<div class="users__listWrapper">
-						<!-- <table class="users__list">
-							<caption>Список матчей</caption>
+					<tr class="schedule__table_string">
+						<td id="bc__date">14.09.2018</td>
+						<td id="bc__time">19:00</td>
+						<td id="bc__name">CSKA-SPARTAK</td>
+						<td id="bc__id">123012</td>
+					</tr>
+				</table>
+			</div>
 
-							<tr id="users__list_exept">
-								<th>Логин</th>
-								<th>Статус</th>
-								<th>Роль</th>
-							</tr>
-
-							<tr>
-								<td>sorc97</td>
-								<td>online</td>
-								<td>Менеджер</td>
-								<td class="users__list_remove">&times;</td>
-							</tr>
-
-							<tr>
-								<td>nnd1997</td>
-								<td>online</td>
-								<td>Аналитик</td>
-								<td class="users__list_remove">&times;</td>
-							</tr>
-
-							<tr>
-								<td>nelet98</td>
-								<td>offline</td>
-								<td>Менеджер</td>
-								<td class="users__list_remove">&times;</td>
-							</tr>
-							
-
-						</table> -->
-					</div>
+			<h1 class="modal__content_caption">Данные о матче</h1>
+			<div class="create__form_wrapper">
+				<div class="create__data_item">
+					<span class="create__data_item_text">Название матча</span>
+					<input id="name" class="create__data_item_data" type="text">
 				</div>
+
+				<div class="create__data_item">
+					<span class="create__data_item_text">Id матча</span>
+					<input id="id" class="create__data_item_data" type="number">
+				</div>
+
+				<div class="create__data_item">
+					<span class="create__data_item_text">Дата</span>
+					<input id="date" class="create__data_item_data" type="date">
+				</div>
+
+				<div class="create__data_item">
+					<span class="create__data_item_text">Время</span>
+					<input id="time" class="create__data_item_data" type="time">
+				</div>
+				
+				<button class="create__data_endBut" type="submit">Создать</button>
+			</div>
+			
+		</div>
 	</div>
 
 										<!-- МОДАЛЬНОЕ ОКНО РЕГИСТРАЦИИ ПОЛЬЗОВАТЕЛЯ -->
@@ -219,7 +233,7 @@
 		</div>
 	</section>
 
-	<script src="js/startPageAdmin.js"></script>
+	<script src="js/startPageManager.js"></script>
 
 </body>
 </html>
