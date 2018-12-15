@@ -9,8 +9,6 @@ function log(message) {
 }
 
 
-		event.classList.remove("highlight");
-		removeTableTooltip();
 // function setMatchInfo(options) {
 // 	let elem = document.createElement("div");
 // 	elem.className = "game__side_information_match";
