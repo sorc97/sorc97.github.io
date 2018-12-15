@@ -8,236 +8,402 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700&amp;subset=cyrillic-ext" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="overflowNone">
 	
-	<main class="game__main">
-		<div class="game__betField">
-			<div class="management__confirm_wrapper">
-				<div class="management__confirm">
-					<h1 class="management__confirm_caption">Точно это событие?</h1>
-					<button id="approveBut" class="management__confirm_button">Подтвердить это событие</button>
-					<button id="anotherEventBut" class="management__confirm_button">Было другое событие</button>
-					<button id="cancelEventBut" class="management__confirm_button">Отменить это событие</button>
-				</div>
-			</div>	
-			
-			<a href="startPage.html" class="game__betField_exit">ВЫХОД</a>
-			<div class="game__betWindow">
-				<input type="text" class="game__betWindow_userChip" placeholder="Введите ставку">
-				<div class="game__betWindow_chipWrapper">
-					<div class="game__betWindow_chip">10</div>
-					<div class="game__betWindow_chip">20</div>
-					<div class="game__betWindow_chip">50</div>
-					<div class="game__betWindow_chip">100</div>
-					<div class="game__betWindow_chip">500</div>
-					<div class="game__betWindow_chip">1000</div>
-					<p class="game__betWindow_maxBet">Max bet : 10 000</p>
-				</div>
-				
-			</div>
-			<!-- <h1 class="caption">Игровое поле</h1> -->
-			<!-- <div class="game__betField_tableTooltip"></div> -->
-			<table class="game__betField_table">
-				<tr>
-					<th class="game__betField_tableTooltip" rowspan="2"></th>
-					<th colspan="2" class="direction" id="left">Лево</th>
-					<th colspan="2" class="direction" id="all">Все поле</th>
-					<th colspan="2" class="direction" id="right">Право</th>
-				</tr>
-					
-				<tr>
-					<!-- <th id="indent"></th> -->
-					<th id="exept2" colspan="2">CSKA</th>
-					<th id="exept2" colspan="2">2-0</th>
-					<th id="exept2" colspan="2">SPARTAK</th>
-				</tr>
+	<main class="management__main">
+		<div class="management__matchInfo_wrapper">
+			<table class="monitor__matchInfo">
+				<caption class="table__caption">Информация о матче</caption>
+				<tbody>
+					<th>Матч</th>
+					<th>Дата и время</th>
+					<th>Тайм</th>
+					<th>Счет</th>
 
-				<tr>
-					<th id="goal">Гол</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="goal"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="goal"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="goal"></td>
-				</tr>
-
-				<tr>
-					<th id="fine">Штрафной</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="fine"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="fine"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="fine"></td>
-				</tr>
-
-				<tr>
-					<th id="offside">Офсайд</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="offside"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="offside"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="offside"></td>
-				</tr>
-
-				<tr>
-					<th id="goalKick">Удар от ворот</th>
-					<td class="game__betField_bet" colspan="2" data-direction="left" data-event="goalKick"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="all" data-event="goalKick"></td>
-					<td class="game__betField_bet" colspan="2" data-direction="right" data-event="goalKick"></td>
-				</tr>
-
-				<tr id="exept">
-					<th id="out" rowspan="2">
-						Аут
-					</th>
-					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out"></td>
-					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top" height="25"></td>
-					<td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out"></td>
-					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out"></td>
-					<td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top"></td>
-					<th id="top" class="rotate direction exept2" colspan="1" rowspan="1">Верх</th>
-				</tr>
-
-				<tr>
-					<td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="down" height="25"></td>
-					<td class="game__betField_bet"  data-direction="right" data-event="out" data-secondDirection="down"></td>
-					<th id="down" class="rotate direction exept2" colspan="1">Низ</th>
-				</tr>
-				
-
-				<tr>
-					<th id="corner" rowspan="2">Угловой</th>
-					<td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner"></td>
-					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="topCorner"  height="25"></td>
-					<td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner"></td>
-					<td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner"></td>
-					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="topCorner"></td>
-					<th id="topCorner" class="rotate direction exept2" colspan="1" rowspan="1">Верх</th>
-				</tr>
-
-				<tr>
-					<td class="game__betField_bet" data-direction="left" data-event="corner" data-secondDirection="downCorner"  height="25"></td>
-					<td class="game__betField_bet" data-direction="right" data-event="corner" data-secondDirection="downCorner"></td>
-					<th id="downCorner" class="rotate direction exept2" colspan="1">Низ</th>
-				</tr>
+					<tr>
+						<td><em class="manager__changeInfo">CSKA</em> - <em class="manager__changeInfo">SPARTAK</em></td>
+						<td><em class="manager__changeInfo">21.11.18</em> <br> <em class="manager__changeInfo"><u class=stopwatch>00:00</u></em></td>
+						<td>1</td>
+						<td><em class="manager__changeInfo" style="padding: 5px">0</em> - <em class="manager__changeInfo" style="padding: 5px">0</em></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
-		<div class="game__main_management">
-			<button class="management__button">Старт матча</button>
-			<button class="management__button">Конец матча</button>
-			<button class="management__button">Перерыв в игре</button>
-			<button class="management__button">Начать прием ставок</button>
-			<button class="management__button">Остановить прием ставок</button>
+
+		<div class="management__history">
+			<table class="management__history_events">
+				<caption class="table__caption">События</caption>
+					<tr style="height: 20px">
+						<td>
+							<table class="management__history_captions">
+								<tr>
+									<th>Время</th>
+									<th>Событие</th>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="position: relative;">
+							<div class="management__history_container">
+								<table class="management__history_events_content">
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+									<tr>
+										<td>00:00</td>
+										<td>Аут на левой половине</td>
+									</tr>
+
+								</table>
+							</div>
+						</td>
+					</tr>
+			</table>
+
+			<table class="management__history_bets">
+				<caption class="table__caption">События</caption>
+					<tr style="height: 20px">
+						<td>
+							<table class="management__history_captions">
+								<tr>
+									<th>Id игрока</th>
+									<th>Время</th>
+									<th>Сумма</th>
+									<th>Событие</th>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="position: relative;">
+							<div id="bet__container" class="management__history_container">
+								<table class="management__history_bets_content">
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>00:00</td>
+										<td>300</td>
+										<td>Аут на левой половине верх</td>
+									</tr>
+									
+								</table>
+							</div>
+						</td>
+					</tr>
+			</table>
+
 		</div>
 	</main>
-	<aside class="game__side">
-		<div class="game__side_information">
-			<div class="game__side_information_wrapper">
-				<!-- <p class="game__side_information_match">
-				</p> -->
-					<strong>Менеджер</strong>: <u>Назаров Никита Дмитриевич</u>
-				<div class="game__side_information_matchWrapper">
-					<!-- <p class="game__side_information_match">
-					    <strong>Матч</strong>: {{ match.name }} <br>
-					    <strong>Статус</strong>: Идет <br>
-					    <strong>Статус приема ставок</strong>: Принимаются<br>
-					    <strong>Дата начала</strong>: 21.11.18<br>
-					    <strong>Время</strong>:
-					    	<u class=stopwatch>00:00</u>
-					    <strong>Тайм</strong>: {{ match.half }} <br>
-		                <strong>Счет</strong>: {{ match.score }}
-					</p> -->
-					<p class="game__side_information_match">
-					    <strong>Матч</strong>: <em class="manager__changeInfo">CSKA</em> - <em class="manager__changeInfo">SPARTAK</em><br>
-					    <strong>Статус</strong>: Идет <br>
-					    <strong>Статус приема ставок</strong>: Принимаются<br>
-					    <strong>Дата начала</strong>: <em class="manager__changeInfo">21.11.18</em><br>
-					    <strong>Время</strong>:
-					    	<em class="manager__changeInfo"><u class=stopwatch>00:00</u></em>
-					    <strong>Тайм</strong>: 1 <br>
-		                <strong>Счет</strong>: <em class="manager__changeInfo">0</em> - <em class="manager__changeInfo">0</em>
-					</p>
-
-					<table class="game__side_information_coefTable">
-						<tr>
-							<th>1</th>
-							<th>X</th>
-							<th>2</th>
-						</tr>
-
-						<tr>
-							<td><em class="manager__changeInfo">1.2</em></td>
-							<td><em class="manager__changeInfo">2.4</em></td>
-							<td><em class="manager__changeInfo">3.5</em></td>
-						</tr>
-						
-					</table>
-				</div>
-					
-			</div>
-		</div>
-		<div class="game__history" id="manager__history">
-			<h1 class="game__side_caption">Лента событий</h1>
-			<div class="manager__history">
-				<table class="manager__history_table">
-					<th>Время</th>
-					<th>Тип события</th>
-					<th>Лево/Право</th>
-					<th>Верх/Низ</th>
-					<th>ФИО игрока</th>
-					<th>Флаг</th>
-					
-					<tr class="manager__history_table_event">
-						<td>00:00</td>
-						<td>Начало матча</td>
-						<td></td>
-						<td></td>
-						<td width="100"></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<td>00:35</td>
-						<td>Аут</td>
-						<td>Лево</td>
-						<td>Верх</td>
-						<td width="100">Назаров Никита Дмитриевич</td>
-						<td>Accepted</td>
-					</tr>
-
-					<tr>
-						<td>00:35</td>
-						<td>Удар от ворот</td>
-						<td>Право</td>
-						<td>-</td>
-						<td width="100">Назаров Никита Дмитриевич</td>
-						<td>Accepted</td>
-					</tr>
-
-					<tr class="manager__history_table_event">
-						<td>01:35</td>
-						<td>Угловой</td>
-						<td>Право</td>
-						<td>Верх</td>
-						<td width="100"></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>02:10</td>
-						<td>Аут</td>
-						<td>Лево</td>
-						<td>Верх</td>
-						<td width="100">Назаров Никита Дмитриевич</td>
-						<td>Not accepted</td>
-					</tr>
-
-					<tr class="manager__history_table_event">
-						<td>02:15</td>
-						<td>Удар от ворот</td>
-						<td>Лево</td>
-						<td>Верх</td>
-						<td width="100"></td>
-						<td></td>
-					</tr>
-
-					
-				</table>
-			</div>
-		</div>
+	<aside class="management__side">
+		<button class="management__side_button disable">Остановить время</button>
+		<button class="management__side_button enable">Возобновить время</button>
+		<button class="management__side_button disable">Остановить прием ставок</button>
+		<button class="management__side_button enable">Возобновить прием ставок</button>
 	</aside>
 
 	

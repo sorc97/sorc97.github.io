@@ -1043,37 +1043,6 @@ p{
 	width: 100%;
 }
 
-#manager__history{
-	height: calc(70% - 2px);
-}
-
-.manager__history{
-	position: absolute;
-	height: calc(100% - 30px);
-	width: 100%;
-	overflow: auto;
-	display: flex;
-	/*justify-content: center;*/
-}
-
-.manager__history_table{
-	text-align: center;
-	padding-top: 10px;
-	margin: 0 auto;
-}
-
-.manager__history_table th{
-	outline: 1px solid black;
-}
-.manager__history_table td{
-	outline: 1px solid black;
-}
-
-.manager__history_table_event{
-	height: 50px;
-	background: #88f635;
-}
-
 
 .management__button{
 	padding: 15px;
@@ -1089,63 +1058,6 @@ p{
 
 .management__button:hover{
 	background: #43e85e;
-}
-
-
-.management__confirm_caption{
-	text-align: center;
-}
-
-.management__confirm_button{
-	padding: 12px;
-	margin-top: 40px;
-	background: white;
-	border: 1.5px solid black;
-	transition: all 0.5s ease;
-	cursor: pointer;
-	font-size: 15px;
-}
-
-.management__confirm_button:hover{
-	background: #62f442;
-}
-
-.management__confirm_wrapper{
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	height: 100%;
-	width: 100%;
-	z-index: 1999;
-	background: #30332f7a;
-	text-align: center;
-}
-
-.management__confirm{
-	position: absolute;
-	top: 10%;
-	z-index: 2000;
-	background: #fff;
-	width: auto;
-	height: 200px;
-	padding: 20px;
-	border-radius: 5px;
-	box-shadow: 0px 0px 10px black;
-
-}
-.management__confirm_wrapper{
-	display: none;
-}
-.management__confirm_wrapper.showConf{
-	display: flex;
-}
-
-.activeCell{
-	background: #ff0303;
-}
-
-.approveElem{
-	background: #4286f4;
 }
 
 .manager__changeInfo{
@@ -1242,4 +1154,146 @@ p{
 
 .create__data_endBut:hover{
 	background: #1ec91e;
+}
+
+										/*ОКНО МЕНЕДЖМЕНТА*/
+
+.management__main{
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	flex-direction: column;
+
+	width: 85%;
+	height: 100vh;
+	outline: 1px solid black;
+
+	background: #edeee0;
+}
+
+.management__side{
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 15%;
+	height: 100vh;
+	outline: 2px solid black;
+
+	background: lemonchiffon;
+}
+
+.management__matchInfo_wrapper{
+	display: flex;
+	justify-content: center;
+	height: 25vh;
+}
+
+.management__history{
+	display: flex;
+
+	width: 100%;
+}
+
+.management__history_events{
+	width: 50%;
+	height: 75vh;
+}
+
+.management__history_bets{
+	width:50%;
+	height: 75vh;
+}
+
+.management__history_container{
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	height: calc(100% - 35px);
+	overflow: auto;
+}
+
+.management__history_container td{
+	width: 50%;
+}
+
+.management__history_events th{
+	width: 50%;
+}
+
+.management__history_bets th{
+	width: 25%;
+}
+
+.overflowNone{
+	overflow: hidden;
+}
+
+#bet__container td{
+	width: 25%;
+}
+
+.management__history_bets_content{
+	width: 100%;
+	text-align: center;
+}
+
+.management__history_captions{
+	width: calc(100% - 15px);
+	border-bottom: 2px solid black;
+}
+
+.management__history_bets_content{
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.management__history_events_content{
+	width: 100%;
+	text-align: center;
+    border-collapse: collapse;
+}
+
+
+.management__history_bets_content tr:hover{
+	background: #6bde1a;
+}
+.management__history_bets_content td{
+	padding: 15px 0px;
+	border-bottom: 1px solid black;
+}
+
+.management__history_events_content tr:hover{
+	background: #6bde1a;
+}
+
+.management__history_events_content td{
+	padding: 15px 0px;
+	border-bottom: 1px solid black;
+}
+
+.management__side_button{
+	height: 20%;
+	width: 100%;
+	font-size: 18px;
+	border: 0;
+	box-shadow: 3px 5px 20px -2px grey;
+
+	cursor: pointer;
+}
+
+.management__side_button.disable{
+	background: indianred;
+}
+
+.management__side_button.enable{
+	background: chartreuse;
 }
