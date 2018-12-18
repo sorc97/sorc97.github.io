@@ -386,7 +386,7 @@ function nonAcceptedBetsUpdate(bets) {
     betsGroupedForComplex(bets).forEach(function (cmplx) {
         var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
         var first = cmplx[0];
-        var timerSeconds = (first.acceptedTime - Date.now()) / 1000;
+        var timerSeconds = round((first.acceptedTime - Date.now()) / 1000);
         if (first.status === "NOTCALC") {
             html += '<tr>';
             html += '<td class="bet_timer_' + first.id + '">' + timerSeconds + '</td>';
@@ -394,8 +394,9 @@ function nonAcceptedBetsUpdate(bets) {
             html += '</tr>';
             betTimer(new Date(first.acceptedTime), '.bet_timer_' + first.id, first.id)
         } else { //freezed
+            var freezedTimer = round((first.acceptedTime - first.freezedAt) / 1000);
             html += '<tr class="timer_freezed">';
-            html += '<td>' + (first.acceptedTime - first.freezedAt) / 1000 + '</td>';
+            html += '<td>' + freezedTimer + '</td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '</tr>';
         }
