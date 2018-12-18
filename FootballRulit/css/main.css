@@ -1026,6 +1026,12 @@ p{
 	text-align: center;
 	font-size: 18px;
 }
+
+.game__betField_bet.active{
+	padding: 0px;
+	background: yellow;
+	font-size: 14px;
+}
 /*.monitor__matchInfo_caption{
 	text-align: center;
 }*/

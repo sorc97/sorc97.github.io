@@ -13,13 +13,18 @@ let betWindow = document.querySelector(".game__betWindow");
 let bet = document.querySelector(".game__betField_bet");
 let messagesTable = document.querySelector(".game__messages_table");
 let tableTooltip = document.querySelector(".game__betField_tableTooltip");
-let isBetActive = false;
 let prevTarget;
 let $complex = $(".complex");
-
+let $windowChip = $(".game__betWindow_chip");
+let activeBet;
+let ex = document.getElementById("exept2");
+let square = document.getElementById("square");
+var userChip = document.querySelector(".game__betWindow_userChip");
 
 let $accordionItem = $(".accordion__item");
 let $headline = $(".game__history_headline");
+
+var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/", "");
 
 // function setTableTooltipPosition() {
 // 	let coords = goal.getBoundingClientRect();
@@ -46,266 +51,510 @@ let $headline = $(".game__history_headline");
 
 // $bet.on('mousedown', function(e){return false});
 
+$('.complex').on('click', function (e) {
+    let next = this.nextElementSibling;
+    while (next.className == "complex__item") {
+        $(next).fadeToggle(500);
+
+        next = next.nextElementSibling;
+        if (next == null) break;
+    }
+});
+
 function Chip() {
-	let elem = document.createElement("div");
-	elem.classList.add("chip");
-	return elem;
+    let elem = document.createElement("div");
+    elem.classList.add("chip");
+    return elem;
 }
-
-function setMatchInfo(options) {
-	let elem = document.createElement("div");
-	elem.className = "game__side_information_match";
-	elem.innerHTML = `<strong>Матч</strong>: ${options.name} <br> <strong>Время</strong>: ${options.time} <strong>Тайм</strong>: ${options.half}
-	<br> <strong>Счет</strong>: ${options.score}`;
-
-	matchInfo.insertBefore(elem, matchInfo.firstElementChild);
-}
-
-function setPlayerInfo(options) {
-	playerInfo.innerHTML = `<u>Баланс</u>: <strong>${options.score}</strong>  <br>
-							<u>Пари заключено на сумму</u>: ${options.betAmount} <br>
-							<u>Пари выплачено на сумму</u>: ${options.bet} <br>
-							<u>Баланс текущей игры</u>: ${options.betAmount - options.bet}`
-}
-
 
 function Message(options) {
-	let elem = document.createElement("div");
-	elem.classList.add("game__side_messages_item");
-	elem.innerHTML = options.text;
+    let elem = document.createElement("div");
+    elem.classList.add("game__side_messages_item");
+    elem.innerHTML = options.text;
 
-	$(elem).hide();
+    $(elem).hide();
 
-	fieldArea.appendChild(elem);
-	$(elem).fadeIn(500);
+    fieldArea.appendChild(elem);
+    $(elem).fadeIn(500);
 
-	setTimeout(() => {
-		$(elem).fadeOut(500);
-		setTimeout(() => fieldArea.removeChild(elem), 500);
-	}, 2000);
+    setTimeout(() => {
+        $(elem).fadeOut(500);
+        setTimeout(() => fieldArea.removeChild(elem), 500);
+    }, 2000);
 }
 
 function getCoords(elem) {
-	let coords = elem.getBoundingClientRect();
+    let coords = elem.getBoundingClientRect();
 
-	return {
-		top: coords.top + fieldArea.scrollTop,
-		left: coords.left + pageXOffset
-	}
+    return {
+        top: coords.top + fieldArea.scrollTop,
+        left: coords.left + pageXOffset
+    }
 }
 
-betTable.onclick = function(event) {
-	let target = event.target;
+betTable.onclick = function (event) {
+    let target = event.target;
 
-	while(target != betTable) {
-		if(target.tagName == "TD") {
-			setBetWindowCoords(target);
-			return;
-		}
+    while (target != betTable) {
+        if (target.tagName == "TD") {
+            setBetWindowCoords(target);
+            activeBet = target;
+            return;
+        }
 
-		target = target.parentNode;
-	}
+        target = target.parentNode;
+    }
 }
 
-betTable.onmousedown = function(event) {return false};
-
-
-function NoAccept(options) {
-	let elem = document.createElement("div");
-	elem.classList.add("game__history_item");
-
-	if(!options.accept) {
-		elem.innerHTML = `<u>Таймер</u>: <strong>${options.timer}</strong> <u>Пари на сумму</u>: <strong>${options.amount}</strong>`;
-	} else {
-		elem.innerHTML = `<u>Время</u>: <strong>${options.time}</strong> <u>Пари на сумму</u>: <strong>${options.amount}</strong>`;
-	}
-
-	historyWrapper.insertBefore(elem, historyWrapper.firstChild);
-
-	elem.onmousedown = function() {
-		return false;
-	}
-}
-
-function Event(options) {
-	let elem = document.createElement("tr");
-	elem.innerHTML = `<td>${options.time}</td><td>${options.event}</td>`
-
-	messagesTable.appendChild(elem);
-}
+betTable.onmousedown = function (event) {
+    return false
+};
 
 let wrapHeight = fieldArea.clientHeight;
 
 function setBetWindowCoords(target) {
-	let coords = getCoords(target);
-	let top = coords.top + target.clientHeight;
-	let left = coords.left + target.clientWidth/2;
+    let coords = getCoords(target);
+    let top = coords.top + target.clientHeight;
+    let left = coords.left + target.clientWidth / 2;
 
-	if(prevTarget && prevTarget != target) prevTarget.classList.remove("active");
+    if (target == prevTarget) {
+        betWindow.classList.toggle("active");
+    } else {
+        betWindow.classList.add("active");
+    }
 
+    betWindow.style.left = left - betWindow.clientWidth / 2 + "px";
 
-	if(target == prevTarget) {
-		betWindow.classList.toggle("active");
-		target.classList.toggle("active");
-	}else {		
-		betWindow.classList.add("active");
-		target.classList.toggle("active");
-	}
-	
-	betWindow.style.left = left - betWindow.clientWidth/2 + "px";
+    if (top + betWindow.clientHeight > wrapHeight) {
+        betWindow.style.top = top - target.clientHeight - betWindow.clientHeight - 5 + "px";
+        betWindow.classList.add("bot");
+        betWindow.classList.remove("top");
+    } else {
+        betWindow.style.top = top + "px";
+        betWindow.classList.remove("bot");
+        betWindow.classList.add("top");
+    }
 
-	if(top + betWindow.clientHeight > wrapHeight) {
-		betWindow.style.top = top - target.clientHeight - betWindow.clientHeight - 5+ "px";
-		betWindow.classList.add("bot");
-		betWindow.classList.remove("top");
-	}else{
-		betWindow.style.top = top + "px";
-		betWindow.classList.remove("bot");
-		betWindow.classList.add("top");
-	}
-	
-	let edge = getCoords(betWindow).top + betWindow.clientHeight;
+    let edge = getCoords(betWindow).top + betWindow.clientHeight;
 
-
-	isBetActive = true;
-	prevTarget = target;
+    prevTarget = target;
 }
 
-$headline.on('click', function(e){
-	// this.nextElementSibling.classList.toggle("show");
-	$(this).next().fadeToggle(400);
+function closeBetWindow() {
+    betWindow.classList.remove("active");
+    clearUserChip();
+}
+
+$headline.on('click', function (e) {
+    // this.nextElementSibling.classList.toggle("show");
+    $(this).next().fadeToggle(400);
 })
 
-$headline.on('mousedown', function(e){
-	return false;
+$headline.on('mousedown', function (e) {
+    return false;
 })
 
-$complex.on('click', function(e) {
-	let next = this.nextElementSibling
-	while(next.className == "complex__item") {
-		$(next).fadeToggle(500);
 
-		next = next.nextElementSibling;
-		if(next == null) break;
-	}
-});
+$(".game__betField_bet").on('mouseenter', function (e) {
+    let direction = document.getElementById(this.getAttribute("data-direction"));
+    let secondDirection = document.getElementById(this.getAttribute("data-secondDirection"));
+    let event = document.getElementById(this.getAttribute("data-event"));
 
-$(".game__betField_bet").on('mouseenter', function(e) {
-	let direction = document.getElementById(this.getAttribute("data-direction"));
-	let secondDirection = document.getElementById(this.getAttribute("data-secondDirection"));
-	let event = document.getElementById(this.getAttribute("data-event"));
+    if (secondDirection) secondDirection.classList.add("highlight");
 
-	if(secondDirection) secondDirection.classList.add("highlight");
-
-	direction.classList.add("highlight");
-	event.classList.add("highlight");
-	setTableTooltip(this.getAttribute("data-event"), this.getAttribute("data-direction"), this.getAttribute("data-secondDirection"));
+    direction.classList.add("highlight");
+    event.classList.add("highlight");
+    setTableTooltip(this.getAttribute("data-event"), this.getAttribute("data-direction"), this.getAttribute("data-secondDirection"));
 });
 
 let toolTipTimer;
 
-$(".game__betField_bet").on('mouseleave', function(e) {
-	let direction = document.getElementById(this.getAttribute("data-direction"));
-	let secondDirection = document.getElementById(this.getAttribute("data-secondDirection"));
-	let event = document.getElementById(this.getAttribute("data-event"));
+$(".game__betField_bet").on('mouseleave', function (e) {
+    let direction = document.getElementById(this.getAttribute("data-direction"));
+    let secondDirection = document.getElementById(this.getAttribute("data-secondDirection"));
+    let event = document.getElementById(this.getAttribute("data-event"));
 
-	if(secondDirection) secondDirection.classList.remove("highlight");
+    if (secondDirection) secondDirection.classList.remove("highlight");
 
-	direction.classList.remove("highlight");
-	event.classList.remove("highlight");
-	if(toolTipTimer) clearTimeout(toolTipTimer);
-	toolTipTimer = setTimeout(()=> removeTableTooltip(), 2000);
+    direction.classList.remove("highlight");
+    event.classList.remove("highlight");
+    if (toolTipTimer) clearTimeout(toolTipTimer);
+    toolTipTimer = setTimeout(() => removeTableTooltip(), 2000);
 });
 
 function setTableTooltip(event, direction, secondDirection) {
-	let message = "";
+    let message = "";
 
-	switch(event) {
-		case "goal":
-			message = "Гол на <br>";
-		break;
+    switch (event) {
+        case "goal":
+            message = "Гол на <br>";
+            break;
 
-		case "fine":
-			message = "Штрафной на <br>";
-		break;
+        case "fine":
+            message = "Штрафной на <br>";
+            break;
 
-		case "offside":
-			message = "Офсайд на <br>";
-		break;
+        case "offside":
+            message = "Офсайд на <br>";
+            break;
 
-		case "goalKick":
-			message = "Удар от ворот на<br>";
-		break;
+        case "goalKick":
+            message = "Удар от ворот на<br>";
+            break;
 
-		case "out":
-			message = "Аут на <br>";
-		break;
+        case "out":
+            message = "Аут на <br>";
+            break;
 
-		case "corner":
-			message = "Угловой на <br>";
-		break;
+        case "corner":
+            message = "Угловой на <br>";
+            break;
 
-	}
+    }
 
-	switch(direction) {
-		case "left":
-			message += "левой половине";
-		break;
+    switch (direction) {
+        case "left":
+            message += "левой половине";
+            break;
 
-		case "all":
-			message += "поле";
-		break;
+        case "all":
+            message += "поле";
+            break;
 
-		case "right":
-			message += "правой половине";
-		break;
-
-
-	}
-
-	switch(secondDirection) {
-		case "top":
-			message += "<br> верх";
-		break;
-
-		case "down":
-			message += "<br> низ";
-		break;
-
-		case "topCorner":
-			message += "<br> верх";
-		break;
-
-		case "downCorner":
-			message += "<br> низ";
-		break;
+        case "right":
+            message += "правой половине";
+            break;
 
 
+    }
 
-		default:
-		break;
-	}
+    switch (secondDirection) {
+        case "top":
+            message += "<br> верх";
+            break;
+
+        case "down":
+            message += "<br> низ";
+            break;
+
+        case "topCorner":
+            message += "<br> верх";
+            break;
+
+        case "downCorner":
+            message += "<br> низ";
+            break;
 
 
-	tableTooltip.style.opacity = 1;
-	tableTooltip.innerHTML = message;
+        default:
+            break;
+    }
+
+
+    tableTooltip.style.opacity = 1;
+    tableTooltip.innerHTML = message;
 }
 
 function removeTableTooltip() {
-	tableTooltip.style.opacity = 0;
+    tableTooltip.style.opacity = 0;
 }
 
-// function TableTooltip(options) {
-// 	let elem = ""
-// }
 
-
-accept.onclick = function(e) {
-	new Message({text: "Пари зафиксированно"});
+function setCellWidth() {
+    square.style.width = ex.offsetWidth / 2 + "px";
+    square.style.padding = 0;
 }
 
-cancel.onclick = function(e) {
-	new Message({text: "Пари сброшено"});
+function setChip(event) {
+    setChipValue(event.target.innerHTML);
+    // activeBet.style.fontWeight = 700;
+
+    // activeBet.innerHTML = "";
+    // activeBet.appendChild(new Chip(event.target.innerHTML));
+    // betWindow.classList.remove("active");
+    closeBetWindow();
 }
 
+function setChipValue(value) {
+    activeBet.classList.add('active');
+    activeBet.dataset.sum = verifyInput(value, 0, 10000);
+    activeBet.innerHTML = verifyInput(value, 0, 10000);
+}
+
+function verifyInput(number, min, max) {
+    if (number > min && number < max) return number;
+    else return 0;
+}
+
+$windowChip.on('click', setChip);
+
+userChip.onkeydown = function (e) {
+    if (e.keyCode == 13) {
+        setChipValue(userChip.value);
+        closeBetWindow();
+    }
+
+    if (e.keyCode == 189) e.preventDefault();
+};
+
+function clearUserChip() {
+    userChip.value = "";
+}
+
+
+accept.onclick = function (e) {
+    var bets = $('.game__betField_bet.active').toArray().map(function (e) {
+        return {"event": e.dataset.uniq_event, "kef": e.dataset.kef, "sum": e.dataset.sum}
+    });
+    var req = {"matchId": matchId, "bets": bets};
+
+    sendPost("/api/bets/add", req, function (data) {
+        if (data.error === null) {
+            new Message({text: "Пари зафиксированно"});
+            canselPari()
+        } else {
+            new Message({text: "Пари не было зафиксированно"});
+        }
+    });
+}
+
+cancel.onclick = function (e) {
+    canselPari()
+    new Message({text: "Пари сброшено"});
+};
+
+function canselPari() {
+    $('.game__betField_bet.active').toArray().forEach(function(e){
+        e.classList.remove('active');
+        e.innerHTML = e.dataset.kef;
+    })
+}
+
+//----------------------------------------------------------------------------------------------
+
+function sendPost(url, data, success) {
+    var session = getToken();
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        headers: {
+            "Authorization": 'Bearer ' + session
+        },
+        dataType: "json",
+        success: success
+    });
+}
+
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+function getToken() {
+    return decodeURIComponent(getCookie("USER_SESSION").replace(/\+/g, ' ')).replace("jwt\=#s", "").replace(/\"/g, "");
+}
+
+
+//ленты событий и ставок
+
+function updateBetsHistory() {
+    sendPost("/api/bets/history", {}, function (data) {
+        var content = data.data.reverse();
+        var nonaccepted = content.filter(function (e) {
+            return e.acceptedTime > Date.now() || e.status === "FREEZED"
+        });
+        var accepted = content.filter(function (e) {
+            return e.acceptedTime <= Date.now() && e.status === "NOTCALC"
+        });
+        var calculated = content.filter(function (e) {
+            return e.acceptedTime <= Date.now() && (e.status !== "NOTCALC" && e.status !== "FREEZED")
+        });
+        nonAcceptedBetsUpdate(nonaccepted);
+        acceptedBetsUpdate(accepted);
+        calculatedBetsUpdate(calculated);
+    })
+}
+
+
+function nonAcceptedBetsUpdate(bets) {
+    let html = '<tbody>';
+    betsGroupedForComplex(bets).forEach(function (cmplx) {
+        var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
+        var first = cmplx[0];
+        if (first.status === "NOTCALC") {
+            html += '<tr>';
+            html += '<td class="bet_timer_' + first.id + '">00</td>';
+            html += '<td>' + cmplxSum + '</td>';
+            html += '</tr>';
+            betTimer(new Date(first.acceptedTime), '.bet_timer_' + first.id, first.id)
+        } else { //freezed
+            html += '<tr class="timer_freezed">';
+            html += '<td>' + (first.acceptedTime - first.freezedAt) / 1000 + '</td>';
+            html += '<td>' + cmplxSum + '</td>';
+            html += '</tr>';
+        }
+    });
+
+    html += '</tbody>';
+
+    $('.nonaccepted_bets_table>tbody').replaceWith(html);
+}
+
+function acceptedBetsUpdate(bets) {
+    let html = '<tbody>';
+    betsGroupedForComplex(bets).forEach(function (cmplx) {
+        if (cmplx.length > 1) {
+            var first = cmplx[0];
+            var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
+            html += '<tr class="complex">';
+            html += '<td>' + formatHHmm(new Date(first.acceptedTime)) + '</td>';
+            html += '<td></td>';
+            html += '<td>' + cmplxSum + '</td>';
+            html += '<td></td>';
+            html += '</tr>';
+            cmplx.forEach(function (bet) {
+                html += '<tr>'; // class="complex__item">';
+                html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+                html += '<td>' + bet.event + '</td>';
+                html += '<td>' + bet.sum + '</td>';
+                html += '<td>' + bet.kef + '</td>';
+                html += '</tr>';
+            })
+        } else {
+            var bet = cmplx[0];
+            html += '<tr>';
+            html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+            html += '<td>' + bet.event + '</td>';
+            html += '<td>' + bet.sum + '</td>';
+            html += '<td>' + bet.kef + '</td>';
+            html += '</tr>';
+        }
+    });
+    html += '</tbody>';
+
+    $('.accepted_bets_table>tbody').replaceWith(html);
+}
+
+function calculatedBetsUpdate(bets) {
+    let html = '<tbody>';
+    betsGroupedForComplex(bets).forEach(function (cmplx) {
+        if (cmplx.length > 1) {
+            var first = cmplx[0];
+            var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
+            var cmplxWin = cmplx.map(e => e.status === "WIN" ? (e.sum * e.kef) : 0).reduce((a, b) => a + b, 0);
+            var cmplxBalance = (cmplxWin - cmplxSum);
+            html += '<tr class="complex">';
+            html += '<td>' + formatHHmm(new Date(first.acceptedTime)) + '</td>';
+            html += '<td></td>';
+            html += '<td>' + cmplxSum + '</td>';
+            html += '<td></td>';
+            html += '<td>' + cmplxWin + '</td>';
+            html += '<td>' + cmplxBalance + '</td>';
+            html += '</tr>';
+            cmplx.forEach(function (bet) {
+                var betWin = bet.status === "WIN" ? (bet.sum * bet.kef) : 0;
+                html += '<tr>'; // class="complex__item">';
+                html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+                html += '<td>' + bet.event + '</td>';
+                html += '<td>' + bet.sum + '</td>';
+                html += '<td>' + bet.kef + '</td>';
+                html += '<td>' + betWin + '</td>';
+                html += '<td>' + (betWin - bet.sum) + '</td>';
+                html += '</tr>';
+            })
+        } else {
+            var bet = cmplx[0];
+            var betWin = bet.status === "WIN" ? (bet.sum * bet.kef) : 0;
+            html += '<tr>';
+            html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+            html += '<td>' + bet.event + '</td>';
+            html += '<td>' + bet.sum + '</td>';
+            html += '<td>' + bet.kef + '</td>';
+            html += '<td>' + betWin + '</td>';
+            html += '<td>' + (betWin - bet.sum) + '</td>';
+            html += '</tr>';
+        }
+    });
+    html += '</tbody>';
+
+    $('.calculated_bets_table>tbody').replaceWith(html);
+}
+
+function betsGroupedForComplex(bets) {
+    return groupBy(bets, item => item.userId + item.companyId + item.acceptedTime)
+}
+
+function updateEvents() {
+    sendPost("/api/events/list", {id: matchId}, function (data) {
+        var content = '';
+        content += '<tbody>';
+        data.data.reverse().forEach(function (obj) {
+            if (obj.eventFormat === "PLAYABLE") {
+                var eventName = obj.playableEvent;
+                content += '<tr>';
+                content += '<td>' + formatHHmm(new Date(obj.arbiterTime)) + '</td>';
+                content += '<td>' + eventName + '</td>';
+                content += '</tr>';
+            }
+        });
+        content += '</tbody>';
+        $('table.game__messages_table>tbody').replaceWith(content);
+    })
+}
+
+function updateMatchInfo() {
+    sendPost("/api/matches/info", {id: matchId}, function (data) {
+        var match = data.data.match;
+        $('.game__side_information_match_half').html(match.half);
+        $('.game__side_information_match_score').html(match.score);
+        if (match.teamsChanged) {
+            $('.game__side_information_match_team1').html(match.team1Name);
+            $('.game__side_information_match_team2').html(match.team2Name);
+        } else {
+            $('.game__side_information_match_team1').html(match.team2Name);
+            $('.game__side_information_match_team2').html(match.team1Name);
+        }
+        matchTimer(new Date(match.startTime), '.stopwatch')
+    })
+};
+
+function updateInfo() {
+    updateBetsHistory();
+    updateEvents();
+    updateMatchInfo();
+}
+
+updateInfo();
+setInterval(() => {
+    updateInfo()
+}, 5000);
+
+
+function formatHHmm(date) {
+    var h = '' + date.getHours();
+    var hh = h.length !== 2 ? '0' + h : h;
+    var m = '' + date.getMinutes();
+    var mm = m.length !== 2 ? '0' + m : m;
+    var s = '' + date.getSeconds();
+    var ss = s.length !== 2 ? '0' + s : s;
+    return hh + ':' + mm + ':' + ss
+}
+
+function groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+        const key = keyGetter(item);
+        const collection = map.get(key);
+        if (!collection) {
+            map.set(key, [item]);
+        } else {
+            collection.push(item);
+        }
+    });
+    return map;
+}
 
