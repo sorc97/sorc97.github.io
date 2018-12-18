@@ -386,17 +386,19 @@ function nonAcceptedBetsUpdate(bets) {
     betsGroupedForComplex(bets).forEach(function (cmplx) {
         var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
         var first = cmplx[0];
-        var timerSeconds = Math.round((first.acceptedTime - Date.now()) / 1000);
+        var timerSeconds = Math.round((first.acceptedTime - Date.now()) / 1000) + '';
+        var timerStr = timerSeconds.length === 1 ? '0' + timerSeconds : timerSeconds;
         if (first.status === "NOTCALC") {
             html += '<tr>';
-            html += '<td class="bet_timer_' + first.id + '">' + timerSeconds + '</td>';
+            html += '<td class="bet_timer_' + first.id + '">' + timerStr + '</td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '</tr>';
             betTimer(new Date(first.acceptedTime), '.bet_timer_' + first.id, first.id)
         } else { //freezed
             var freezedTimer = Math.round((first.acceptedTime - first.freezedAt) / 1000);
+            var freezedTimerStr = freezedTimer.length === 1 ? '0' + freezedTimer : freezedTimer;
             html += '<tr class="timer_freezed">';
-            html += '<td>' + freezedTimer + '</td>';
+            html += '<td>' + freezedTimerStr + '</td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '</tr>';
         }
