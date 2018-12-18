@@ -312,6 +312,7 @@ accept.onclick = function (e) {
         if (data.error === null) {
             new Message({text: "Пари зафиксированно"});
             canselPari()
+            updateInfo()
         } else {
             new Message({text: "Пари не было зафиксированно"});
         }

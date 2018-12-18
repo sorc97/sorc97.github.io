@@ -50,5 +50,7 @@ function StartSecondsTIMER(selector, baseDateForTimer, clock) {
     $(selector).html(readoutTimer);
     if (diff < 0) {
         clock.clocktimer = setTimeout(StartSecondsTIMER, 300, selector, baseDateForTimer, clock);
+    }else{
+        updateInfo()
     }
 }
