@@ -311,7 +311,7 @@ accept.onclick = function (e) {
     sendPost("/api/bets/add", req, function (data) {
         if (data.error === null) {
             new Message({text: "Пари зафиксированно"});
-            canselPari()
+            canselPari();
             updateInfo()
         } else {
             new Message({text: "Пари не было зафиксированно"});
@@ -325,7 +325,7 @@ cancel.onclick = function (e) {
 };
 
 function canselPari() {
-    $('.game__betField_bet.active').toArray().forEach(function(e){
+    $('.game__betField_bet.active').toArray().forEach(function (e) {
         e.classList.remove('active');
         e.innerHTML = e.dataset.kef;
     })
@@ -386,15 +386,16 @@ function nonAcceptedBetsUpdate(bets) {
     betsGroupedForComplex(bets).forEach(function (cmplx) {
         var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
         var first = cmplx[0];
+        var timerSeconds = (first.acceptedTime - first.freezedAt) / 1000;
         if (first.status === "NOTCALC") {
             html += '<tr>';
-            html += '<td class="bet_timer_' + first.id + '">00</td>';
+            html += '<td class="bet_timer_' + first.id + '">' + timerSeconds + '</td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '</tr>';
             betTimer(new Date(first.acceptedTime), '.bet_timer_' + first.id, first.id)
         } else { //freezed
             html += '<tr class="timer_freezed">';
-            html += '<td>' + (first.acceptedTime - first.freezedAt) / 1000 + '</td>';
+            html += '<td>' + timerSeconds + '</td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '</tr>';
         }
