@@ -3,6 +3,9 @@
 
 let changeInfo = $(".manager__changeInfo");
 let insertingElem;
+let eventsTable = document.querySelector(".management__history_events_content");
+let eventsCaptions = document.querySelector(".management__history_captions");
+let prevWidth = eventsTable.clientWidth;
 
 function log(message) {
 	console.log(message);
@@ -44,3 +47,23 @@ function changeToElement(event){
 		target.remove();
 	}
 }
+
+
+function insertEventElem() {
+	let elem = document.createElement("tr");
+	elem.innerHTML = `<td>00:00</td>
+				 <td>Угловой на левой половине</td>`;
+	eventsTable.appendChild(elem);
+	scrollCheck();
+}
+
+function scrollCheck() {
+	if(!(prevWidth === eventsTable.clientWidth)) {
+		eventsCaptions.classList.remove("caption_uncalculated");
+		eventsCaptions.classList.add("caption_calculated");
+	}
+
+	prevWidth = eventsTable.clientWidth;
+}
+
+// setInterval(()=> insertEventElem(), 1000);
