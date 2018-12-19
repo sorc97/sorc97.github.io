@@ -462,7 +462,7 @@ function calculatedBetsUpdate(bets) {
             html += '</tr>';
             cmplx.forEach(function (bet) {
                 var betWin = bet.status === "WIN" ? (bet.sum * bet.kef) : 0;
-                html += '<tr>'; // class="complex__item">';
+                html += '<tr class="complex__item">';
                 html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
