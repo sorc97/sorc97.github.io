@@ -34,7 +34,7 @@
     <div class="startPage__matches_wrapper">
         {% for match in matches %}
         <a data-url="/match/{{ match.id }}"
-           class="startPage__matches_item {% if item.status.isRun() %}active{% else %}deactive{% endif %}">
+           class="startPage__matches_item {% if match.status.isRun() %}active{% else %}deactive{% endif %}">
             <p class="startPage__matches_item_name">
                 {{ match.name }}
             </p>
