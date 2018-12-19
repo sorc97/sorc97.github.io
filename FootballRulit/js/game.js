@@ -363,7 +363,7 @@ function getToken() {
 //ленты событий и ставок
 
 function updateBetsHistory() {
-    sendPost("/api/bets/history", {}, function (data) {
+    sendPost("/api/bets/history", {id: matchId}, function (data) {
         var content = data.data.reverse();
         var nonaccepted = content.filter(function (e) {
             return e.acceptedTime > Date.now() || e.status === "FREEZED"
@@ -450,7 +450,7 @@ function calculatedBetsUpdate(bets) {
         if (cmplx.length > 1) {
             var first = cmplx[0];
             var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
-            var cmplxWin = cmplx.map(e => e.status === "WIN" ? (e.sum * e.kef) : 0).reduce((a, b) => a + b, 0);
+            var cmplxWin = cmplx.map(e => betWinForCalculated(e)).reduce((a, b) => a + b, 0);
             var cmplxBalance = (cmplxWin - cmplxSum);
             html += '<tr class="complex">';
             html += '<td>' + formatHHmm(new Date(first.acceptedTime)) + '</td>';
@@ -463,6 +463,7 @@ function calculatedBetsUpdate(bets) {
             cmplx.forEach(function (bet) {
                 var betWin = bet.status === "WIN" ? (bet.sum * bet.kef) : 0;
                 html += '<tr class="complex__item">';
+                var betWin = betWinForCalculated(bet);
                 html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
@@ -473,7 +474,7 @@ function calculatedBetsUpdate(bets) {
             })
         } else {
             var bet = cmplx[0];
-            var betWin = bet.status === "WIN" ? (bet.sum * bet.kef) : 0;
+            var betWin = betWinForCalculated(bet);
             html += '<tr>';
             html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
             html += '<td>' + bet.event + '</td>';
@@ -487,6 +488,16 @@ function calculatedBetsUpdate(bets) {
     html += '</tbody>';
 
     $('.calculated_bets_table>tbody').replaceWith(html);
+}
+
+function betWinForCalculated(bet) {
+    var betWin = 0;
+    if (bet.status === "WIN") {
+        betWin = (bet.sum * bet.kef);
+    } else if (bet.status === "RETURN") {
+        betWin = bet.sum
+    }
+    return betWin;
 }
 
 function betsGroupedForComplex(bets) {
