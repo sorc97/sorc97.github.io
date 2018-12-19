@@ -232,7 +232,7 @@
                 <tbody></tbody>
             </table>
             <h1 class="game__history_headline">Текущие акцептованные нерасчитанные ставки</h1>
-            <table class="accepted_bets_table table__info accordion__item">
+            <table id="widthCorrect" class="accepted_bets_table table__info accordion__item">
                 <thead>
                 <th>Время</th>
                 <th>Исход</th>
