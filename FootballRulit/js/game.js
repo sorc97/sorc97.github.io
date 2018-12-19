@@ -363,7 +363,7 @@ function getToken() {
 //ленты событий и ставок
 
 function updateBetsHistory() {
-    sendPost("/api/bets/history", {}, function (data) {
+    sendPost("/api/bets/history", {id: matchId}, function (data) {
         var content = data.data.reverse();
         var nonaccepted = content.filter(function (e) {
             return e.acceptedTime > Date.now() || e.status === "FREEZED"
