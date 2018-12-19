@@ -51,13 +51,13 @@ var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/",
 
 // $bet.on('mousedown', function(e){return false});
 
-$('.complex').on('click', function (e) {
+$complex.on('click', function(e){
     let next = this.nextElementSibling;
-    while (next.className == "complex__item") {
+    while($(next).attr("class") == "complex__item") {
         $(next).fadeToggle(500);
 
         next = next.nextElementSibling;
-        if (next == null) break;
+        if(next == null) break;
     }
 });
 

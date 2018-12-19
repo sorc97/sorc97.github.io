@@ -763,6 +763,10 @@ p{
 	background: green;
 }
 
+.showRow{
+	display: table-row;
+}
+
 #widthCorrect{
 	width: auto;
 }

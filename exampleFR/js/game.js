@@ -167,14 +167,18 @@ $headline.on('mousedown', function(e){
 	return false;
 })
 
-$complex.on('click', function(e) {
-	let next = this.nextElementSibling
+$(".complex").on('click', function(e) {
+	let next = this.nextElementSibling;
+	// console.log(next);
 	while(next.className == "complex__item") {
-		$(next).fadeToggle(500);
+		// $(next).toggleClass("showRow");
+		// $(next).attr("class") === "complex__item showRow"
 
+		$(next).fadeToggle(500);
 		next = next.nextElementSibling;
 		if(next == null) break;
 	}
+	// next = null;
 });
 
 $(".game__betField_bet").on('mouseenter', function(e) {
