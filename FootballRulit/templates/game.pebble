@@ -224,7 +224,7 @@
         <h1 class="game__side_caption">История пари</h1>
         <div class="game__history_itemWrapper space__owerflow">
             <h1 class="game__history_headline">Текущие неакцептованные ставки</h1>
-            <table class="nonaccepted_bets_table table__info accordion__item">
+            <table id="widthCorrect" class="nonaccepted_bets_table table__info accordion__item">
                 <thead>
                 <th>Таймер</th>
                 <th>Пари на сумму</th>

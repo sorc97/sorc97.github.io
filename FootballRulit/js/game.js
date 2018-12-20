@@ -422,7 +422,7 @@ function acceptedBetsUpdate(bets) {
             html += '<td></td>';
             html += '</tr>';
             cmplx.forEach(function (bet) {
-                html += '<tr>'; // class="complex__item"
+                html += '<tr class="complex__item">';
                 html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
