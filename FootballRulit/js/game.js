@@ -395,7 +395,7 @@ function nonAcceptedBetsUpdate(bets) {
             html += '</tr>';
             betTimer(new Date(first.acceptedTime), '.bet_timer_' + first.id, first.id)
         } else { //freezed
-            var freezedTimer = Math.round((first.acceptedTime - first.freezedAt) / 1000);
+            var freezedTimer = (first.freezedAt!==null) ? Math.round((first.acceptedTime - first.freezedAt) / 1000) : first.deadZoneSize;
             var freezedTimerStr = freezedTimer.length === 1 ? '0' + freezedTimer : freezedTimer;
             html += '<tr class="timer_freezed">';
             html += '<td>' + freezedTimerStr + '</td>';
