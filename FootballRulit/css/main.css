@@ -752,8 +752,8 @@ p{
 }
 
 .complex__item{
-	display: none;
-	background: green;
+	/*display: none;*/
+	background: #a1f6a1;
 }
 
 #widthCorrect{
@@ -1035,3 +1035,6 @@ p{
 /*.monitor__matchInfo_caption{
 	text-align: center;
 }*/
+.timer_freezed{
+	background: #d9e8d994;
+}
