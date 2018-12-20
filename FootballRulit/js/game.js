@@ -51,13 +51,13 @@ var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/",
 
 // $bet.on('mousedown', function(e){return false});
 
-$complex.on('click', function(e){
+$complex.on('click', function (e) {
     let next = this.nextElementSibling;
-    while($(next).attr("class") == "complex__item") {
+    while ($(next).attr("class") == "complex__item") {
         $(next).fadeToggle(500);
 
         next = next.nextElementSibling;
-        if(next == null) break;
+        if (next == null) break;
     }
 });
 
@@ -395,7 +395,7 @@ function nonAcceptedBetsUpdate(bets) {
             html += '</tr>';
             betTimer(new Date(first.acceptedTime), '.bet_timer_' + first.id, first.id)
         } else { //freezed
-            var freezedTimer = (first.freezedAt!==null) ? Math.round((first.acceptedTime - first.freezedAt) / 1000) : first.deadZoneSize;
+            var freezedTimer = (first.freezedAt !== null) ? (((first.acceptedTime - first.freezedAt) / 1000) | 0) : first.deadZoneSize;
             var freezedTimerStr = freezedTimer.length === 1 ? '0' + freezedTimer : freezedTimer;
             html += '<tr class="timer_freezed">';
             html += '<td>' + freezedTimerStr + '</td>';
