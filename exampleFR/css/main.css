@@ -552,6 +552,12 @@ p{
 	table-layout: fixed;
 }
 
+.game__betField_bet.betOn{
+	font-size: 14px;
+	padding: 0px;
+	background: yellow !important;
+}
+
 
 .game__betField_bet.active{
 	background: #c7d1e0;

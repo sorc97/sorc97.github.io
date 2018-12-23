@@ -553,6 +553,12 @@ p{
 	background: #c7d1e0;
 }
 
+..game__betField_bet.betOn{
+	font-size: 14px;
+	padding: 0px;
+	background: yellow !important;
+}
+
 .game__betField_table{
 	font-size: 20px;
 	/*margin: 20px auto;*/

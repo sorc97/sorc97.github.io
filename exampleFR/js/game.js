@@ -308,36 +308,34 @@ function Chip(value) {
 
 function setChip(event) {
 	setChipValue(event.target.innerHTML);
-	styleChip();
-	// activeBet.style.fontWeight = 700;
-
-	// activeBet.innerHTML = "";
-	// activeBet.appendChild(new Chip(event.target.innerHTML));
-	// betWindow.classList.remove("active");
 	closeBetWindow();
 }
 
 function setChipValue(value) {
-	activeBet.innerHTML = verifyInput(value, 0, 10000);
+	if(value > 10000){
+		activeBet.classList.remove("active");
+		new Push("Вы превысили максимальную ставку!").show();
+		return;
+	}else if(value <= 0) {
+		activeBet.classList.remove("active");
+		new Push("Некорректный ввод").show();
+		return;
+	}
+
+	activeBet.innerHTML = value;
+	activeBet.classList.add("betOn");
 }
 
-function verifyInput(number, min, max) {
-	if(number > min && number < max) return number;
-	else return 0;  
-}
-
-function styleChip(){
-	activeBet.style.padding = 0 + "px";
-	activeBet.style.background = "yellow";
-	activeBet.style.fontSize = 14+"px";
-}
+// function verifyInput(number, min, max) {
+// 	if(number > min && number <= max) return number;
+// 	else return 0;
+// }
 
 $windowChip.on('click', setChip);
 
 userChip.onkeydown = function(e) {
 	if(e.keyCode == 13) {
 		setChipValue(userChip.value);
-		styleChip();
 		closeBetWindow();
 	}
 
@@ -355,17 +353,18 @@ accept.onclick = function(e) {
 	new Push("asdasdqw").show();
 }
 
-setTimeout(()=> toggleDisableBut(), 2000);
+// setTimeout(()=> toggleDisableBut(), 5000);
 
 function toggleDisableBut() {
-	if(accept.classList.contains("disabled")) {
-		accept.classList.remove("disabled");
-		accept.disabled = false;
-	}else{
-		accept.classList.add("disabled");
-		accept.disabled = true;
-	}
+    if(accept.classList.contains("disabled")) {
+        accept.classList.remove("disabled");
+        accept.disabled = false;
+    }else{
+        accept.classList.add("disabled");
+        accept.disabled = true;
+    }
 }
+
 
 cancel.onclick = function(e) {
 	// new Message({text: "Пари сброшено"});

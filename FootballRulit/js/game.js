@@ -241,26 +241,33 @@ function setCellWidth() {
     square.style.padding = 0;
 }
 
+//Заполнение полей ставками
+
 function setChip(event) {
     setChipValue(event.target.innerHTML);
-    // activeBet.style.fontWeight = 700;
-
-    // activeBet.innerHTML = "";
-    // activeBet.appendChild(new Chip(event.target.innerHTML));
-    // betWindow.classList.remove("active");
     closeBetWindow();
 }
 
 function setChipValue(value) {
-    activeBet.classList.add('active');
-    activeBet.dataset.sum = verifyInput(value, 0, 10000);
-    activeBet.innerHTML = verifyInput(value, 0, 10000);
+    if(value > 10000){
+        activeBet.classList.remove("active");
+        new Push("Вы превысили максимальную ставку!").show();
+        return;
+    }else if(value <= 0) {
+        activeBet.classList.remove("active");
+        new Push("Некорректный ввод").show();
+        return;
+    }
+
+    activeBet.classList.add("betOn");
+    activeBet.innerHTML = value;
+    activeBet.dataset.sum = value;
 }
 
-function verifyInput(number, min, max) {
-    if (number > min && number < max) return number;
-    else return 0;
-}
+// function verifyInput(number, min, max) {
+//     if (number > min && number < max) return number;
+//     else return 0;
+// }
 
 $windowChip.on('click', setChip);
 
@@ -289,7 +296,7 @@ function toggleDisableBut() {
 }
 
 accept.onclick = function (e) {
-    var bets = $('.game__betField_bet.active').toArray().map(function (e) {
+    var bets = $('.game__betField_bet.betOn').toArray().map(function (e) {
         return {"event": e.dataset.uniq_event, "kef": e.dataset.kef, "sum": e.dataset.sum}
     });
     var req = {"matchId": matchId, "bets": bets};
@@ -311,8 +318,8 @@ cancel.onclick = function (e) {
 };
 
 function canselPari() {
-    $('.game__betField_bet.active').toArray().forEach(function (e) {
-        e.classList.remove('active');
+    $('.game__betField_bet.betOn').toArray().forEach(function (e) {
+        e.classList.remove('betOn');
         e.innerHTML = e.dataset.kef;
     })
 }
