@@ -73,25 +73,49 @@ function scrollCheck() {
 var $sideBut = $(".management__side_button");
 var advice = $(".management__side_advice");
 
-$sideBut.on('click', function() {
+// $sideBut.on('click', function() {
 
-	if(this.classList.contains("timeFreeze")){
-		//Код заморозки времени
-		switchBut(this);
-	}else{
-		//Код остановки приема ставок
-		switchBut(this);
-	}
-});
+// 	if(this.classList.contains("timeFreeze")){
+// 		//Код заморозки времени
+// 		switchBut(this);
+// 	}else{
+// 		//Код остановки приема ставок
+// 		switchBut(this);
+// 	}
+// });
 
 //Переключение кнопок
+// function switchBut(elem) {
+// 	if(elem.classList.contains("disable")) {
+// 		$(elem).hide();
+// 		$(elem.nextElementSibling).show();
+// 	}else{
+// 		$(elem).hide();
+// 		$(elem.previousElementSibling).show();
+// 	}
+// }
+
+$sideBut.on('click', function() {
+	switchBut(this);
+});
+
 function switchBut(elem) {
 	if(elem.classList.contains("disable")) {
-		$(elem).hide();
-		$(elem.nextElementSibling).show();
+		let str = elem.innerHTML.split(" ");
+		str[0] = "Возобновить";
+
+		elem.innerHTML = str.join(" ");
+
+		elem.classList.remove("disable");
+		elem.classList.add("enable");
 	}else{
-		$(elem).hide();
-		$(elem.previousElementSibling).show();
+		let str = elem.innerHTML.split(" ");
+		str[0] = "Остановить";
+
+		elem.innerHTML = str.join(" ");
+		
+		elem.classList.add("disable");
+		elem.classList.remove("enable");
 	}
 }
 

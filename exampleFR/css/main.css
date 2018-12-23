@@ -1366,7 +1366,7 @@ p{
 
 .management__side_button.enable{
 	background: chartreuse;
-	display: none;
+	/*display: none;*/
 }
 .management__side_button.enable:hover{
 	background: #7fff0094;

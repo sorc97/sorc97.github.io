@@ -8,6 +8,7 @@ let fieldArea = document.querySelector(".game__betField");
 let betTable = document.querySelector(".game__betField_table");
 let accept = document.querySelector(".game__main_management_accept");
 let cancel = document.querySelector(".game__main_management_cancel");
+let repeat = document.querySelector(".game__main_management_repeat");
 let historyWrapper = document.querySelector(".game__history_itemWrapper");
 let betWindow = document.querySelector(".game__betWindow");
 let bet = document.querySelector(".game__betField_bet");
@@ -21,7 +22,6 @@ let activeBet;
 let ex = document.getElementById("exept2");
 let square = document.getElementById("square");
 var userChip = document.querySelector(".game__betWindow_userChip");
-
 
 let $accordionItem = $(".accordion__item");
 let $headline = $(".game__history_headline");
@@ -346,12 +346,34 @@ function clearUserChip() {
 	userChip.value = "";
 }
 
-
+let repeatStorage = [];
+// let repeatStorage = {};
 
 accept.onclick = function(e) {
-	// new Message({text: "Пари зафиксированно"});
-	new Push("asdasdqw").show();
+	new Center("Пари зафиксированно").show();
+
+	$(".game__betField_bet").toArray().forEach((item, i)=>{
+		if(item.classList.contains("betOn")){
+			repeatStorage[i] = {status: 1, value: item.innerHTML};
+		}else{
+			repeatStorage[i] = {status: 0, value: 0};
+		}
+	});
+
+	console.log(repeatStorage);
 }
+
+repeat.onclick = function(e) {
+	let currentField = document.getElementsByClassName("game__betField_bet");
+
+	repeatStorage.forEach((item, i)=> {
+		if(item.status){
+			currentField[i].classList.add("betOn");
+			currentField[i].innerHTML = item.value;
+		}
+	});
+}
+
 
 // setTimeout(()=> toggleDisableBut(), 5000);
 
@@ -366,9 +388,18 @@ function toggleDisableBut() {
 }
 
 
+
 cancel.onclick = function(e) {
 	// new Message({text: "Пари сброшено"});
-	new Center("Матч закончился").show();
+	new Center("Пари отменено").show();
+	// $(".game__betField_bet").toArray().forEach((item)=>{
+	// 	if(item.classList.contains("betOn"));
+	// });
+	$(".game__betField_bet.betOn").toArray().forEach((item)=>{
+		item.classList.remove("betOn");
+		item.classList.remove("active");
+		item.innerHTML = "";
+	});
 }
 
 setPlayerInfo({
@@ -412,6 +443,7 @@ class Push extends Notyfication{
 			setTimeout(()=> elem.classList.add("active"), 100);
 			setTimeout(()=> elem.classList.remove("active"), 2000);
 		}
+		// elem.show();
 	}
 }
 
