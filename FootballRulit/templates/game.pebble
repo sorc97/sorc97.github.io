@@ -39,13 +39,14 @@
             <tr>
                 <!-- <th id="indent"></th> -->
                 <th id="exept2" colspan="2" class="game__side_information_match_team1"></th>
-                <th id="exept2" class="game__side_information_match_score" colspan="2"></th>
+                <th id="exept2" colspan="2"><qq class="game__side_information_match_score1"></qq>:<qq class="game__side_information_match_score2"></qq></th>
                 <th id="exept2" colspan="2" class="game__side_information_match_team2"></th>
             </tr>
 
             <tr>
                 <th id="goal">Гол</th>
-                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="goal" data-uniq_event="GOAL_LEFT"
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="goal"
+                    data-uniq_event="GOAL_LEFT"
                     data-kef="{{ info.bets["GOAL_LEFT"] }}">
                     {{ info.bets["GOAL_LEFT"] }}
                 </td>
@@ -53,7 +54,8 @@
                     data-kef="{{ info.bets["GOAL"] }}">
                     {{ info.bets["GOAL"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="goal" data-uniq_event="GOAL_RIGHT"
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="goal"
+                    data-uniq_event="GOAL_RIGHT"
                     data-kef="{{ info.bets["GOAL_RIGHT"] }}">
                     {{ info.bets["GOAL_RIGHT"] }}
                 </td>
@@ -61,15 +63,18 @@
 
             <tr>
                 <th id="fine">Штрафной</th>
-                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="fine" data-uniq_event="FORFEIT_LEFT"
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="fine"
+                    data-uniq_event="FORFEIT_LEFT"
                     data-kef="{{ info.bets["FORFEIT_LEFT"] }}">
                     {{ info.bets["FORFEIT_LEFT"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="fine" data-uniq_event="FORFEIT"
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="fine"
+                    data-uniq_event="FORFEIT"
                     data-kef="{{ info.bets["FORFEIT"] }}">
                     {{ info.bets["FORFEIT"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="fine" data-uniq_event="FORFEIT_RIGHT"
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="fine"
+                    data-uniq_event="FORFEIT_RIGHT"
                     data-kef="{{ info.bets["FORFEIT_RIGHT"] }}">
                     {{ info.bets["FORFEIT_RIGHT"] }}
                 </td>
@@ -77,15 +82,18 @@
 
             <tr>
                 <th id="offside">Офсайд</th>
-                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="offside" data-uniq_event="OFFSIDE_LEFT"
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="offside"
+                    data-uniq_event="OFFSIDE_LEFT"
                     data-kef="{{ info.bets["OFFSIDE_LEFT"] }}">
                     {{ info.bets["OFFSIDE_LEFT"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="offside" data-uniq_event="OFFSIDE"
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="offside"
+                    data-uniq_event="OFFSIDE"
                     data-kef="{{ info.bets["OFFSIDE"] }}">
                     {{ info.bets["OFFSIDE"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="offside" data-uniq_event="OFFSIDE_RIGHT"
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="offside"
+                    data-uniq_event="OFFSIDE_RIGHT"
                     data-kef="{{ info.bets["OFFSIDE_RIGHT"] }}">
                     {{ info.bets["OFFSIDE_RIGHT"] }}
                 </td>
@@ -93,15 +101,18 @@
 
             <tr>
                 <th id="goalKick">Удар от ворот</th>
-                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="goalKick" data-uniq_event="FROMGATE_LEFT"
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="goalKick"
+                    data-uniq_event="FROMGATE_LEFT"
                     data-kef="{{ info.bets["FROMGATE_LEFT"] }}">
                     {{ info.bets["FROMGATE_LEFT"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="goalKick" data-uniq_event="FROMGATE"
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="goalKick"
+                    data-uniq_event="FROMGATE"
                     data-kef="{{ info.bets["FROMGATE"] }}">
                     {{ info.bets["FROMGATE"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="goalKick" data-uniq_event="FROMGATE_RIGHT"
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="goalKick"
+                    data-uniq_event="FROMGATE_RIGHT"
                     data-kef="{{ info.bets["FROMGATE_RIGHT"] }}">
                     {{ info.bets["FROMGATE_RIGHT"] }}
                 </td>
@@ -111,23 +122,28 @@
                 <th id="out" rowspan="2">
                     Аут
                 </th>
-                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out" data-uniq_event="OUT_LEFT"
+                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out"
+                    data-uniq_event="OUT_LEFT"
                     data-kef="{{ info.bets["OUT_LEFT"] }}">
                     {{ info.bets["OUT_LEFT"] }}
                 </td>
-                <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top" data-uniq_event="OUT_LEFT_UP"
+                <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top"
+                    data-uniq_event="OUT_LEFT_UP"
                     data-kef="{{ info.bets["OUT_LEFT_UP"] }}">
                     {{ info.bets["OUT_LEFT_UP"] }}
                 </td>
-                <td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out" data-uniq_event="OUT"
+                <td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out"
+                    data-uniq_event="OUT"
                     data-kef="{{ info.bets["OUT"] }}">
                     {{ info.bets["OUT"] }}
                 </td>
-                <td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out" data-uniq_event="OUT_RIGHT"
+                <td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out"
+                    data-uniq_event="OUT_RIGHT"
                     data-kef="{{ info.bets["OUT_RIGHT"] }}">
                     {{ info.bets["OUT_RIGHT"] }}
                 </td>
-                <td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top" data-uniq_event="OUT_RIGHT_UP"
+                <td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top"
+                    data-uniq_event="OUT_RIGHT_UP"
                     data-kef="{{ info.bets["OUT_RIGHT_UP"] }}">
                     {{ info.bets["OUT_RIGHT_UP"] }}
                 </td>
@@ -135,11 +151,13 @@
             </tr>
 
             <tr>
-                <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="down" data-uniq_event="OUT_LEFT_DOWN"
+                <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="down"
+                    data-uniq_event="OUT_LEFT_DOWN"
                     data-kef="{{ info.bets["OUT_LEFT_DOWN"] }}">
                     {{ info.bets["OUT_LEFT_DOWN"] }}
                 </td>
-                <td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="down" data-uniq_event="OUT_RIGHT_DOWN"
+                <td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="down"
+                    data-uniq_event="OUT_RIGHT_DOWN"
                     data-kef="{{ info.bets["OUT_RIGHT_DOWN"] }}">
                     {{ info.bets["OUT_RIGHT_DOWN"] }}
                 </td>
@@ -149,7 +167,8 @@
 
             <tr>
                 <th id="corner" rowspan="2">Угловой</th>
-                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner" data-uniq_event="CORNER_LEFT"
+                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner"
+                    data-uniq_event="CORNER_LEFT"
                     data-kef="{{ info.bets["CORNER_LEFT"] }}">
                     {{ info.bets["CORNER_LEFT"] }}
                 </td>
@@ -158,11 +177,13 @@
                     data-kef="{{ info.bets["CORNER_LEFT_UP"] }}">
                     {{ info.bets["CORNER_LEFT_UP"] }}
                 </td>
-                <td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner" data-uniq_event="CORNER"
+                <td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner"
+                    data-uniq_event="CORNER"
                     data-kef="{{ info.bets["CORNER"] }}">
                     {{ info.bets["CORNER"] }}
                 </td>
-                <td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner" data-uniq_event="CORNER_RIGHT"
+                <td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner"
+                    data-uniq_event="CORNER_RIGHT"
                     data-kef="{{ info.bets["CORNER_RIGHT"] }}">
                     {{ info.bets["CORNER_RIGHT"] }}
                 </td>
@@ -214,9 +235,14 @@
 
             <p class="game__side_information_player">
                 <u>Баланс</u>: <strong>{{ user.balance }}</strong> <br>
-                <u>Пари заключено на сумму</u>: 0.0 <br>
-                <u>Пари выплачено на сумму</u>: 0.0 <br>
-                <u>Баланс текущей игры</u>: 0.0
+                <u>Пари заключено на сумму</u>:
+                <qq id="game__side_information_player_sum">0.0</qq>
+                <br>
+                <u>Пари выплачено на сумму</u>:
+                <qq id="game__side_information_player_win">0.0</qq>
+                <br>
+                <u>Баланс текущей игры</u>:
+                <qq id="game__side_information_player_balance">0.0</qq>
             </p>
         </div>
     </div>

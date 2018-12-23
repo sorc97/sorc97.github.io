@@ -444,14 +444,14 @@ function acceptedBetsUpdate(bets) {
             var first = cmplx[0];
             var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
             html += '<tr class="complex">';
-            html += '<td>' + formatHHmm(new Date(first.acceptedTime)) + '</td>';
+            html += '<td>' + formatSeconds(first.relTime) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '<td></td>';
             html += '</tr>';
             cmplx.forEach(function (bet) {
                 html += '<tr class="complex__item">';
-                html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+                html += '<td>' + formatSeconds(bet.relTime) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
                 html += '<td>' + bet.kef + '</td>';
@@ -460,7 +460,7 @@ function acceptedBetsUpdate(bets) {
         } else {
             var bet = cmplx[0];
             html += '<tr>';
-            html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+            html += '<td>' + formatSeconds(bet.relTime) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
             html += '<td>' + bet.kef + '</td>';
@@ -481,7 +481,7 @@ function calculatedBetsUpdate(bets) {
             var cmplxWin = cmplx.map(e => betWinForCalculated(e)).reduce((a, b) => a + b, 0);
             var cmplxBalance = (cmplxWin - cmplxSum);
             html += '<tr class="complex">';
-            html += '<td>' + formatHHmm(new Date(first.acceptedTime)) + '</td>';
+            html += '<td>' + formatSeconds(first.relTime) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '<td></td>';
@@ -491,7 +491,7 @@ function calculatedBetsUpdate(bets) {
             cmplx.forEach(function (bet) {
                 var betWin = betWinForCalculated(bet);
                 html += '<tr class="complex__item">';
-                html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+                html += '<td>' + formatSeconds(bet.relTime) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
                 html += '<td>' + bet.kef + '</td>';
@@ -503,7 +503,7 @@ function calculatedBetsUpdate(bets) {
             var bet = cmplx[0];
             var betWin = betWinForCalculated(bet);
             html += '<tr>';
-            html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
+            html += '<td>' + formatSeconds(bet.relTime) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
             html += '<td>' + bet.kef + '</td>';
@@ -515,6 +515,19 @@ function calculatedBetsUpdate(bets) {
     html += '</tbody>';
 
     $('.calculated_bets_table>tbody').replaceWith(html);
+}
+
+function balanceUpdate(bets) {
+    var fullSum = 0;
+    var fullWin = 0;
+    bets.forEach(function (bet) {
+        fullSum += bet.sum;
+        fullWin += betWinForCalculated(bet);
+    });
+
+    $('#game__side_information_player_sum').html(fullSum);
+    $('#game__side_information_player_win').html(fullWin);
+    $('#game__side_information_player_balance').html(fullWin - fullSum);
 }
 
 function betWinForCalculated(bet) {
@@ -539,7 +552,7 @@ function updateEvents() {
             if (obj.eventFormat === "PLAYABLE") {
                 var eventName = obj.playableEvent;
                 content += '<tr>';
-                content += '<td>' + formatHHmm(new Date(obj.arbiterTime)) + '</td>';
+                content += '<td>' + formatSeconds(obj.relTime) + '</td>';
                 content += '<td>' + eventName + '</td>';
                 content += '</tr>';
             }
@@ -555,13 +568,19 @@ function updateMatchInfo() {
         $('.game__side_information_match_half').html(match.half);
         $('.game__side_information_match_score').html(match.score);
         if (match.teamsChanged) {
-            $('.game__side_information_match_team1').html(match.team1Name);
-            $('.game__side_information_match_team2').html(match.team2Name);
-        } else {
             $('.game__side_information_match_team1').html(match.team2Name);
             $('.game__side_information_match_team2').html(match.team1Name);
+
+            $('.game__side_information_match_score1').html(match.score2Team);
+            $('.game__side_information_match_score2').html(match.score1Team);
+        } else {
+            $('.game__side_information_match_team1').html(match.team1Name);
+            $('.game__side_information_match_team2').html(match.team2Name);
+
+            $('.game__side_information_match_score1').html(match.score1Team);
+            $('.game__side_information_match_score2').html(match.score2Team);
         }
-        matchTimer(new Date(match.startTime), '.stopwatch')
+        matchTimer(new Date(match.relStartTime), '.stopwatch')
     })
 };
 
@@ -576,15 +595,12 @@ setInterval(() => {
     updateInfo()
 }, 5000);
 
-
-function formatHHmm(date) {
-    var h = '' + date.getHours();
-    var hh = h.length !== 2 ? '0' + h : h;
-    var m = '' + date.getMinutes();
+function formatSeconds(seconds) {
+    var m = '' + ((seconds / 60) | 0);
     var mm = m.length !== 2 ? '0' + m : m;
-    var s = '' + date.getSeconds();
+    var s = '' + (seconds % 60);
     var ss = s.length !== 2 ? '0' + s : s;
-    return hh + ':' + mm + ':' + ss
+    return mm + ':' + ss
 }
 
 function groupBy(list, keyGetter) {
