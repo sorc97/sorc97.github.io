@@ -26,30 +26,6 @@ let $headline = $(".game__history_headline");
 
 var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/", "");
 
-// function setTableTooltipPosition() {
-// 	let coords = goal.getBoundingClientRect();
-// 	tableTooltip.style.width = goal.clientWidth + "px";
-// 	tableTooltip.style.height= 77 + "px";
-// 	tableTooltip.style.left = coords.left + 8 + "px";
-// 	tableTooltip.style.top = coords.top - tableTooltip.clientHeight - 5 + "px";
-// }
-
-// setTableTooltipPosition();
-
-// $bet.on('click', function(e) {
-// 	if(this.querySelector(".chip")) {
-// 		this.removeChild(this.querySelector(".chip"));
-// 		this.innerHTML = this.coef;
-// 		return;
-// 	}
-
-// 	this.coef = this.innerHTML;
-// 	this.innerHTML = "";
-// 	this.appendChild(new Chip());
-// 	console.log(this.coef);
-// });
-
-// $bet.on('mousedown', function(e){return false});
 
 $complex.on('click', function (e) {
     let next = this.nextElementSibling;
@@ -67,21 +43,21 @@ function Chip() {
     return elem;
 }
 
-function Message(options) {
-    let elem = document.createElement("div");
-    elem.classList.add("game__side_messages_item");
-    elem.innerHTML = options.text;
+// function Message(options) {
+//     let elem = document.createElement("div");
+//     elem.classList.add("game__side_messages_item");
+//     elem.innerHTML = options.text;
 
-    $(elem).hide();
+//     $(elem).hide();
 
-    fieldArea.appendChild(elem);
-    $(elem).fadeIn(500);
+//     fieldArea.appendChild(elem);
+//     $(elem).fadeIn(500);
 
-    setTimeout(() => {
-        $(elem).fadeOut(500);
-        setTimeout(() => fieldArea.removeChild(elem), 500);
-    }, 2000);
-}
+//     setTimeout(() => {
+//         $(elem).fadeOut(500);
+//         setTimeout(() => fieldArea.removeChild(elem), 500);
+//     }, 2000);
+// }
 
 function getCoords(elem) {
     let coords = elem.getBoundingClientRect();
@@ -310,18 +286,18 @@ accept.onclick = function (e) {
 
     sendPost("/api/bets/add", req, function (data) {
         if (data.error === null) {
-            new Message({text: "Пари зафиксированно"});
+            new Center("Пари зафиксированно").show();
             canselPari();
             updateInfo()
         } else {
-            new Message({text: "Пари не было зафиксированно"});
+            new Center("Пари не было зафиксированно").show();
         }
     });
 }
 
 cancel.onclick = function (e) {
-    canselPari()
-    new Message({text: "Пари сброшено"});
+    canselPari();
+    new Center("Пари сброшено").show();
 };
 
 function canselPari() {
@@ -329,6 +305,48 @@ function canselPari() {
         e.classList.remove('active');
         e.innerHTML = e.dataset.kef;
     })
+}
+
+//УВЕДОМЛЕНИЯ
+
+class Notification{
+    constructor(options) {
+        var elem = document.createElement("div");
+        elem.className = "notification";
+
+        elem.innerHTML = options.text;
+        elem.classList.add(options.type);
+
+        elem.render = ()=> {
+            fieldArea.appendChild(elem);
+            setTimeout(()=> fieldArea.removeChild(elem), 2400);
+        };
+
+        return elem;
+    }
+}
+
+
+class Push extends Notification{
+    constructor(content){
+        let elem = super({type: "push", text: content});
+        elem.show = ()=> {
+            elem.render();
+            setTimeout(()=> elem.classList.add("active"), 100);
+            setTimeout(()=> elem.classList.remove("active"), 2000);
+        }
+    }
+}
+
+class Center extends Notification{
+    constructor(content) {
+        let elem = super({type: "center", text: content});
+        elem.show = ()=> {
+            elem.render();
+            setTimeout(()=> elem.classList.add("active"), 100);
+            setTimeout(()=> elem.classList.remove("active"), 2000);
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------
@@ -462,7 +480,7 @@ function calculatedBetsUpdate(bets) {
             html += '</tr>';
             cmplx.forEach(function (bet) {
                 var betWin = betWinForCalculated(bet);
-                html += '<tr>'; //class="complex__item"
+                html += '<tr class="complex__item">';
                 html += '<td>' + formatHHmm(new Date(bet.acceptedTime)) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
@@ -572,4 +590,3 @@ function groupBy(list, keyGetter) {
     });
     return map;
 }
-

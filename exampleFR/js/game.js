@@ -22,6 +22,7 @@ let ex = document.getElementById("exept2");
 let square = document.getElementById("square");
 var userChip = document.querySelector(".game__betWindow_userChip");
 
+
 let $accordionItem = $(".accordion__item");
 let $headline = $(".game__history_headline");
 
@@ -42,21 +43,21 @@ function setPlayerInfo(options) {
 }
 
 
-function Message(options) {
-	let elem = document.createElement("div");
-	elem.classList.add("game__side_messages_item");
-	elem.innerHTML = options.text;
+// function Message(options) {
+// 	let elem = document.createElement("div");
+// 	elem.classList.add("game__side_messages_item");
+// 	elem.innerHTML = options.text;
 
-	$(elem).hide();
+// 	$(elem).hide();
 
-	fieldArea.appendChild(elem);
-	$(elem).fadeIn(500);
+// 	fieldArea.appendChild(elem);
+// 	$(elem).fadeIn(500);
 
-	setTimeout(() => {
-		$(elem).fadeOut(500);
-		setTimeout(() => fieldArea.removeChild(elem), 500);
-	}, 2000);
-}
+// 	setTimeout(() => {
+// 		$(elem).fadeOut(500);
+// 		setTimeout(() => fieldArea.removeChild(elem), 500);
+// 	}, 2000);
+// }
 
 function getCoords(elem) {
 	let coords = elem.getBoundingClientRect();
@@ -350,11 +351,13 @@ function clearUserChip() {
 
 
 accept.onclick = function(e) {
-	new Message({text: "Пари зафиксированно"});
+	// new Message({text: "Пари зафиксированно"});
+	new Push("asdasdqw").show();
 }
 
 cancel.onclick = function(e) {
-	new Message({text: "Пари сброшено"});
+	// new Message({text: "Пари сброшено"});
+	new Center("Матч закончился").show();
 }
 
 setPlayerInfo({
@@ -371,3 +374,43 @@ setMatchInfo({
 });
 
 
+
+class Notyfication{
+	constructor(options) {
+		var elem = document.createElement("div");
+		elem.className = "notyfication";
+
+		elem.innerHTML = options.text;
+		elem.classList.add(options.type);
+
+		elem.render = ()=> {
+			fieldArea.appendChild(elem);
+			setTimeout(()=> fieldArea.removeChild(elem), 2400);
+		};
+
+		return elem;
+	}
+}
+
+
+class Push extends Notyfication{
+	constructor(content){
+		let elem = super({type: "push", text: content});
+		elem.show = ()=> {
+			elem.render();
+			setTimeout(()=> elem.classList.add("active"), 100);
+			setTimeout(()=> elem.classList.remove("active"), 2000);
+		}
+	}
+}
+
+class Center extends Notyfication{
+	constructor(content) {
+		let elem = super({type: "center", text: content});
+		elem.show = ()=> {
+			elem.render();
+			setTimeout(()=> elem.classList.add("active"), 100);
+			setTimeout(()=> elem.classList.remove("active"), 2000);
+		}
+	}
+}

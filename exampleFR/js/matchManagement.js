@@ -52,7 +52,8 @@ function changeToElement(event){
 function insertEventElem() {
 	let elem = document.createElement("tr");
 	elem.innerHTML = `<td>00:00</td>
-				 <td>Угловой на левой половине</td>`;
+				 <td>Угловой на левой половине</td>
+				 <td>asdasd</td>`;
 	eventsTable.appendChild(elem);
 	scrollCheck();
 }
@@ -67,3 +68,38 @@ function scrollCheck() {
 }
 
 // setInterval(()=> insertEventElem(), 1000);
+
+
+var $sideBut = $(".management__side_button");
+var advice = $(".management__side_advice");
+
+$sideBut.on('click', function() {
+
+	if(this.classList.contains("timeFreeze")){
+		//Код заморозки времени
+		switchBut(this);
+	}else{
+		//Код остановки приема ставок
+		switchBut(this);
+	}
+});
+
+//Переключение кнопок
+function switchBut(elem) {
+	if(elem.classList.contains("disable")) {
+		$(elem).hide();
+		$(elem.nextElementSibling).show();
+	}else{
+		$(elem).hide();
+		$(elem.previousElementSibling).show();
+	}
+}
+
+//Показать совета
+function showAdvice(){
+	advice.fadeIn(700);
+	setTimeout(()=> advice.fadeOut(700), 5000);
+}
+
+showAdvice();
+
