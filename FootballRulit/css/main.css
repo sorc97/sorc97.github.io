@@ -517,6 +517,15 @@ p{
 	box-shadow: 10px 10px 30px -5px black;
 	text-transform: uppercase;
 	transition: all 0.5s ease;
+	color: black;
+}
+
+.game__main_button.disabled{
+	background: #8b8e93;
+}
+
+.game__main_button.disabled:hover{
+	background: #8b8e93;
 }
 
 .game__main_button:hover{

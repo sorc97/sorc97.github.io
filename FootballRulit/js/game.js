@@ -277,6 +277,16 @@ function clearUserChip() {
     userChip.value = "";
 }
 
+//Блокировка/разблокировка кнопки
+function toggleDisableBut() {
+    if(accept.classList.contains("disabled")) {
+        accept.classList.remove("disabled");
+        accept.disabled = false;
+    }else{
+        accept.classList.add("disabled");
+        accept.disabled = true;
+    }
+}
 
 accept.onclick = function (e) {
     var bets = $('.game__betField_bet.active').toArray().map(function (e) {

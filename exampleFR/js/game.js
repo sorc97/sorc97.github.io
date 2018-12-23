@@ -355,6 +355,18 @@ accept.onclick = function(e) {
 	new Push("asdasdqw").show();
 }
 
+setTimeout(()=> toggleDisableBut(), 2000);
+
+function toggleDisableBut() {
+	if(accept.classList.contains("disabled")) {
+		accept.classList.remove("disabled");
+		accept.disabled = false;
+	}else{
+		accept.classList.add("disabled");
+		accept.disabled = true;
+	}
+}
+
 cancel.onclick = function(e) {
 	// new Message({text: "Пари сброшено"});
 	new Center("Матч закончился").show();
