@@ -596,6 +596,16 @@ function updateEvents() {
             content += '<td>' + formatSeconds(obj.relTime) + '</td>';
             content += '<td>' + eventName + '</td>';
             content += '</tr>';
+
+            // обработка новых событий для отображения пушей
+            if (existsItems.length > 0) {
+                if (obj.serviceEvent === "HALF_ENDED") {
+                    new Push("1-ый тайм завершен").show()
+                }
+                else if (obj.serviceEvent === "MATCH_ENDED") {
+                    new Push("Матч завершен").show()
+                }
+            }
         });
         $('table.game__messages_table>tbody').prepend(content);
     })
