@@ -251,11 +251,11 @@ function setChip(event) {
 }
 
 function setChipValue(value) {
-    if(value > 10000){
+    if (value > 10000) {
         activeBet.classList.remove("active");
         new Push("Вы превысили максимальную ставку!").show();
         return;
-    }else if(value <= 0) {
+    } else if (value <= 0) {
         activeBet.classList.remove("active");
         new Push("Некорректный ввод").show();
         return;
@@ -288,22 +288,24 @@ function clearUserChip() {
 
 //Блокировка/разблокировка кнопки
 function toggleDisableBut() {
-    if(accept.classList.contains("disabled")) {
+    if (accept.classList.contains("disabled")) {
         accept.classList.remove("disabled");
         accept.disabled = false;
-    }else{
+    } else {
         accept.classList.add("disabled");
         accept.disabled = true;
     }
 }
 
 accept.onclick = function (e) {
+    toggleDisableBut();
     var bets = $('.game__betField_bet.betOn').toArray().map(function (e) {
         return {"event": e.dataset.uniq_event, "kef": e.dataset.kef, "sum": e.dataset.sum}
     });
     var req = {"matchId": matchId, "bets": bets};
 
     sendPost("/api/bets/add", req, function (data) {
+        toggleDisableBut();
         if (data.error === null) {
             new Center("Пари зафиксированно").show();
             //запись активных элементов
@@ -320,7 +322,9 @@ accept.onclick = function (e) {
         } else {
             new Center("Пари не было зафиксированно").show();
         }
-    });
+    }).fail(function () {
+        toggleDisableBut();
+    })
 }
 
 repeat.onclick = function(e) {
@@ -348,7 +352,7 @@ function canselPari() {
 
 //УВЕДОМЛЕНИЯ
 
-class Notification{
+class Notification {
     constructor(options) {
         var elem = document.createElement("div");
         elem.className = "notification";
@@ -356,9 +360,9 @@ class Notification{
         elem.innerHTML = options.text;
         elem.classList.add(options.type);
 
-        elem.render = ()=> {
+        elem.render = () => {
             fieldArea.appendChild(elem);
-            setTimeout(()=> fieldArea.removeChild(elem), 2400);
+            setTimeout(() => fieldArea.removeChild(elem), 2400);
         };
 
         return elem;
@@ -366,24 +370,24 @@ class Notification{
 }
 
 
-class Push extends Notification{
-    constructor(content){
+class Push extends Notification {
+    constructor(content) {
         let elem = super({type: "push", text: content});
-        elem.show = ()=> {
+        elem.show = () => {
             elem.render();
-            setTimeout(()=> elem.classList.add("active"), 100);
-            setTimeout(()=> elem.classList.remove("active"), 2000);
+            setTimeout(() => elem.classList.add("active"), 100);
+            setTimeout(() => elem.classList.remove("active"), 2000);
         }
     }
 }
 
-class Center extends Notification{
+class Center extends Notification {
     constructor(content) {
         let elem = super({type: "center", text: content});
-        elem.show = ()=> {
+        elem.show = () => {
             elem.render();
-            setTimeout(()=> elem.classList.add("active"), 100);
-            setTimeout(()=> elem.classList.remove("active"), 2000);
+            setTimeout(() => elem.classList.add("active"), 100);
+            setTimeout(() => elem.classList.remove("active"), 2000);
         }
     }
 }
@@ -421,7 +425,7 @@ function getToken() {
 
 function updateBetsHistory() {
     sendPost("/api/bets/history", {id: matchId}, function (data) {
-        var content = data.data.reverse();
+        var content = data.data;
         var nonaccepted = content.filter(function (e) {
             return e.acceptedTime > Date.now() || e.status === "FREEZED"
         });
@@ -434,6 +438,7 @@ function updateBetsHistory() {
         nonAcceptedBetsUpdate(nonaccepted);
         acceptedBetsUpdate(accepted);
         calculatedBetsUpdate(calculated);
+        balanceUpdate(content)
     })
 }
 
@@ -502,14 +507,17 @@ function acceptedBetsUpdate(bets) {
 }
 
 function calculatedBetsUpdate(bets) {
-    let html = '<tbody>';
-    betsGroupedForComplex(bets).forEach(function (cmplx) {
+    var existsItems = $('.calculated_bets_table>tbody tr');
+    var lastItemDate = existsItems.length > 0 ? existsItems[0].dataset.date : null;
+    var items = bets.filter(item => item.writeTime > lastItemDate);
+    let html = '';
+    betsGroupedForComplex(items).forEach(function (cmplx) {
         if (cmplx.length > 1) {
             var first = cmplx[0];
             var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
             var cmplxWin = cmplx.map(e => betWinForCalculated(e)).reduce((a, b) => a + b, 0);
             var cmplxBalance = (cmplxWin - cmplxSum);
-            html += '<tr class="complex">';
+            html += '<tr class="complex" data-date="' + first.writeTime + '">';
             html += '<td>' + formatSeconds(first.relTime) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
@@ -531,7 +539,7 @@ function calculatedBetsUpdate(bets) {
         } else {
             var bet = cmplx[0];
             var betWin = betWinForCalculated(bet);
-            html += '<tr>';
+            html += '<tr data-date="' + bet.writeTime + '">';
             html += '<td>' + formatSeconds(bet.relTime) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
@@ -541,9 +549,8 @@ function calculatedBetsUpdate(bets) {
             html += '</tr>';
         }
     });
-    html += '</tbody>';
 
-    $('.calculated_bets_table>tbody').replaceWith(html);
+    $('.calculated_bets_table>tbody').prepend(html);
 }
 
 function balanceUpdate(bets) {
@@ -575,21 +582,26 @@ function betsGroupedForComplex(bets) {
 
 function updateEvents() {
     sendPost("/api/events/list", {id: matchId}, function (data) {
+        var existsItems = $('.game__messages_table>tbody tr');
+        var lastItemDate = existsItems.length > 0 ? existsItems[0].dataset.date : null;
+        var items = data.data.filter(item => item.arbiterTime > lastItemDate);
         var content = '';
-        content += '<tbody>';
-        data.data.reverse().forEach(function (obj) {
-            if (obj.eventFormat === "PLAYABLE") {
-                var eventName = obj.playableEvent;
-                content += '<tr>';
-                content += '<td>' + formatSeconds(obj.relTime) + '</td>';
-                content += '<td>' + eventName + '</td>';
-                content += '</tr>';
+        items.forEach(function (obj) {
+            var eventName = obj.playableEvent != null ? obj.playableEvent : obj.serviceEvent;
+            if (obj.eventFormat === "SERVICE") {
+                content += '<tr data-date="' + obj.arbiterTime + '"' + 'style="display: none;"' + '>';
+            } else {
+                content += '<tr data-date="' + obj.arbiterTime + '">';
             }
+            content += '<td>' + formatSeconds(obj.relTime) + '</td>';
+            content += '<td>' + eventName + '</td>';
+            content += '</tr>';
         });
-        content += '</tbody>';
-        $('table.game__messages_table>tbody').replaceWith(content);
+        $('table.game__messages_table>tbody').prepend(content);
     })
 }
+
+var freezed = false;
 
 function updateMatchInfo() {
     sendPost("/api/matches/info", {id: matchId}, function (data) {
@@ -609,9 +621,34 @@ function updateMatchInfo() {
             $('.game__side_information_match_score1').html(match.score1Team);
             $('.game__side_information_match_score2').html(match.score2Team);
         }
-        matchTimer(new Date(match.relStartTime), '.stopwatch')
+        matchTimer(new Date(match.relStartTime), '.stopwatch');
+
+        if (match.status === "TIMER_FREEZE") {
+            if (!freezed) {
+                new Push("Таймер заморожен").show();
+                freezed = true;
+            }
+        } else if (!isActiveForBet(match.status)) {
+            if (!accept.classList.contains("disabled")) {
+                toggleDisableBut();
+                new Push("Прием ставок приостановлен").show();
+            }
+        } else {
+            if (freezed) {
+                new Push("Таймер разморожен").show();
+                freezed = false;
+            } else if (accept.classList.contains("disabled")) {
+                toggleDisableBut();
+                new Push("Прием ставок возобновлен").show();
+            }
+        }
     })
 };
+
+function isActiveForBet(status){
+    return (status === "LIVE" || status === "EVENT_FIX" || status === "TIMER_FREEZE")
+}
+
 
 function updateInfo() {
     updateBetsHistory();
@@ -626,9 +663,9 @@ setInterval(() => {
 
 function formatSeconds(seconds) {
     var m = '' + ((seconds / 60) | 0);
-    var mm = m.length !== 2 ? '0' + m : m;
+    var mm = m.length < 2 ? '0' + m : m;
     var s = '' + (seconds % 60);
-    var ss = s.length !== 2 ? '0' + s : s;
+    var ss = s.length < 2 ? '0' + s : s;
     return mm + ':' + ss
 }
 
