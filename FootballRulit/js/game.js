@@ -641,7 +641,7 @@ function updateMatchInfo() {
         } else if (!isActiveForBet(match.status)) {
             if (!accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                new Push("Прием ставок приостановлен").show();
+                new Push("Прием пари временно приостановлен").show();
             }
         } else {
             if (freezed) {
@@ -649,7 +649,7 @@ function updateMatchInfo() {
                 freezed = false;
             } else if (accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                new Push("Прием ставок возобновлен").show();
+                new Push("Прием пари возобновлен").show();
             }
         }
     })
