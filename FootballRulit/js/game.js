@@ -438,7 +438,7 @@ function updateBetsHistory() {
         nonAcceptedBetsUpdate(nonaccepted);
         acceptedBetsUpdate(accepted);
         calculatedBetsUpdate(calculated);
-        balanceUpdate(content)
+        balanceUpdate(calculated)
     })
 }
 
