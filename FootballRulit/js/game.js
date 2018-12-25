@@ -635,7 +635,7 @@ function updateMatchInfo() {
 
         if (match.status === "TIMER_FREEZE") {
             if (!freezed) {
-                new Push("Таймер заморожен").show();
+                new Push("Таймер незаключенных пари заморожен").show();
                 freezed = true;
             }
         } else if (!isActiveForBet(match.status)) {
@@ -645,7 +645,7 @@ function updateMatchInfo() {
             }
         } else {
             if (freezed) {
-                new Push("Таймер разморожен").show();
+                new Push("Таймер незаключенных пари разморожен").show();
                 freezed = false;
             } else if (accept.classList.contains("disabled")) {
                 toggleDisableBut();
