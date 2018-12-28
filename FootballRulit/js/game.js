@@ -253,11 +253,11 @@ function setChip(event) {
 function setChipValue(value) {
     if (value > 10000) {
         activeBet.classList.remove("active");
-        new Push("Вы превысили максимальную ставку!").show();
+        new Push("Вы превысили максимальную ставку!").temporarily();
         return;
     } else if (value <= 0) {
         activeBet.classList.remove("active");
-        new Push("Некорректный ввод").show();
+        new Push("Некорректный ввод").temporarily();
         return;
     }
 
@@ -307,7 +307,7 @@ accept.onclick = function (e) {
     sendPost("/api/bets/add", req, function (data) {
         toggleDisableBut();
         if (data.error === null) {
-            new Center("Пари зафиксированно").show();
+            new Center("Пари зафиксированно").temporarily();
             //запись активных элементов
             $(".game__betField_bet").toArray().forEach((item, i)=>{
                 if(item.classList.contains("betOn")){
@@ -320,7 +320,7 @@ accept.onclick = function (e) {
             canselPari();
             updateInfo();
         } else {
-            new Center("Пари не было зафиксированно").show();
+            new Center("Пари не было зафиксированно").temporarily();
         }
     }).fail(function () {
         toggleDisableBut();
@@ -340,7 +340,7 @@ repeat.onclick = function(e) {
 
 cancel.onclick = function (e) {
     canselPari();
-    new Center("Пари сброшено").show();
+    new Center("Пари сброшено").temporarily();
 };
 
 function canselPari() {
@@ -352,42 +352,50 @@ function canselPari() {
 
 //УВЕДОМЛЕНИЯ
 
-class Notification {
+class Notyfication{
     constructor(options) {
         var elem = document.createElement("div");
-        elem.className = "notification";
+        elem.className = "notyfication";
 
         elem.innerHTML = options.text;
         elem.classList.add(options.type);
 
-        elem.render = () => {
+        elem.render = ()=> {
             fieldArea.appendChild(elem);
-            setTimeout(() => fieldArea.removeChild(elem), 2400);
         };
+
+        elem.hide = ()=> {
+            elem.classList.remove("active");
+            setTimeout(()=> fieldArea.removeChild(elem), 1000);
+        }
+
+        elem.temporarily = ()=> {
+            elem.render();
+            setTimeout(()=> elem.classList.add("active"), 100);
+            setTimeout(()=> elem.hide(), 2000);
+        }
 
         return elem;
     }
 }
 
 
-class Push extends Notification {
-    constructor(content) {
+class Push extends Notyfication{
+    constructor(content){
         let elem = super({type: "push", text: content});
-        elem.show = () => {
+        elem.show = ()=> {
             elem.render();
-            setTimeout(() => elem.classList.add("active"), 100);
-            setTimeout(() => elem.classList.remove("active"), 2000);
+            setTimeout(()=> elem.classList.add("active"), 100);
         }
     }
 }
 
-class Center extends Notification {
+class Center extends Notyfication{
     constructor(content) {
         let elem = super({type: "center", text: content});
-        elem.show = () => {
+        elem.show = ()=> {
             elem.render();
-            setTimeout(() => elem.classList.add("active"), 100);
-            setTimeout(() => elem.classList.remove("active"), 2000);
+            setTimeout(()=> elem.classList.add("active"), 100);
         }
     }
 }
@@ -600,10 +608,10 @@ function updateEvents() {
             // обработка новых событий для отображения пушей
             if (existsItems.length > 0) {
                 if (obj.serviceEvent === "HALF_ENDED") {
-                    new Push("1-ый тайм завершен").show()
+                    new Center("1-ый тайм завершен").show()
                 }
                 else if (obj.serviceEvent === "MATCH_ENDED") {
-                    new Push("Матч завершен").show()
+                    new Center("Матч завершен").show()
                 }
             }
         });
@@ -645,11 +653,11 @@ function updateMatchInfo() {
             }
         } else {
             if (freezed) {
-                new Push("Таймер незаключенных пари разморожен").show();
+                new Push("Таймер незаключенных пари разморожен").hide();
                 freezed = false;
             } else if (accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                new Push("Прием пари возобновлен").show();
+                new Push("Прием пари возобновлен").hide();
             }
         }
     })

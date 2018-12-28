@@ -350,7 +350,7 @@ let repeatStorage = [];
 // let repeatStorage = {};
 
 accept.onclick = function(e) {
-	new Center("Пари зафиксированно").show();
+	new Push("Пари зафиксированно").temporarily();
 
 	$(".game__betField_bet").toArray().forEach((item, i)=>{
 		if(item.classList.contains("betOn")){
@@ -391,7 +391,7 @@ function toggleDisableBut() {
 
 cancel.onclick = function(e) {
 	// new Message({text: "Пари сброшено"});
-	new Center("Пари отменено").show();
+	new Push("Пари отменено").show();
 	// $(".game__betField_bet").toArray().forEach((item)=>{
 	// 	if(item.classList.contains("betOn"));
 	// });
@@ -427,8 +427,18 @@ class Notyfication{
 
 		elem.render = ()=> {
 			fieldArea.appendChild(elem);
-			setTimeout(()=> fieldArea.removeChild(elem), 2400);
 		};
+
+		elem.hide = ()=> {
+			elem.classList.remove("active");
+			setTimeout(()=> fieldArea.removeChild(elem), 1000);
+		}
+
+		elem.temporarily = ()=> {
+			elem.render();
+			setTimeout(()=> elem.classList.add("active"), 100);
+			setTimeout(()=> elem.hide(), 2000);
+		}
 
 		return elem;
 	}
@@ -441,9 +451,7 @@ class Push extends Notyfication{
 		elem.show = ()=> {
 			elem.render();
 			setTimeout(()=> elem.classList.add("active"), 100);
-			setTimeout(()=> elem.classList.remove("active"), 2000);
 		}
-		// elem.show();
 	}
 }
 
@@ -453,7 +461,6 @@ class Center extends Notyfication{
 		elem.show = ()=> {
 			elem.render();
 			setTimeout(()=> elem.classList.add("active"), 100);
-			setTimeout(()=> elem.classList.remove("active"), 2000);
 		}
 	}
 }
