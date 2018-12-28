@@ -396,7 +396,7 @@ class Center extends Notification {
 
 function sendPost(url, data, success) {
     var session = getToken();
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: url,
         data: JSON.stringify(data),
