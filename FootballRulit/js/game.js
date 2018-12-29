@@ -28,6 +28,10 @@ let $headline = $(".game__history_headline");
 
 var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/", "");
 
+//Уведомления
+var timerFreezeNoti = new Push("Таймер незаключенных пари заморожен");
+var betFreezeNoti = new Push("Прием пари временно приостановлен");
+
 
 $complex.on('click', function (e) {
     let next = this.nextElementSibling;
@@ -643,21 +647,23 @@ function updateMatchInfo() {
 
         if (match.status === "TIMER_FREEZE") {
             if (!freezed) {
-                new Push("Таймер незаключенных пари заморожен").show();
+                timerFreezeNoti.show();
                 freezed = true;
             }
         } else if (!isActiveForBet(match.status)) {
             if (!accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                new Push("Прием пари временно приостановлен").show();
+                betFreezeNoti.show();
             }
         } else {
             if (freezed) {
-                new Push("Таймер незаключенных пари разморожен").hide();
+                timerFreezeNoti.hide();
+                new Push("Таймер незаключенных пари разморожен").temporarily();
                 freezed = false;
             } else if (accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                new Push("Прием пари возобновлен").hide();
+                betFreezeNoti.hide();
+                new Push("Прием пари возобновлен").temporarily();
             }
         }
     })
