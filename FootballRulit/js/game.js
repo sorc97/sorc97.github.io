@@ -31,6 +31,8 @@ var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/",
 //Уведомления
 var timerFreezeNoti = new Push("Таймер незаключенных пари заморожен");
 var betFreezeNoti = new Push("Прием пари временно приостановлен");
+var firstHalfEndNoti = new Center("1-ый тайм завершен");
+var matchEndNoti =  new Center("Матч завершен");
 
 
 $complex.on('click', function (e) {
@@ -612,10 +614,10 @@ function updateEvents() {
             // обработка новых событий для отображения пушей
             if (existsItems.length > 0) {
                 if (obj.serviceEvent === "HALF_ENDED") {
-                    new Center("1-ый тайм завершен").show()
+                    firstHalfEndNoti.show();
                 }
                 else if (obj.serviceEvent === "MATCH_ENDED") {
-                    new Center("Матч завершен").show()
+                    matchEndNoti.show();
                 }
             }
         });
