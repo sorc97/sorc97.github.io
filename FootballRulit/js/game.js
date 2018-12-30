@@ -29,10 +29,10 @@ let $headline = $(".game__history_headline");
 var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/", "");
 
 //Уведомления
-var timerFreezeNoti = new Push("Таймер незаключенных пари заморожен");
-var betFreezeNoti = new Push("Прием пари временно приостановлен");
-var firstHalfEndNoti = new Center("1-ый тайм завершен");
-var matchEndNoti =  new Center("Матч завершен");
+// var timerFreezeNoti = new Push("Таймер незаключенных пари заморожен");
+// var betFreezeNoti = new Push("Прием пари временно приостановлен");
+// var firstHalfEndNoti = new Center("1-ый тайм завершен");
+// var matchEndNoti =  new Center("Матч завершен");
 
 
 $complex.on('click', function (e) {
@@ -614,10 +614,10 @@ function updateEvents() {
             // обработка новых событий для отображения пушей
             if (existsItems.length > 0) {
                 if (obj.serviceEvent === "HALF_ENDED") {
-                    firstHalfEndNoti.show();
+                    // firstHalfEndNoti.show();
                 }
                 else if (obj.serviceEvent === "MATCH_ENDED") {
-                    matchEndNoti.show();
+                    // matchEndNoti.show();
                 }
             }
         });
@@ -649,22 +649,22 @@ function updateMatchInfo() {
 
         if (match.status === "TIMER_FREEZE") {
             if (!freezed) {
-                timerFreezeNoti.show();
+                // timerFreezeNoti.show();
                 freezed = true;
             }
         } else if (!isActiveForBet(match.status)) {
             if (!accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                betFreezeNoti.show();
+                // betFreezeNoti.show();
             }
         } else {
             if (freezed) {
-                timerFreezeNoti.hide();
+                // timerFreezeNoti.hide();
                 new Push("Таймер незаключенных пари разморожен").temporarily();
                 freezed = false;
             } else if (accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                betFreezeNoti.hide();
+                // betFreezeNoti.hide();
                 new Push("Прием пари возобновлен").temporarily();
             }
         }
