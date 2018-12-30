@@ -38,7 +38,7 @@
             <p class="startPage__matches_item_name">
                 {{ match.name }}
             </p>
-            <span class="startPage__matches_item_start">{{match.startTime | date('HH:mm')}}</span>
+            <span class="startPage__matches_item_start">{{match.startTime | dateTime('HH:mm')}}</span>
             <span class="startPage__matches_item_state">{{match.status}}</span>
             <div class="startPage__matches_item_score">{{ match.score }}</div>
         </a>
