@@ -28,11 +28,66 @@ let $headline = $(".game__history_headline");
 
 var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/", "");
 
-//Уведомления
-// var timerFreezeNoti = new Push("Таймер незаключенных пари заморожен");
-// var betFreezeNoti = new Push("Прием пари временно приостановлен");
-// var firstHalfEndNoti = new Center("1-ый тайм завершен");
-// var matchEndNoti =  new Center("Матч завершен");
+
+//УВЕДОМЛЕНИЯ
+
+class Notyfication {
+    constructor(options) {
+        var elem = document.createElement("div");
+        elem.className = "notyfication";
+
+        elem.innerHTML = options.text;
+        elem.classList.add(options.type);
+
+        elem.render = () => {
+            fieldArea.appendChild(elem);
+        };
+
+        elem.hide = () => {
+            elem.classList.remove("active");
+            setTimeout(() => fieldArea.removeChild(elem), 1000);
+        };
+
+        elem.isActive = () => {
+            return elem.classList.contains("active");
+        };
+
+        elem.temporarily = () => {
+            elem.render();
+            setTimeout(() => elem.classList.add("active"), 100);
+            setTimeout(() => elem.hide(), 2000);
+        };
+
+        return elem;
+    }
+}
+
+class Push extends Notyfication {
+    constructor(content) {
+        let elem = super({type: "push", text: content});
+        elem.show = () => {
+            elem.render();
+            setTimeout(() => elem.classList.add("active"), 100);
+        }
+    }
+}
+
+class Center extends Notyfication {
+    constructor(content) {
+        let elem = super({type: "center", text: content});
+        elem.show = () => {
+            elem.render();
+            setTimeout(() => elem.classList.add("active"), 100);
+        }
+
+
+    }
+}
+
+var timerFreezeNoti = new Push("Таймер незаключенных пари заморожен");
+var betFreezeNoti = new Push("Прием пари временно приостановлен");
+var firstHalfEndNoti = new Center("1-ый тайм завершен");
+var matchEndNoti = new Center("Матч завершен");
 
 
 $complex.on('click', function (e) {
@@ -315,10 +370,10 @@ accept.onclick = function (e) {
         if (data.error === null) {
             new Center("Пари зафиксированно").temporarily();
             //запись активных элементов
-            $(".game__betField_bet").toArray().forEach((item, i)=>{
-                if(item.classList.contains("betOn")){
+            $(".game__betField_bet").toArray().forEach((item, i) => {
+                if (item.classList.contains("betOn")) {
                     repeatStorage[i] = {status: 1, value: item.innerHTML};
-                }else{
+                } else {
                     repeatStorage[i] = {status: 0, value: 0};
                 }
             });
@@ -331,13 +386,13 @@ accept.onclick = function (e) {
     }).fail(function () {
         toggleDisableBut();
     })
-}
+};
 
-repeat.onclick = function(e) {
+repeat.onclick = function (e) {
     let currentField = document.getElementsByClassName("game__betField_bet");
 
-    repeatStorage.forEach((item, i)=> {
-        if(item.status){
+    repeatStorage.forEach((item, i) => {
+        if (item.status) {
             currentField[i].classList.add("betOn");
             currentField[i].innerHTML = item.value;
         }
@@ -354,56 +409,6 @@ function canselPari() {
         e.classList.remove('betOn');
         e.innerHTML = e.dataset.kef;
     })
-}
-
-//УВЕДОМЛЕНИЯ
-
-class Notyfication{
-    constructor(options) {
-        var elem = document.createElement("div");
-        elem.className = "notyfication";
-
-        elem.innerHTML = options.text;
-        elem.classList.add(options.type);
-
-        elem.render = ()=> {
-            fieldArea.appendChild(elem);
-        };
-
-        elem.hide = ()=> {
-            elem.classList.remove("active");
-            setTimeout(()=> fieldArea.removeChild(elem), 1000);
-        }
-
-        elem.temporarily = ()=> {
-            elem.render();
-            setTimeout(()=> elem.classList.add("active"), 100);
-            setTimeout(()=> elem.hide(), 2000);
-        }
-
-        return elem;
-    }
-}
-
-
-class Push extends Notyfication{
-    constructor(content){
-        let elem = super({type: "push", text: content});
-        elem.show = ()=> {
-            elem.render();
-            setTimeout(()=> elem.classList.add("active"), 100);
-        }
-    }
-}
-
-class Center extends Notyfication{
-    constructor(content) {
-        let elem = super({type: "center", text: content});
-        elem.show = ()=> {
-            elem.render();
-            setTimeout(()=> elem.classList.add("active"), 100);
-        }
-    }
 }
 
 //----------------------------------------------------------------------------------------------
@@ -610,22 +615,10 @@ function updateEvents() {
             content += '<td>' + formatSeconds(obj.relTime) + '</td>';
             content += '<td>' + eventName + '</td>';
             content += '</tr>';
-
-            // обработка новых событий для отображения пушей
-            if (existsItems.length > 0) {
-                if (obj.serviceEvent === "HALF_ENDED") {
-                    // firstHalfEndNoti.show();
-                }
-                else if (obj.serviceEvent === "MATCH_ENDED") {
-                    // matchEndNoti.show();
-                }
-            }
         });
         $('table.game__messages_table>tbody').prepend(content);
     })
 }
-
-var freezed = false;
 
 function updateMatchInfo() {
     sendPost("/api/matches/info", {id: matchId}, function (data) {
@@ -647,31 +640,49 @@ function updateMatchInfo() {
         }
         matchTimer(new Date(match.relStartTime), '.stopwatch');
 
-        if (match.status === "TIMER_FREEZE") {
-            if (!freezed) {
-                // timerFreezeNoti.show();
-                freezed = true;
-            }
-        } else if (!isActiveForBet(match.status)) {
+        if (!isActiveForBet(match.status)) {
             if (!accept.classList.contains("disabled")) {
                 toggleDisableBut();
-                // betFreezeNoti.show();
             }
-        } else {
-            if (freezed) {
-                // timerFreezeNoti.hide();
+        }
+
+        if (match.status === "ENDED") {
+            if (!matchEndNoti.isActive()) {
+                matchEndNoti.show();
+            }
+        } else if (match.status === "HALF_ENDED") {
+            if (!firstHalfEndNoti.isActive()) {
+                firstHalfEndNoti.show();
+            }
+        } else if (match.status === "TIMER_FREEZE") {
+            if (!timerFreezeNoti.isActive()) {
+                timerFreezeNoti.show();
+            }
+        } else if (match.status === "BETS_STOP") {
+            if (!betFreezeNoti.isActive()) {
+                betFreezeNoti.show()
+            }
+        } else if (match.status === "LIVE") {
+            if (timerFreezeNoti.isActive()) {
+                timerFreezeNoti.hide();
                 new Push("Таймер незаключенных пари разморожен").temporarily();
-                freezed = false;
-            } else if (accept.classList.contains("disabled")) {
-                toggleDisableBut();
-                // betFreezeNoti.hide();
+            } else if (betFreezeNoti.isActive()) {
+                betFreezeNoti.hide();
                 new Push("Прием пари возобновлен").temporarily();
+            } else if (matchEndNoti.isActive()) {
+                matchEndNoti.hide();
+            } else if (firstHalfEndNoti.isActive()) {
+                firstHalfEndNoti.hide();
+            }
+
+            if (accept.classList.contains("disabled")) {
+                toggleDisableBut();
             }
         }
     })
 };
 
-function isActiveForBet(status){
+function isActiveForBet(status) {
     return (status === "LIVE" || status === "EVENT_FIX" || status === "TIMER_FREEZE")
 }
 
