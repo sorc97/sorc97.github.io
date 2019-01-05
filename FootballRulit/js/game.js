@@ -34,7 +34,7 @@ var matchId = document.location.href.match(/match\/[0-9]*/)[0].replace("match/",
 class Notyfication {
     constructor(options) {
         var elem = document.createElement("div");
-        elem.className = "notyfication";
+        elem.className = "notification";
 
         elem.innerHTML = options.text;
         elem.classList.add(options.type);
