@@ -640,7 +640,11 @@ function updateMatchInfo() {
         }
         matchTimer(new Date(match.relStartTime), '.stopwatch');
 
-        if (!isActiveForBet(match.status)) {
+        if (isActiveForBet(match.status)) {
+            if (accept.classList.contains("disabled")) {
+                toggleDisableBut();
+            }
+        } else {
             if (!accept.classList.contains("disabled")) {
                 toggleDisableBut();
             }
@@ -679,10 +683,6 @@ function updateMatchInfo() {
                 matchEndNoti.hide();
             } else if (firstHalfEndNoti.isActive()) {
                 firstHalfEndNoti.hide();
-            }
-
-            if (accept.classList.contains("disabled")) {
-                toggleDisableBut();
             }
         }
     })
