@@ -625,7 +625,7 @@ function updateMatchInfo() {
         var match = data.data.match;
         if (match.half) {
             $('.game__side_information_match_half').html(match.half);
-        }else{
+        } else {
             $('.game__side_information_match_half').html('перерыв');
         }
         $('.game__side_information_match_score').html(match.score);
@@ -642,7 +642,15 @@ function updateMatchInfo() {
             $('.game__side_information_match_score1').html(match.score1Team);
             $('.game__side_information_match_score2').html(match.score2Team);
         }
-        matchTimer(new Date(match.relStartTime), '.stopwatch');
+        if (match.status === 'LIVE' || match.status === 'TIMER_FREEZE' || match.status === 'BETS_STOP') {
+            matchTimer(new Date(match.relStartTime), '.stopwatch');
+        } else if (match.status === 'HALF_ENDED') {
+            $('.stopwatch').html('45:00');
+        } else if (match.status === 'ENDED') {
+            $('.stopwatch').html('90:00');
+        } else {
+            $('.stopwatch').html('00:00');
+        }
 
         if (isActiveForBet(match.status)) {
             if (accept.classList.contains("disabled")) {
