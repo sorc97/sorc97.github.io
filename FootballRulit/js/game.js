@@ -647,10 +647,16 @@ function updateMatchInfo() {
         }
 
         if (match.status === "ENDED") {
+            if (!betFreezeNoti.isActive()) {
+                betFreezeNoti.show()
+            }
             if (!matchEndNoti.isActive()) {
                 matchEndNoti.show();
             }
         } else if (match.status === "HALF_ENDED") {
+            if (!betFreezeNoti.isActive()) {
+                betFreezeNoti.show()
+            }
             if (!firstHalfEndNoti.isActive()) {
                 firstHalfEndNoti.show();
             }
