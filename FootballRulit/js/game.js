@@ -623,7 +623,11 @@ function updateEvents() {
 function updateMatchInfo() {
     sendPost("/api/matches/info", {id: matchId}, function (data) {
         var match = data.data.match;
-        $('.game__side_information_match_half').html(match.half);
+        if (match.half) {
+            $('.game__side_information_match_half').html(match.half);
+        }else{
+            $('.game__side_information_match_half').html('перерыв');
+        }
         $('.game__side_information_match_score').html(match.score);
         if (match.teamsChanged) {
             $('.game__side_information_match_team1').html(match.team2Name);

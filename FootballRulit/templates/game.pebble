@@ -39,7 +39,11 @@
             <tr>
                 <!-- <th id="indent"></th> -->
                 <th id="exept2" colspan="2" class="game__side_information_match_team1"></th>
-                <th id="exept2" colspan="2"><qq class="game__side_information_match_score1"></qq>:<qq class="game__side_information_match_score2"></qq></th>
+                <th id="exept2" colspan="2">
+                    <qq class="game__side_information_match_score1"></qq>
+                    :
+                    <qq class="game__side_information_match_score2"></qq>
+                </th>
                 <th id="exept2" colspan="2" class="game__side_information_match_team2"></th>
             </tr>
 
@@ -211,7 +215,9 @@
         </table>
     </div>
     <div class="game__main_management">
-        <button class="game__main_management_accept game__main_button{% if info.match.status == "BET_STOP" %} disable{% endif %}">Заключить пари</button>
+        <button class="game__main_management_accept game__main_button{% if info.match.status == "BET_STOP" %} disable{% endif %}">
+            Заключить пари
+        </button>
         <button class="game__main_management_cancel game__main_button">Отменить</button>
         <button class="game__main_management_repeat game__main_button">Повторить</button>
     </div>
@@ -226,7 +232,7 @@
                     <strong>Время</strong>:
                     <u class=stopwatch>00:00</u>
                     <strong>Тайм</strong>:
-                    <u class="game__side_information_match_half">{{ info.match.half }}</u>
+                    <u class="game__side_information_match_half">{% if info.match.half==null %}перерыв{% else %}{{ info.match.half }}{% endif %}</u>
                     <br>
                     <strong>Счет</strong>:
                     <u class="game__side_information_match_score">{{ info.match.score }}</u>
