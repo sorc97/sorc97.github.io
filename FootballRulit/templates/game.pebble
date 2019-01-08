@@ -266,7 +266,8 @@
             <h1 class="game__history_headline">Текущие акцептованные нерасчитанные ставки</h1>
             <table id="widthCorrect" class="accepted_bets_table table__info accordion__item">
                 <thead>
-                <th>Время</th>
+                <th>Заход</th>
+                <th>Акцепт</th>
                 <th>Исход</th>
                 <th>Принято</th>
                 <th>Коэфф.</th>
@@ -281,13 +282,13 @@
                 <div class="game__history_tableWrapp">
                     <table id="table__result" class="calculated_bets_table table__result accordion__item">
                         <thead>
-                        <tr>
-                            <th>Время</th>
-                            <th>Исход</th>
-                            <th>Принято</th>
-                            <th>Коэфф.</th>
-                            <th>Выплачено</th>
-                            <th>Баланс</th>
+                        <th>Заход</th>
+                        <th>Акцепт</th>
+                        <th>Исход</th>
+                        <th>Принято</th>
+                        <th>Коэфф.</th>
+                        <th>Выплачено</th>
+                        <th>Баланс</th>
                         </tr>
                         </thead>
                         <tbody>

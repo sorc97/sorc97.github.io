@@ -498,6 +498,7 @@ function acceptedBetsUpdate(bets) {
             var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
             html += '<tr class="complex">';
             html += '<td>' + formatSeconds(first.relTime) + '</td>';
+            html += '<td>' + formatSeconds(first.relTime + first.deadZoneSize) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '<td></td>';
@@ -505,6 +506,7 @@ function acceptedBetsUpdate(bets) {
             cmplx.forEach(function (bet) {
                 html += '<tr class="complex__item">';
                 html += '<td>' + formatSeconds(bet.relTime) + '</td>';
+                html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
                 html += '<td>' + bet.kef + '</td>';
@@ -514,6 +516,7 @@ function acceptedBetsUpdate(bets) {
             var bet = cmplx[0];
             html += '<tr>';
             html += '<td>' + formatSeconds(bet.relTime) + '</td>';
+            html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
             html += '<td>' + bet.kef + '</td>';
@@ -538,6 +541,7 @@ function calculatedBetsUpdate(bets) {
             var cmplxBalance = (cmplxWin - cmplxSum);
             html += '<tr class="complex" data-date="' + first.writeTime + '">';
             html += '<td>' + formatSeconds(first.relTime) + '</td>';
+            html += '<td>' + formatSeconds(first.relTime + first.deadZoneSize) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
             html += '<td></td>';
@@ -548,6 +552,7 @@ function calculatedBetsUpdate(bets) {
                 var betWin = betWinForCalculated(bet);
                 html += '<tr class="complex__item">';
                 html += '<td>' + formatSeconds(bet.relTime) + '</td>';
+                html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
                 html += '<td>' + bet.kef + '</td>';
@@ -560,6 +565,7 @@ function calculatedBetsUpdate(bets) {
             var betWin = betWinForCalculated(bet);
             html += '<tr data-date="' + bet.writeTime + '">';
             html += '<td>' + formatSeconds(bet.relTime) + '</td>';
+            html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
             html += '<td>' + bet.kef + '</td>';
