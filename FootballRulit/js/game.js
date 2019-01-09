@@ -629,7 +629,7 @@ function updateMatchInfo() {
             $('.game__side_information_match_half').html('перерыв');
         }
         $('.game__side_information_match_score').html(match.score);
-        if (match.teamsChanged) {
+        if (match.reverseTeam) {
             $('.game__side_information_match_team1').html(match.team2Name);
             $('.game__side_information_match_team2').html(match.team1Name);
 
