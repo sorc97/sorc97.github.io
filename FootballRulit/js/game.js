@@ -497,7 +497,6 @@ function acceptedBetsUpdate(bets) {
             var first = cmplx[0];
             var cmplxSum = cmplx.map(e => e.sum).reduce((a, b) => a + b, 0);
             html += '<tr class="complex">';
-            html += '<td>' + formatSeconds(first.relTime) + '</td>';
             html += '<td>' + formatSeconds(first.relTime + first.deadZoneSize) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
@@ -505,7 +504,6 @@ function acceptedBetsUpdate(bets) {
             html += '</tr>';
             cmplx.forEach(function (bet) {
                 html += '<tr class="complex__item">';
-                html += '<td>' + formatSeconds(bet.relTime) + '</td>';
                 html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
@@ -515,7 +513,6 @@ function acceptedBetsUpdate(bets) {
         } else {
             var bet = cmplx[0];
             html += '<tr>';
-            html += '<td>' + formatSeconds(bet.relTime) + '</td>';
             html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
@@ -540,7 +537,6 @@ function calculatedBetsUpdate(bets) {
             var cmplxWin = cmplx.map(e => betWinForCalculated(e)).reduce((a, b) => a + b, 0);
             var cmplxBalance = (cmplxWin - cmplxSum);
             html += '<tr class="complex" data-date="' + first.writeTime + '">';
-            html += '<td>' + formatSeconds(first.relTime) + '</td>';
             html += '<td>' + formatSeconds(first.relTime + first.deadZoneSize) + '</td>';
             html += '<td></td>';
             html += '<td>' + cmplxSum + '</td>';
@@ -551,7 +547,6 @@ function calculatedBetsUpdate(bets) {
             cmplx.forEach(function (bet) {
                 var betWin = betWinForCalculated(bet);
                 html += '<tr class="complex__item">';
-                html += '<td>' + formatSeconds(bet.relTime) + '</td>';
                 html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
                 html += '<td>' + bet.event + '</td>';
                 html += '<td>' + bet.sum + '</td>';
@@ -564,7 +559,6 @@ function calculatedBetsUpdate(bets) {
             var bet = cmplx[0];
             var betWin = betWinForCalculated(bet);
             html += '<tr data-date="' + bet.writeTime + '">';
-            html += '<td>' + formatSeconds(bet.relTime) + '</td>';
             html += '<td>' + formatSeconds(bet.relTime + bet.deadZoneSize) + '</td>';
             html += '<td>' + bet.event + '</td>';
             html += '<td>' + bet.sum + '</td>';
