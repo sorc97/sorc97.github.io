@@ -714,7 +714,7 @@ function updateInfo() {
 updateInfo();
 setInterval(() => {
     updateInfo()
-}, 5000);
+}, 1000);
 
 function formatSeconds(seconds) {
     var m = '' + ((seconds / 60) | 0);
