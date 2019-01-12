@@ -1357,6 +1357,17 @@ p{
 	cursor: pointer;
 }
 
+.management__side_changeButton{
+	height: 20%;
+	width: 100%;
+	font-size: 18px;
+	border: 0;
+	box-shadow: 3px 5px 20px -2px grey;
+	margin-top: 20px;
+
+	cursor: pointer;
+}
+
 .management__side_button.disable{
 	background: indianred;
 }
