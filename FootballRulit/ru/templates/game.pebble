@@ -126,15 +126,15 @@
                 <th id="out" rowspan="2">
                     Аут
                 </th>
-                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out"
-                    data-uniq_event="OUT_LEFT"
-                    data-kef="{{ info.bets["OUT_LEFT"] }}">
-                    {{ info.bets["OUT_LEFT"] }}
-                </td>
                 <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top"
                     data-uniq_event="OUT_LEFT_UP"
                     data-kef="{{ info.bets["OUT_LEFT_UP"] }}">
                     {{ info.bets["OUT_LEFT_UP"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out"
+                    data-uniq_event="OUT_LEFT"
+                    data-kef="{{ info.bets["OUT_LEFT"] }}">
+                    {{ info.bets["OUT_LEFT"] }}
                 </td>
                 <td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out"
                     data-uniq_event="OUT"
@@ -171,15 +171,15 @@
 
             <tr>
                 <th id="corner" rowspan="2">Угловой</th>
-                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner"
-                    data-uniq_event="CORNER_LEFT"
-                    data-kef="{{ info.bets["CORNER_LEFT"] }}">
-                    {{ info.bets["CORNER_LEFT"] }}
-                </td>
                 <td class="game__betField_bet" data-direction="left" data-event="corner"
                     data-secondDirection="topCorner" data-uniq_event="CORNER_LEFT_UP"
                     data-kef="{{ info.bets["CORNER_LEFT_UP"] }}">
                     {{ info.bets["CORNER_LEFT_UP"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner"
+                    data-uniq_event="CORNER_LEFT"
+                    data-kef="{{ info.bets["CORNER_LEFT"] }}">
+                    {{ info.bets["CORNER_LEFT"] }}
                 </td>
                 <td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner"
                     data-uniq_event="CORNER"

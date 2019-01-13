@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameArea</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700&amp;subset=cyrillic-ext"
+          rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<main class="game__main">
+    <div class="game__betField">
+        <a href="/" class="game__betField_exit">Quit the game</a>
+        <div class="game__betWindow">
+            <input type="number" min="1" class="game__betWindow_userChip" placeholder="Enter your bet">
+            <div class="game__betWindow_chipWrapper">
+                <div class="game__betWindow_chip">10</div>
+                <div class="game__betWindow_chip">20</div>
+                <div class="game__betWindow_chip">50</div>
+                <div class="game__betWindow_chip">100</div>
+                <div class="game__betWindow_chip">500</div>
+                <div class="game__betWindow_chip">1000</div>
+                <p class="game__betWindow_maxBet">Max bet : 10 000</p>
+            </div>
+
+        </div>
+        <!-- <h1 class="caption">Игровое поле</h1> -->
+        <!-- <div class="game__betField_tableTooltip"></div> -->
+        <table class="game__betField_table">
+            <tr>
+                <th class="game__betField_tableTooltip" rowspan="2"></th>
+                <th colspan="2" class="direction" id="left">Left</th>
+                <th colspan="2" class="direction" id="all">Whole field</th>
+                <th colspan="2" class="direction" id="right">Right</th>
+            </tr>
+
+            <tr>
+                <!-- <th id="indent"></th> -->
+                <th id="exept2" colspan="2" class="game__side_information_match_team1"></th>
+                <th id="exept2" colspan="2">
+                    <qq class="game__side_information_match_score1"></qq>
+                    :
+                    <qq class="game__side_information_match_score2"></qq>
+                </th>
+                <th id="exept2" colspan="2" class="game__side_information_match_team2"></th>
+            </tr>
+
+            <tr>
+                <th id="goal">Goal</th>
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="goal"
+                    data-uniq_event="GOAL_LEFT"
+                    data-kef="{{ info.bets["GOAL_LEFT"] }}">
+                    {{ info.bets["GOAL_LEFT"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="goal" data-uniq_event="GOAL"
+                    data-kef="{{ info.bets["GOAL"] }}">
+                    {{ info.bets["GOAL"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="goal"
+                    data-uniq_event="GOAL_RIGHT"
+                    data-kef="{{ info.bets["GOAL_RIGHT"] }}">
+                    {{ info.bets["GOAL_RIGHT"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th id="fine">Free Kick</th>
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="fine"
+                    data-uniq_event="FORFEIT_LEFT"
+                    data-kef="{{ info.bets["FORFEIT_LEFT"] }}">
+                    {{ info.bets["FORFEIT_LEFT"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="fine"
+                    data-uniq_event="FORFEIT"
+                    data-kef="{{ info.bets["FORFEIT"] }}">
+                    {{ info.bets["FORFEIT"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="fine"
+                    data-uniq_event="FORFEIT_RIGHT"
+                    data-kef="{{ info.bets["FORFEIT_RIGHT"] }}">
+                    {{ info.bets["FORFEIT_RIGHT"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th id="offside">Offside</th>
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="offside"
+                    data-uniq_event="OFFSIDE_LEFT"
+                    data-kef="{{ info.bets["OFFSIDE_LEFT"] }}">
+                    {{ info.bets["OFFSIDE_LEFT"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="offside"
+                    data-uniq_event="OFFSIDE"
+                    data-kef="{{ info.bets["OFFSIDE"] }}">
+                    {{ info.bets["OFFSIDE"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="offside"
+                    data-uniq_event="OFFSIDE_RIGHT"
+                    data-kef="{{ info.bets["OFFSIDE_RIGHT"] }}">
+                    {{ info.bets["OFFSIDE_RIGHT"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th id="goalKick">Goal Kick</th>
+                <td class="game__betField_bet" colspan="2" data-direction="left" data-event="goalKick"
+                    data-uniq_event="FROMGATE_LEFT"
+                    data-kef="{{ info.bets["FROMGATE_LEFT"] }}">
+                    {{ info.bets["FROMGATE_LEFT"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="all" data-event="goalKick"
+                    data-uniq_event="FROMGATE"
+                    data-kef="{{ info.bets["FROMGATE"] }}">
+                    {{ info.bets["FROMGATE"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" data-direction="right" data-event="goalKick"
+                    data-uniq_event="FROMGATE_RIGHT"
+                    data-kef="{{ info.bets["FROMGATE_RIGHT"] }}">
+                    {{ info.bets["FROMGATE_RIGHT"] }}
+                </td>
+            </tr>
+
+            <tr id="exept">
+                <th id="out" rowspan="2">
+                    Throw-in
+                </th>
+                <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="top"
+                    data-uniq_event="OUT_LEFT_UP"
+                    data-kef="{{ info.bets["OUT_LEFT_UP"] }}">
+                    {{ info.bets["OUT_LEFT_UP"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="out"
+                    data-uniq_event="OUT_LEFT"
+                    data-kef="{{ info.bets["OUT_LEFT"] }}">
+                    {{ info.bets["OUT_LEFT"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" colspan="2" data-direction="all" data-event="out"
+                    data-uniq_event="OUT"
+                    data-kef="{{ info.bets["OUT"] }}">
+                    {{ info.bets["OUT"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" data-direction="right" data-event="out"
+                    data-uniq_event="OUT_RIGHT"
+                    data-kef="{{ info.bets["OUT_RIGHT"] }}">
+                    {{ info.bets["OUT_RIGHT"] }}
+                </td>
+                <td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="top"
+                    data-uniq_event="OUT_RIGHT_UP"
+                    data-kef="{{ info.bets["OUT_RIGHT_UP"] }}">
+                    {{ info.bets["OUT_RIGHT_UP"] }}
+                </td>
+                <th id="top" class="rotate direction exept2" colspan="1" rowspan="1">Top</th>
+            </tr>
+
+            <tr>
+                <td class="game__betField_bet" data-direction="left" data-event="out" data-secondDirection="down"
+                    data-uniq_event="OUT_LEFT_DOWN"
+                    data-kef="{{ info.bets["OUT_LEFT_DOWN"] }}">
+                    {{ info.bets["OUT_LEFT_DOWN"] }}
+                </td>
+                <td class="game__betField_bet" data-direction="right" data-event="out" data-secondDirection="down"
+                    data-uniq_event="OUT_RIGHT_DOWN"
+                    data-kef="{{ info.bets["OUT_RIGHT_DOWN"] }}">
+                    {{ info.bets["OUT_RIGHT_DOWN"] }}
+                </td>
+                <th id="down" class="rotate direction exept2" colspan="1">Bot</th>
+            </tr>
+
+
+            <tr>
+                <th id="corner" rowspan="2">Corner</th>
+                <td class="game__betField_bet" data-direction="left" data-event="corner"
+                    data-secondDirection="topCorner" data-uniq_event="CORNER_LEFT_UP"
+                    data-kef="{{ info.bets["CORNER_LEFT_UP"] }}">
+                    {{ info.bets["CORNER_LEFT_UP"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" data-direction="left" data-event="corner"
+                    data-uniq_event="CORNER_LEFT"
+                    data-kef="{{ info.bets["CORNER_LEFT"] }}">
+                    {{ info.bets["CORNER_LEFT"] }}
+                </td>
+                <td class="game__betField_bet" colspan="2" rowspan="2" data-direction="all" data-event="corner"
+                    data-uniq_event="CORNER"
+                    data-kef="{{ info.bets["CORNER"] }}">
+                    {{ info.bets["CORNER"] }}
+                </td>
+                <td class="game__betField_bet" rowspan="2" data-direction="right" data-event="corner"
+                    data-uniq_event="CORNER_RIGHT"
+                    data-kef="{{ info.bets["CORNER_RIGHT"] }}">
+                    {{ info.bets["CORNER_RIGHT"] }}
+                </td>
+                <td class="game__betField_bet" data-direction="right" data-event="corner"
+                    data-secondDirection="topCorner" data-uniq_event="CORNER_RIGHT_UP"
+                    data-kef="{{ info.bets["CORNER_RIGHT_UP"] }}">
+                    {{ info.bets["CORNER_RIGHT_UP"] }}
+                </td>
+                <th id="topCorner" class="rotate direction exept2" colspan="1" rowspan="1">Top</th>
+            </tr>
+
+            <tr>
+                <td class="game__betField_bet" data-direction="left" data-event="corner"
+                    data-secondDirection="downCorner" data-uniq_event="CORNER_LEFT_DOWN"
+                    data-kef="{{ info.bets["CORNER_LEFT_DOWN"] }}">
+                    {{ info.bets["CORNER_LEFT_DOWN"] }}
+                </td>
+                <td class="game__betField_bet" data-direction="right" data-event="corner"
+                    data-secondDirection="downCorner" data-uniq_event="CORNER_RIGHT_DOWN"
+                    data-kef="{{ info.bets["CORNER_RIGHT_DOWN"] }}">
+                    {{ info.bets["CORNER_RIGHT_DOWN"] }}
+                </td>
+                <th id="downCorner" class="rotate direction exept2" colspan="1">Bot</th>
+            </tr>
+        </table>
+    </div>
+    <div class="game__main_management">
+        <button class="game__main_management_accept game__main_button{% if info.match.status == "BET_STOP" %} disable{% endif %}">
+            Confirm bet
+        </button>
+        <button class="game__main_management_cancel game__main_button">Cancel</button>
+        <button class="game__main_management_repeat game__main_button">Repeat</button>
+    </div>
+</main>
+<aside class="game__side">
+    <div class="game__side_information">
+        <!-- <h1 class="game__side_caption">Область информации</h1> -->
+        <div class="game__side_information_wrapper">
+            <div class="game__side_information_matchWrapper">
+                <p class="game__side_information_match">
+                    <strong>Match</strong>: {{ info.match.name }} <br>
+                    <strong>Time</strong>:
+                    <u class=stopwatch>00:00</u>
+                    <strong>Half</strong>:
+                    <u class="game__side_information_match_half">{% if info.match.half==null %}half-time{% else %}{{ info.match.half }}{% endif %}</u>
+                    <br>
+                    <strong>Score</strong>:
+                    <u class="game__side_information_match_score">{{ info.match.score }}</u>
+                </p>
+            </div>
+
+            <p class="game__side_information_player">
+                <u>Balance</u>: <strong>{{ user.balance }}</strong> <br>
+                <u>Bet summ</u>:
+                <qq id="game__side_information_player_sum">0.0</qq>
+                <br>
+                <u>Hand pay</u>:
+                <qq id="game__side_information_player_win">0.0</qq>
+                <br>
+                <u>Revenue</u>:
+                <qq id="game__side_information_player_balance">0.0</qq>
+            </p>
+        </div>
+    </div>
+    <div class="game__history">
+        <h1 class="game__side_caption">Bet history</h1>
+        <div class="game__history_itemWrapper space__owerflow">
+            <h1 class="game__history_headline">Current unaccepted bets</h1>
+            <table id="widthCorrect" class="nonaccepted_bets_table table__info accordion__item">
+                <thead>
+                <th>Timer</th>
+                <th>Bet summ</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <h1 class="game__history_headline">Current accepted uncalculated bets</h1>
+            <table id="widthCorrect" class="accepted_bets_table table__info accordion__item">
+                <thead>
+                <th>Accept time</th>
+                <th>Event</th>
+                <th>Accepted</th>
+                <th>Coeff.</th>
+                </thead>
+                <tbody>
+                </tbody>
+
+            </table>
+
+            <div class="game__history_sectionWrap">
+                <h1 class="game__history_headline">Calculated bets</h1>
+                <div class="game__history_tableWrapp">
+                    <table id="table__result" class="calculated_bets_table table__result accordion__item">
+                        <thead>
+                        <th>Accept time</th>
+                        <th>Event</th>
+                        <th>Accepted</th>
+                        <th>Coeff.</th>
+                        <th>Hand pay</th>
+                        <th>Revenue</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="game__messages">
+        <h1 id="game__messages_caption" class="game__side_caption">Event List</h1>
+        <div class="game__messages_tableWrap space__owerflow">
+            <table class="game__messages_table table__info">
+                <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Event</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</aside>
+
+
+<script src="/js/game.js"></script>
+<script src="/js/timer.js"></script>
+</body>
+</html>
