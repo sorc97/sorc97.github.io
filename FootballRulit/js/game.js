@@ -580,9 +580,9 @@ function balanceUpdate(bets) {
         fullWin += betWinForCalculated(bet);
     });
 
-    $('#game__side_information_player_sum').html(fullSum);
-    $('#game__side_information_player_win').html(fullWin);
-    $('#game__side_information_player_balance').html(fullWin - fullSum);
+    $('#game__side_information_player_sum').html(fullSum.toFixed(2));
+    $('#game__side_information_player_win').html(fullWin.toFixed(2));
+    $('#game__side_information_player_balance').html((fullWin - fullSum).toFixed(2));
 }
 
 function betWinForCalculated(bet) {
@@ -623,10 +623,13 @@ function updateEvents() {
 function updateMatchInfo() {
     sendPost("/api/matches/info", {id: matchId}, function (data) {
         var match = data.data.match;
-        if (match.half) {
+        if (match.status === "HALF_ENDED") {
+            $('.game__side_information_match_half').html("перерыв");
+        }
+        else if (match.half) {
             $('.game__side_information_match_half').html(match.half);
         } else {
-            $('.game__side_information_match_half').html('перерыв');
+            $('.game__side_information_match_half').html('-');
         }
         $('.game__side_information_match_score').html(match.score);
         if (match.reverseTeam) {
@@ -645,10 +648,13 @@ function updateMatchInfo() {
         if (match.status === 'LIVE' || match.status === 'TIMER_FREEZE' || match.status === 'BETS_STOP') {
             matchTimer(new Date(match.relStartTime), '.stopwatch');
         } else if (match.status === 'HALF_ENDED') {
+            clearTimeout(match_clocktimer);
             $('.stopwatch').html('45:00');
         } else if (match.status === 'ENDED') {
+            clearTimeout(match_clocktimer);
             $('.stopwatch').html('90:00');
         } else {
+            clearTimeout(match_clocktimer);
             $('.stopwatch').html('00:00');
         }
 
