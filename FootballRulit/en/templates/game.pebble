@@ -12,7 +12,7 @@
 
 <main class="game__main">
     <div class="game__betField">
-        <a href="/" class="game__betField_exit">Quit the game</a>
+        <a href="/" class="game__betField_exit">Quit</a>
         <div class="game__betWindow">
             <input type="number" min="1" class="game__betWindow_userChip" placeholder="Enter your bet">
             <div class="game__betWindow_chipWrapper">
@@ -32,7 +32,7 @@
             <tr>
                 <th class="game__betField_tableTooltip" rowspan="2"></th>
                 <th colspan="2" class="direction" id="left">Left</th>
-                <th colspan="2" class="direction" id="all">Whole field</th>
+                <th colspan="2" class="direction" id="all">Field</th>
                 <th colspan="2" class="direction" id="right">Right</th>
             </tr>
 
@@ -151,7 +151,7 @@
                     data-kef="{{ info.bets["OUT_RIGHT_UP"] }}">
                     {{ info.bets["OUT_RIGHT_UP"] }}
                 </td>
-                <th id="top" class="rotate direction exept2" colspan="1" rowspan="1">Top</th>
+                <th id="top" class="rotate direction exept2" colspan="1" rowspan="1">Up</th>
             </tr>
 
             <tr>
@@ -165,7 +165,7 @@
                     data-kef="{{ info.bets["OUT_RIGHT_DOWN"] }}">
                     {{ info.bets["OUT_RIGHT_DOWN"] }}
                 </td>
-                <th id="down" class="rotate direction exept2" colspan="1">Bot</th>
+                <th id="down" class="rotate direction exept2" colspan="1">Down</th>
             </tr>
 
 
@@ -196,7 +196,7 @@
                     data-kef="{{ info.bets["CORNER_RIGHT_UP"] }}">
                     {{ info.bets["CORNER_RIGHT_UP"] }}
                 </td>
-                <th id="topCorner" class="rotate direction exept2" colspan="1" rowspan="1">Top</th>
+                <th id="topCorner" class="rotate direction exept2" colspan="1" rowspan="1">Up</th>
             </tr>
 
             <tr>
@@ -210,7 +210,7 @@
                     data-kef="{{ info.bets["CORNER_RIGHT_DOWN"] }}">
                     {{ info.bets["CORNER_RIGHT_DOWN"] }}
                 </td>
-                <th id="downCorner" class="rotate direction exept2" colspan="1">Bot</th>
+                <th id="downCorner" class="rotate direction exept2" colspan="1">Down</th>
             </tr>
         </table>
     </div>
@@ -241,7 +241,7 @@
 
             <p class="game__side_information_player">
                 <u>Balance</u>: <strong>{{ user.balance }}</strong> <br>
-                <u>Bet summ</u>:
+                <u>Bet sum</u>:
                 <qq id="game__side_information_player_sum">0.0</qq>
                 <br>
                 <u>Hand pay</u>:
@@ -259,7 +259,7 @@
             <table id="widthCorrect" class="nonaccepted_bets_table table__info accordion__item">
                 <thead>
                 <th>Timer</th>
-                <th>Bet summ</th>
+                <th>Bet sum</th>
                 </thead>
                 <tbody></tbody>
             </table>
