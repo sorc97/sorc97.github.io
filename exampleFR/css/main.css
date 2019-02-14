@@ -1304,6 +1304,8 @@ p{
 
 #bet__container td{
 	width: 25%;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
 
 .management__history_bets_content{
