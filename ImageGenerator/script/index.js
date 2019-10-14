@@ -86,7 +86,7 @@ function makeRequest(url) {
 const createImg = ({webformatURL, largeImageURL}) => {
   let div = document.createElement('div');
   div.className = 'img-wrapper';
-  div.innerHTML = `<img src='load2.svg' data-src=${webformatURL} data-large=${largeImageURL} class='grid-img'>`;
+  div.innerHTML = `<img src='./imgs/load2.svg' data-src=${webformatURL} data-large=${largeImageURL} class='grid-img'>`;
 
   imgs = [...imgs, div];
 }
