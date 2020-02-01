@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pets</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/media.css">
+</head>
+
+<body>
+	<!-- Header -->
+	<header class="header">
+		<div class="container header__container">
+			<div class="row">
+				<!-- Logo -->
+				<div class="col-12 col-md-4 col-lg-6 logo">
+					<a href="#" class="logo__link">
+						<img src="img/logo.png" alt="logo" class="logo__img">
+					</a>
+					<button class="d-md-none nav-toggler" type="button">
+						<i class="fa fa-bars"></i>
+					</button>
+				</div>
+				<!-- Navigation -->
+				<div class="d-md-flex col-md-8 col-lg-6 menu">
+					<nav class="navigation">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="#about" class="menu__link">About the shelter</a>
+							</li>
+							<li class="menu__item">
+								<a href="#friends" class="menu__link">Our pets</a>
+							</li>
+							<li class="menu__item">
+								<a href="#help" class="menu__link">To help the shelter</a>
+							</li>
+							<li class="menu__item">
+								<a href="#footer" class="menu__link">Contacts</a>
+							</li>
+						</ul>
+						<button class="fa fa-close d-md-none menu__button menu__button_close button"></button>
+					</nav>
+				</div>
+			</div>
+			<div class="row flex-grow-1">
+				<!-- Offer -->
+				<div class="col-12 col-lg-6 d-flex align-items-center">
+					<div class="offer text-center text-md-left">
+						<h1 class="offer__caption">
+							Not only people<br>need a house
+						</h1>
+						<p class="offer__text">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida
+							est in porttitor porttitor. Duis sodales elementum ipsum, vehicula
+							condimentum erat fringilla et.
+						</p>
+						<a href="#friends" class="offer__button button">Make a friend</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- About -->
+	<section class="about" id="about">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-12 col-md-5 col-lg-5 about__img d-flex justify-content-center">
+					<img src="img/Pets.png" alt="pets image">
+				</div>
+				<div class="col-12 col-md-7 col-lg-6">
+					<div class="about__text">
+						<h2 class="about__caption caption">About the shelter<br>“Cozy House”</h2>
+						<p class="about__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur
+							blandit condimentum. Proin accumsan lorem vel gravida fringilla. Suspendisse potenti. Mauris ut pulvinar
+							nunc.</p>
+						<p class="about__description">Donec consectetur, diam in porta tempus, urna ligula vestibulum nibh, ac
+							ornare felis justo nec leo. Praesent mattis nibh quis
+							ultrices pharetra. Morbi tempus at ante sit amet tristique.
+							Maecenas dignissim justo orci, in laoreet urna dapibus nec. Praesent quis tortor faucibus, tristique ante
+							vitae, dignissim
+							lorem. Sed at ligula et sem mattis gravida ac vel erat. </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Friends -->
+	<section class="friends" id="friends">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="friends__caption caption">
+						Our friends who <br>
+						are looking for a house
+					</h2>
+				</div>
+			</div>
+			<!-- Slider -->
+			<div class="row">
+				<div class="col-12 slider friends__slider">
+					<button class="slider__button action-button slider__button_arrow-left">
+						<i class="fa fa-arrow-left"></i>
+					</button>
+					<div class="slider__display">
+						<ul class="slider__list">
+
+							<li class="col-12 col-md-6 col-lg-4 slider__item">
+								<div class="friends-item">
+									<div class="friends-item__img">
+										<img class src="img/cat.jpeg" alt="friends image">
+									</div>
+									<h2 class="friends-item__name">Katrine</h2>
+									<button type="button" class="friends-item__button button">Learn More</button>
+									<!-- Modal content -->
+									<div class="modal-item" hidden>
+										<div class="friends-modal">
+											<div class="col-md-6 friends-modal__img">
+												<img src="img/cat.jpeg" alt="pet image">
+											</div>
+											<div class="col-md-6 friends-modal__text">
+												<div class="friends-modal__captions">
+													<h2 class="friends-modal__name caption">Katrine</h2>
+													<h3 class="friends-modal__subtitle">Cat</h3>
+												</div>
+												<p class="friends-modal__description">
+													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur blandit condimentum.
+													Proin accumsan lorem vel gra vida fringilla. Suspendisse potenti. Mauris ut pulvinar nunc.
+													Donec
+													consectetur, diam in porta tempus, urna ligula ves tibulum nibh.
+												</p>
+												<ul class="friends-modal__info-list info-list">
+													<li class="info-list__item">Age: 2 years</li>
+													<li class="info-list__item">Inoculations: none</li>
+													<li class="info-list__item">Diseases: none</li>
+													<li class="info-list__item">Parasites: none</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<li class="col-12 col-md-6 col-lg-4 slider__item">
+								<div class="friends-item">
+									<div class="friends-item__img">
+										<img class src="img/dog.jpeg" alt="friends image">
+									</div>
+									<h2 class="friends-item__name">Jennifer</h2>
+									<button type="button" class="friends-item__button button">Learn More</button>
+									<!-- Modal content -->
+									<div class="modal-item" hidden>
+										<div class="friends-modal">
+											<div class="col-md-6 friends-modal__img">
+												<img src="img/dog.jpeg" alt="pet image">
+											</div>
+											<div class="col-md-6 friends-modal__text">
+												<div class="friends-modal__captions">
+													<h2 class="friends-modal__name caption">Jennifer</h2>
+													<h3 class="friends-modal__subtitle">Dog</h3>
+												</div>
+												<p class="friends-modal__description">
+													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur blandit condimentum.
+													Proin accumsan lorem vel gra vida fringilla. Suspendisse potenti. Mauris ut pulvinar nunc.
+													Donec
+													consectetur, diam in porta tempus, urna ligula ves tibulum nibh.
+												</p>
+												<ul class="friends-modal__info-list info-list">
+													<li class="info-list__item">Age: 2 mounth</li>
+													<li class="info-list__item">Inoculations: none</li>
+													<li class="info-list__item">Diseases: none</li>
+													<li class="info-list__item">Parasites: none</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<li class="col-12 col-md-6 col-lg-4 slider__item">
+								<div class="friends-item">
+									<div class="friends-item__img">
+										<img class src="img/dog2.jpeg" alt="friends image">
+									</div>
+									<h2 class="friends-item__name">Woody</h2>
+									<button type="button" class="friends-item__button button">Learn More</button>
+									<!-- Modal content -->
+									<div class="modal-item" hidden>
+										<div class="friends-modal">
+											<div class="col-md-6 friends-modal__img">
+												<img class src="img/dog2.jpeg" alt="friends image">
+											</div>
+											<div class="col-md-6 friends-modal__text">
+												<div class="friends-modal__captions">
+													<h2 class="friends-modal__name caption">Woody</h2>
+													<h3 class="friends-modal__subtitle">Dog</h3>
+												</div>
+												<p class="friends-modal__description">
+													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur blandit condimentum.
+													Proin accumsan lorem vel gra vida fringilla. Suspendisse potenti. Mauris ut pulvinar nunc.
+													Donec
+													consectetur, diam in porta tempus, urna ligula ves tibulum nibh.
+												</p>
+												<ul class="friends-modal__info-list info-list">
+													<li class="info-list__item">Age: 5 years</li>
+													<li class="info-list__item">Inoculations: none</li>
+													<li class="info-list__item">Diseases: none</li>
+													<li class="info-list__item">Parasites: none</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<li class="col-12 col-md-6 col-lg-4 slider__item">
+								<div class="friends-item">
+									<div class="friends-item__img">
+										<img class src="img/cat2.jpeg" alt="friends image">
+									</div>
+									<h2 class="friends-item__name">Timmy</h2>
+									<button type="button" class="friends-item__button button">Learn More</button>
+									<!-- Modal content -->
+									<div class="modal-item" hidden>
+										<div class="friends-modal">
+											<div class="col-md-6 friends-modal__img">
+												<img class src="img/cat2.jpeg" alt="friends image">
+											</div>
+											<div class="col-md-6 friends-modal__text">
+												<div class="friends-modal__captions">
+													<h2 class="friends-modal__name caption">Timmy</h2>
+													<h3 class="friends-modal__subtitle">Cat</h3>
+												</div>
+												<p class="friends-modal__description">
+													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur blandit condimentum.
+													Proin accumsan lorem vel gra vida fringilla. Suspendisse potenti. Mauris ut pulvinar nunc.
+													Donec
+													consectetur, diam in porta tempus, urna ligula ves tibulum nibh.
+												</p>
+												<ul class="friends-modal__info-list info-list">
+													<li class="info-list__item">Age: 6 mounth</li>
+													<li class="info-list__item">Inoculations: none</li>
+													<li class="info-list__item">Diseases: none</li>
+													<li class="info-list__item">Parasites: none</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<li class="col-12 col-md-6 col-lg-4 slider__item">
+								<div class="friends-item">
+									<div class="friends-item__img">
+										<img class src="img/dog4.jpeg" alt="friends image">
+									</div>
+									<h2 class="friends-item__name">Scarlett</h2>
+									<button type="button" class="friends-item__button button">Learn More</button>
+									<!-- Modal content -->
+									<div class="modal-item" hidden>
+										<div class="friends-modal">
+											<div class="col-md-6 friends-modal__img">
+												<img class src="img/dog4.jpeg" alt="friends image">
+											</div>
+											<div class="col-md-6 friends-modal__text">
+												<div class="friends-modal__captions">
+													<h2 class="friends-modal__name caption">Scarlett</h2>
+													<h3 class="friends-modal__subtitle">Dog</h3>
+												</div>
+												<p class="friends-modal__description">
+													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur blandit condimentum.
+													Proin accumsan lorem vel gra vida fringilla. Suspendisse potenti. Mauris ut pulvinar nunc.
+													Donec
+													consectetur, diam in porta tempus, urna ligula ves tibulum nibh.
+												</p>
+												<ul class="friends-modal__info-list info-list">
+													<li class="info-list__item">Age: 8 mounth</li>
+													<li class="info-list__item">Inoculations: none</li>
+													<li class="info-list__item">Diseases: none</li>
+													<li class="info-list__item">Parasites: none</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<button class="slider__button action-button slider__button_arrow-right">
+						<i class="fa fa-arrow-right"></i>
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 d-flex justify-content-center">
+					<a href="#" class="button__offer button">Get to know the rest</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Help -->
+	<section class="help" id="help">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="help__caption caption">
+						Than you can help <br>
+						our shelter
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<ul class="help__list">
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/cat-food.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Pet food</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/ambulance.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Transportation</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/ball.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Toys</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/bowl.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Bowls and cups</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/shampoo.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Shampoos</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/pills.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Vitamins</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/syringe.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Medicines</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/leash.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Collars / leashes</h3>
+					</li>
+					<li class="col-6 col-md-4 col-lg-2 help__item">
+						<div class="help__img">
+							<img src="img/cat.svg" alt="help icon">
+						</div>
+						<h3 class="help__title">Sleeping area</h3>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- Donate -->
+	<section class="donate">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 d-flex">
+					<div class="donate__img">
+						<img src="img/Dog2.png" alt="donate icon">
+					</div>
+				</div>
+				<div class="col-md-6 d-flex">
+					<div class="donate__text">
+						<h2 class="donate__caption caption">In addition, you <br>
+							can make a donation</h2>
+						<p class="donate__info">
+							Name of the bank / Type of bank account
+						</p>
+						<div class="donate__number donate-number">
+							<div class="donate-number__img">
+								<img src="img/credit-card.svg" alt="donate card icon">
+							</div>
+							<p class="donate-number__text">8380 2880 8028 8791 7435</p>
+						</div>
+						<p class="donate__description">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Maecenas a ipsum at libero sagittis dignissim sed
+							ac diam. Praesent ultrices maximus tortor et vulputate. Interdum
+							et malesuada fames ac ante ipsum primis in faucibus</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer -->
+	<footer class="footer" id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<!-- Information -->
+					<div class="information footer__information">
+						<h2 class="information__caption caption">
+							For questions<br>
+							and suggestions
+						</h2>
+						<div class="information__item d-flex">
+							<div class="information__img">
+								<img src="img/envelope.svg" alt="envelope icon">
+							</div>
+							<p class="information__text">
+								email@shelter.com
+							</p>
+						</div>
+
+						<div class="information__item d-flex">
+							<div class="information__img">
+								<img src="img/telephone.svg" alt="telephone icon">
+							</div>
+							<p class="information__text">
+								+13 674 567 75 54
+							</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-12 col-md-6 col-lg-4 ">
+					<div class="information footer__information">
+						<h2 class="information__caption caption">
+							We are waiting<br>
+							for your visit
+						</h2>
+
+						<div class="information__item d-flex">
+							<div class="information__img">
+								<img src="img/pin.svg" alt="pin icon">
+							</div>
+							<p class="information__text">
+								Boston, Central Street, 1st<br>
+								(Entrance from the store)
+							</p>
+						</div>
+
+						<div class="information__item d-flex">
+							<div class="information__img">
+								<img src="img/pin.svg" alt="pin icon">
+							</div>
+							<p class="information__text">
+								London, South Park, 18st
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="./js/index.js"></script>
+</body>
+
+</html>

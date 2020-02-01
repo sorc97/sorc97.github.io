@@ -1,0 +1,19 @@
+@media screen and (max-width: 992px) {
+  .column {
+    -webkit-box-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .column {
+    -webkit-box-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  .modal-img {
+    max-width: 95%;
+  }
+}

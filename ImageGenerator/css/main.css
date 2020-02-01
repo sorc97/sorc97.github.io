@@ -1,0 +1,366 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-dark-color: #274156;
+  --main-light-color: #FBFCFF;
+  --additional-dark-color: #1C6E8C;
+  --focus-color: #96adbf;
+}
+
+body {
+  margin: 0px;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  padding: 20px 5px;
+  background-color: var(--main-light-color);
+  font-family: 'Arial', sans-serif;
+}
+
+.content {
+  position: relative;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.mainContent-loader {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.filters {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-loader {
+  width: 15%;
+  max-width: 100px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  border: none;
+  background-color: transparent;
+  color: rgba(158, 158, 158, 0.8);
+  font-size: 50px;
+  cursor: pointer;
+  -webkit-transition: color .2s ease;
+  transition: color .2s ease;
+}
+
+.modal-close:hover {
+  color: var(--main-light-color);
+}
+
+.modal-close:focus {
+  outline: none;
+  color: var(--main-light-color);
+}
+
+.search-field {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  max-width: 400px;
+  margin: 0px auto 20px;
+}
+
+input[name='query'] {
+  box-sizing: border-box;
+  border: 0px;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  min-width: 100px;
+  border: 2px solid var(--main-dark-color);
+  border-right: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+input[name='query']:focus {
+  outline: none;
+  border-color: var(--focus-color);
+}
+
+.search-field>button {
+  padding: 0px 20px;
+  border: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  background: var(--main-dark-color);
+  color: var(--main-light-color);
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.search-field>button:focus {
+  outline: none;
+  background-color: var(--focus-color);
+}
+
+.search-field>button:hover {
+  background: var(--additional-dark-color);
+}
+
+.sarch-icon-wrapper {
+  width: 1.5em;
+}
+
+.search-icon {
+  fill: var(--main-light-color);
+}
+
+.perPage-input {
+  font-size: 20px;
+  max-width: 100px;
+  text-align: center;
+  background-color: var(--main-dark-color);
+  color: var(--main-light-color);
+  border: none;
+}
+
+.perPage-input {
+  outline: none;
+}
+
+.perPage-label:focus-within {
+  border: 2px solid var(--additional-dark-color);
+  border: 2px solid var(--focus-color);
+}
+
+.perPage-label {
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px 30px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  background: var(--main-dark-color);
+  color: var(--main-light-color);
+}
+
+.images {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  padding-bottom: 30px;
+}
+
+.column {
+  box-sizing: border-box;
+  -webkit-box-flex: 25%;
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column:first-of-type {
+  padding-left: 0px;
+}
+
+.column:last-of-type {
+  padding-right: 0px;
+}
+
+.img-wrapper {
+  vertical-align: center;
+  margin-top: 4px;
+  width: 100%;
+  min-height: 200px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgba(204, 204, 204, 0.356);
+  background-image: url(../imgs/lineLoader1.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  -webkit-transition-property: box-shadow, opacity;
+  transition-property: box-shadow, opacity;
+}
+
+.img-wrapper:hover {
+  opacity: 0.8;
+  box-shadow: 0px 2px 10px #000000e8;
+}
+
+.grid-img {
+  cursor: pointer;
+  width: 100%;
+  min-height: inherit;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+  -o-object-fit: cover;
+  object-fit: cover;
+  max-height: 300px;
+}
+
+.grid-img.loaded {
+  opacity: 1;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Georgia';
+}
+
+.loadMore-button {
+  cursor: pointer;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: 2px solid transparent;
+  background-color: var(--main-dark-color);
+  color: var(--main-light-color);
+  border-radius: 50px;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.loadMore-button:hover, .loadMore-button:focus {
+  background-color: #1C6E8C;
+  color: var(--main-light-color);
+}
+
+.loadMore-button:focus {
+  outline: none;
+  border-color: var(--focus-color);
+}
+
+.modal {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  display: none;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  -webkit-animation: modalAppearance .3s ease;
+  animation: modalAppearance .3s ease;
+}
+
+.modal-img {
+  box-sizing: border-box;
+  max-width: 90%;
+  max-height: 90%;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+
+.appearance {
+  -webkit-animation: slideUp 0.3s ease;
+  animation: slideUp 0.3s ease;
+}
+
+.fadeOut {
+  -webkit-animation: none;
+  animation: none;
+  -webkit-animation: fadeOut 0.3s ease;
+  animation: fadeOut 0.3s ease;
+}
+
+/* Animations */
+
+@-webkit-keyframes slideUp {
+  from {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+    opacity: .5;
+  }
+
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+    opacity: .5;
+  }
+
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes modalAppearance {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalAppearance {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,275 @@
+/* @media screen and (max-width: 1090px) { */
+@media screen and (max-width: 1100px) {
+
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .inner-fullHeight {
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .about {
+    background: url(../img/matrix.png) no-repeat right 5% bottom 3%;
+  }
+
+  .news-item:nth-of-type(2n+1) {
+    margin-right: 0px;
+  }
+
+  .news-list {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 992px) {
+
+  :root {
+    font-size: 15px;
+  }
+
+  .activities-inner,
+  .languages-inner,
+  .about-inner,
+  .attorneys-inner,
+  .news-inner,
+  .contacts {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .about-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+  }
+
+  .about-photo {
+    margin-top: 2rem;
+  }
+
+  .caption::before {
+    left: calc(50% - 30px);
+  }
+
+  .caption {
+    text-align: center;
+  }
+
+  .activities-list {
+    height: 400px;
+  }
+
+  .activities-bgImage {
+    display: none;
+  }
+
+  .attorneys-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .attorneys-imgs {
+    width: 70%;
+  }
+
+  .attorneys-text {
+    padding: 0px;
+    margin: 0 0 40px 0;
+    text-align: center;
+  }
+
+  .matrix {
+    display: none;
+  }
+
+  .news-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+}
+
+/* ? 768 instead of 767 */
+@media screen and (max-width: 768px) {
+
+  :root {
+    font-size: 14px;
+  }
+
+  .slogan-caption {
+    font-size: 4rem;
+  }
+
+  .navigation {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    display: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: var(--bg-mobileMenu);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    -webkit-animation: menuSlide .4s ease;
+    animation: menuSlide .4s ease;
+    z-index: 1000;
+  }
+
+  .navigation.open {
+    display: -webkit-box;
+    display: flex;
+  }
+
+  .menu {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu-item {
+    width: 100%;
+    margin: 0px;
+  }
+
+  .menu-item>a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    -webkit-transition: background-color .2s ease;
+    transition: background-color .2s ease;
+  }
+
+  .menu-item>a:hover {
+    color: var(--bg-mobileMenu);
+    background-color: var(--bg-secondary-color);
+  }
+
+  .menu-item ::before {
+    content: none;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-closeButton {
+    display: -webkit-box;
+    display: flex;
+  }
+
+  .attorneys-imgs {
+    width: 90%;
+  }
+
+  .languages-item {
+    -webkit-box-flex: 1;
+    flex: 1 1 260px;
+  }
+
+  .languages-item:nth-of-type(2n) {
+    margin-right: 0px;
+  }
+
+  .news {
+    background-image: none;
+  }
+
+  .address-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+
+  .address {
+    min-height: 350px;
+  }
+
+  .address:first-child {
+    border-right: 1px solid #4e59a3;
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+  :root {
+    font-size: 13px;
+  }
+
+  .slogan-caption {
+    font-size: 3.5rem;
+    line-height: 5rem;
+  }
+
+  .slogan-secondBg {
+    -webkit-clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0% 100%);
+  }
+
+  .attorneys-imgs {
+    width: 100%;
+  }
+
+  .img-description {
+    font-size: 1.2rem;
+  }
+
+  .text-fields>input {
+    width: 100%;
+  }
+
+  .languages-item {
+    margin-right: 0;
+  }
+
+  .address {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .footer-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: space-evenly;
+    justify-content: space-evenly;
+  }
+
+  .copyright {
+    -webkit-box-ordinal-group: 3;
+    order: 2;
+  }
+
+  .footer>.icons-list {
+    -webkit-box-ordinal-group: 2;
+    order: 1;
+  }
+}
