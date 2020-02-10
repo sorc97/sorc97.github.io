@@ -74,9 +74,9 @@ ul {
 /*HEADER*/
 
 .header {
-	background-image: url(../img/Background.png);
+	background-image: url(../img/mobileBg.jpeg);
 	background-repeat: no-repeat;
-	background-position: left;
+	background-position: center;
 	background-size: cover;
 	height: 100vh;
 	min-height: 450px;
@@ -183,7 +183,7 @@ ul {
 
 .menu__button_close {
 	position: absolute;
-	left: 10px;
+	right: 10px;
 	top: 30px;
 	padding: 0px;
 	width: 50px;
@@ -510,7 +510,7 @@ ul {
 /* FOOTER */
 
 .footer {
-	background-image: url(../img/Background2.png);
+	background-image: url(../img/mobileBg.jpeg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

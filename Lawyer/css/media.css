@@ -70,6 +70,7 @@
 
   .activities-bgImage {
     display: none;
+    background: none;
   }
 
   .attorneys-inner {
@@ -106,13 +107,35 @@
   }
 }
 
-/* ? 768 instead of 767 */
 @media screen and (max-width: 768px) {
 
   :root {
     font-size: 14px;
   }
 
+  .slogan {
+    background: url('../img/mobileBg2.jpeg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .slogan-secondBg {
+    background: url('../img/mobileBg1.jpeg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .banner {
+    background: url('../img/mobileBanner.jpeg') center center /cover;
+  }
+
+  .contacts {
+    background: url('../img/mobileContactsBg2.jpeg') no-repeat;
+    background-position: bottom;
+    background-size: cover;
+  }
+  
   .slogan-caption {
     font-size: 4rem;
   }

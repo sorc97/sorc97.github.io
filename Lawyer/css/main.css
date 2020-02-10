@@ -26,6 +26,10 @@
   --section-padding: 80px 0px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0px;
   font-family: var(--font-primary);
@@ -117,7 +121,9 @@ ul {
   font-weight: bold;
   text-transform: uppercase;
   color: var(--text-primory-color);
+  -webkit-animation: 1s ease;
   animation: 1s ease;
+  -webkit-animation-name: slideRight, appearance;
   animation-name: slideRight, appearance;
   cursor: pointer;
 }
@@ -125,7 +131,9 @@ ul {
 /* Navigation */
 
 .navigation {
+  -webkit-animation: 1s ease;
   animation: 1s ease;
+  -webkit-animation-name: appearance;
   animation-name: appearance;
 }
 
@@ -175,7 +183,9 @@ ul {
   background-color: transparent;
   font-size: 30px;
   color: var(--text-primory-color);
+  -webkit-animation: 1s ease;
   animation: 1s ease;
+  -webkit-animation-name: appearance;
   animation-name: appearance;
 }
 
@@ -189,7 +199,9 @@ ul {
   right: 15px;
   top: 20px;
   display: none;
+  -webkit-box-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
   align-items: center;
   width: 50px;
   height: 50px;
@@ -274,7 +286,9 @@ ul {
   text-transform: uppercase;
   color: var(--text-secondary-color);
   margin: 0px;
+  -webkit-animation: 1s ease;
   animation: 1s ease;
+  -webkit-animation-name: slideBottom, appearance;
   animation-name: slideBottom, appearance;
   z-index: 3;
 }
@@ -858,7 +872,7 @@ button[name='send']:hover {
 
 .icon {
   color: var(--text-darkBg-color);
-  font-size: 18px;
+  font-size: 20px;
   padding: 0px 10px;
 }
 

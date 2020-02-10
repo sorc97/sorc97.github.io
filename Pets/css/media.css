@@ -14,7 +14,10 @@
 	}
 
 	.header {
+		background-image: url(../img/Background.jpeg);
+		background-repeat: no-repeat;
 		background-position: center;
+		background-size: cover;
 	}
 
 	.logo {
@@ -101,6 +104,13 @@
 	.information__item {
 		-webkit-box-pack: start;
 		justify-content: start;
+	}
+
+	.footer {
+		background-image: url(../img/Background2.jpeg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 
 	.footer__information {
